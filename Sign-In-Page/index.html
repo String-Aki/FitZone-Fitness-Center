@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./login.css" />
+    <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
+    <title>Login Page</title>
+  </head>
+  <body>
+    <form class="login-form">
+      <h1 class="login-head">WELCOME BACK</h1>
+      <p class="login-head-followUp">
+        Welcome back! Please enter your details.
+      </p>
+
+      <label for="email" class="email-label">Email</label>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        name="email"
+        class="email-field"
+      />
+
+      <label for="password" class="pass-label">Password</label>
+      <div class="password-wrap">
+        <input
+        type="password"
+        placeholder="**********"
+        name="password"
+        class="pass-field"
+        />
+        <i class="fa-regular fa-eye toggle-pass"></i>
+      </div>
+
+      <div class="below-fields-box">
+        <input type="checkbox" name="remember" class="checkbox" />
+        <label for="remember" class="remember-label">Remember me</label>
+        <a class="forgot-pass">Forgot password</a>
+      </div>
+
+      <button type="submit" class="sign-in-btn">Sign in</button>
+
+      <p class="no-account-p">
+        Don’t have an account?
+        <a class="login-register-button">Join Fitness Zone</a>
+      </p>
+    </form>
+
+    <div class="img-box">
+    </div>
+    <script type="text/javascript" src="./login.js"></script>
+  </body>
+</html>
