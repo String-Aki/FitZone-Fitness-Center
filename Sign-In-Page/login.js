@@ -1,7 +1,7 @@
 const passField = document.querySelector(".pass-field");
 const passToggle = document.querySelector(".toggle-pass");
-const scroll = document.querySelector(".scroll-box");
 const formView = document.querySelector(".login-form");
+const screenWidth = window.innerWidth;
 
 passToggle.addEventListener("click", function() {
   const type =
@@ -12,6 +12,6 @@ passToggle.addEventListener("click", function() {
   this.classList.toggle("fa-eye-slash");
 });
 
-scroll.addEventListener("click", () =>{
-  formView.scrollIntoView({behavior: 'smooth'})
-})
+if(screenWidth < 1440){
+    setTimeout(() => {formView.scrollIntoView({behavior: 'smooth'})}, 2000)
+}
