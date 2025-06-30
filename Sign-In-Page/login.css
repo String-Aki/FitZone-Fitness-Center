@@ -12,7 +12,7 @@ body {
 .img-box {
   height: 100vh;
   width: 50vw;
-  background: url("./img.jpg");
+  background: url("./Assets/img-desktop.jpg");
   background-position: right 55%;
   background-size: 87%;
   background-repeat: no-repeat;
@@ -30,10 +30,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: start;
-  /* padding-left: 220px; */
-  margin-left: 220px;
-  margin-block: 70px;
-  /* border: 1px solid black; */
+  /* margin-left: 220px; */
+  margin-left: 15%;
+  /* margin-block: 70px; */
+  margin-block: 5%;
 }
 
 h1.login-head {
@@ -131,8 +131,7 @@ button {
 .sign-in-btn {
   width: 312px;
   height: 40px;
-  margin-top: 30px;
-  margin-bottom: 18px;
+  margin:30px auto 18px auto;
   padding: 3px;
 
   border-radius: 12px;
@@ -156,4 +155,26 @@ button {
 
 .login-register-button {
   color: #ea454c;
+}
+
+@media screen and (max-width: 576px) {
+  body{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-box {
+  height: 25vh;
+  width: 100vw;
+  background: url("./Assets/img-mobile-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login-form{
+  margin:0;
+  padding-top: 5%;
+}
 }
