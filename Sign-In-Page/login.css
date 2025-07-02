@@ -10,9 +10,9 @@ body {
 }
 
 .img-box {
-  height: 100vh;
+  height: 100dvh;
   width: 50vw;
-  background: url("./Assets/img-desktop.jpg");
+  background: url("../Assets/img-desktop.jpg");
   background-position: right 55%;
   background-size: 87%;
   background-repeat: no-repeat;
@@ -167,15 +167,15 @@ button {
   }
 
   .img-box {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
-    background: url("./Assets/img-desktop.jpg") no-repeat center/cover;
+    background: url("../Assets/img-desktop.jpg") no-repeat center/cover;
   }
 
   .login-form {
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
-    padding-top: 20%;
+    padding-top: 15%;
   }
 }
 
