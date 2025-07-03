@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansita+Swashed:wght@300..900&display=swap");
 
 /* add floating bits */
-/* Nav bar alignment: have to overlay navbar on homepage*/
+/*✅ Nav bar alignment: have to overlay navbar on homepage*/
 /* Scroll snap to sections */
+/* Change Group Classes Image */
+/* Stats animation */
+
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
@@ -15,32 +22,62 @@ button {
   font-family: "Poppins";
 }
 
-/* Navbar Styles */ 
+a {
+  text-decoration: none;
+}
+
+/* Navbar Styles */
+
 nav.landing-page-nav {
-  position: sticky;
+  position: fixed;
+  width: 100dvw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(26, 26, 26, 0.95);
   padding: 18px 0;
   border-bottom: 1px outset rgba(255, 255, 255, 0.09);
+  z-index: 1;
 
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
+
 nav.hidden {
-  transform: translateY(-100%);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin-left: 2%;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.nav-menu.hidden,
+.join-or-login.hidden {
+  display: none;
+  
+}
+
+.branding.hidden {
+  margin: 10px;
 }
 
 .branding {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
   margin-left: 45px;
 }
 
 i.logo-icon {
   color: #f44;
+}
+
+a.heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
 }
 
 .nav-menu {
@@ -52,7 +89,6 @@ a.links {
   color: #cbd5e0;
   font-size: 1rem;
   font-weight: 600;
-  text-decoration: none;
 }
 
 .links:hover {
@@ -85,7 +121,6 @@ button.join-now {
   border-radius: 6px;
   border: none;
   background-color: #e63946;
-
 }
 
 /* Intro Section Styles */
@@ -96,12 +131,11 @@ section.intro {
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
-
 .img-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 60px;
+  margin: 95px 60px;
   width: 576px;
   height: 576px;
   border-radius: 24px;
@@ -128,7 +162,7 @@ section.intro {
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
-  margin: 50px 0;
+  margin: 120px 0;
 
   padding: 0 70px;
 }
@@ -161,40 +195,38 @@ button.start-journey {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-
 }
 
 i.arrow-icon {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
-
 .stats-group {
-    display: flex;
-    width: 550px;
-    align-items: center;
-    justify-content:space-between;
-    margin-block: 28px;
+  display: flex;
+  width: 550px;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 28px;
 }
 
 img.stat-icon {
-    width: 40px;
-    margin-left: 8px;
-    vertical-align: middle;
+  width: 40px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 
 h3.stat-main {
-    display: inline;
-    vertical-align: middle;
-    color: white;
-    font-size: 2.2rem;
-    font-weight: 700;
+  display: inline;
+  vertical-align: middle;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 p.stat-sub {
-    color: #9CA3AF;
-    font-size: 0.8rem;
-    margin-left: 10px;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin-left: 10px;
 }
 
 /* About Section Styles */
@@ -205,16 +237,17 @@ section.about {
   flex-direction: column;
   align-items: center;
   padding-top: 2%;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
 }
 
-h2.about-header {
+h1.about-header {
   font-size: 3rem;
   font-weight: 700;
+  padding-top: 16px;
 }
 
 .header-color {
-  color:#FF4444;
+  color: #ff4444;
 }
 
 p.about-p {
@@ -232,13 +265,12 @@ p.about-p {
 
   padding-top: 45px;
   flex-shrink: 0;
-
 }
 
 .the-about-card {
   width: 100%;
   height: 100%;
-  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
 
   transform-style: preserve-3d;
@@ -264,7 +296,6 @@ p.about-p {
   overflow: hidden;
 }
 
-
 .card-back {
   position: absolute;
   display: flex;
@@ -279,7 +310,7 @@ p.about-p {
   overflow: hidden;
 }
 
-.img-box{
+.img-box {
   width: 123px;
   height: 116px;
   background-color: #242533;
@@ -287,7 +318,7 @@ p.about-p {
   padding: 36px 34px;
 }
 
-.card-back > h1 {
+.card-back > h2 {
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
