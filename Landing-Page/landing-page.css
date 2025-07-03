@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansita+Swashed:wght@300..900&display=swap");
 
+/* add floating bits */
+/* Nav bar alignment: have to overlay navbar on homepage*/
+/* Scroll snap to sections */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,7 +15,9 @@ button {
   font-family: "Poppins";
 }
 
+/* Navbar Styles */ 
 nav.landing-page-nav {
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,7 +27,7 @@ nav.landing-page-nav {
 
   transition: transform 0.2s ease-in-out;
 }
-.hidden {
+nav.hidden {
   transform: translateY(-100%);
 }
 
@@ -82,10 +88,10 @@ button.join-now {
 
 }
 
-/* Intro */
+/* Intro Section Styles */
 
-.intro {
-  height: 90dvh;
+section.intro {
+  height: 100dvh;
   display: flex;
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
 }
@@ -95,7 +101,7 @@ button.join-now {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto 60px;
+  margin: 20px 60px;
   width: 576px;
   height: 576px;
   border-radius: 24px;
@@ -127,7 +133,7 @@ button.join-now {
   padding: 0 70px;
 }
 
-.intro-heading {
+h1.intro-heading {
   color: white;
   font-size: 4rem;
   font-weight: 700;
@@ -158,7 +164,7 @@ button.start-journey {
 
 }
 
-.arrow-icon {
+i.arrow-icon {
     margin-left: 5px;
 }
 
@@ -171,13 +177,13 @@ button.start-journey {
     margin-block: 28px;
 }
 
-.stat-icon {
+img.stat-icon {
     width: 40px;
     margin-left: 8px;
     vertical-align: middle;
 }
 
-.stat-main {
+h3.stat-main {
     display: inline;
     vertical-align: middle;
     color: white;
@@ -185,8 +191,112 @@ button.start-journey {
     font-weight: 700;
 }
 
-.stat-sub {
+p.stat-sub {
     color: #9CA3AF;
     font-size: 0.8rem;
     margin-left: 10px;
+}
+
+/* About Section Styles */
+
+section.about {
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2%;
+  background-color: #F8F9FA;
+}
+
+h2.about-header {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.header-color {
+  color:#FF4444;
+}
+
+p.about-p {
+  width: 80%;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.main-card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 365px);
+  grid-template-rows: repeat(2, 436px);
+  gap: 100px;
+
+  padding-top: 45px;
+  flex-shrink: 0;
+
+}
+
+.the-about-card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 12px;
+
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
+}
+
+.the-about-card:hover {
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 12px;
+
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+
+.card-back {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding-top: 27px;
+
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.img-box{
+  width: 123px;
+  height: 116px;
+  background-color: #242533;
+  border-radius: 8px;
+  padding: 36px 34px;
+}
+
+.card-back > h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-block: 30px;
+}
+
+.card-back > p {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0 12px;
+  line-height: 2rem;
 }
