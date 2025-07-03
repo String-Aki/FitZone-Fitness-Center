@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansita+Swashed:wght@300..900&display=swap");
 
-/* add floating bits */
 /*✅ Nav bar alignment: have to overlay navbar on homepage*/
 /* Scroll snap to sections */
-/* Change Group Classes Image */
+/* Change Group Classes and trainers Image */
 /* Stats animation */
-
+/* Login Screen back button */
 
 html {
   scroll-behavior: smooth;
@@ -30,7 +29,7 @@ a {
 
 nav.landing-page-nav {
   position: fixed;
-  width: 100dvw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,24 +42,7 @@ nav.landing-page-nav {
 }
 
 nav.hidden {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  margin-left: 2%;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
-.nav-menu.hidden,
-.join-or-login.hidden {
-  display: none;
-  
-}
-
-.branding.hidden {
-  margin: 10px;
+  transform: translateY(-100%);
 }
 
 .branding {
@@ -126,8 +108,8 @@ button.join-now {
 /* Intro Section Styles */
 
 section.intro {
-  height: 100dvh;
   display: flex;
+  /* height: 100dvh; */
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
@@ -278,7 +260,14 @@ p.about-p {
 }
 
 .the-about-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s, box-shadow 0.2s;
+}
+
+.the-about-card.clicked {
   transform: rotateY(180deg);
+  transition: all 0.8s ease;
 }
 
 .card-front {
@@ -294,6 +283,7 @@ p.about-p {
 
   backface-visibility: hidden;
   overflow: hidden;
+  z-index: 2;
 }
 
 .card-back {
@@ -308,6 +298,7 @@ p.about-p {
   backface-visibility: hidden;
   transform: rotateY(180deg);
   overflow: hidden;
+  z-index: 1;
 }
 
 .img-box {
