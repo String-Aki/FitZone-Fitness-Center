@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansita+Swashed:wght@300..900&display=swap");
 
 /*✅ Nav bar alignment: have to overlay navbar on homepage*/
-/* Scroll snap to sections */
-/* Change Group Classes and trainers Image */
+/*✅ Change Group Classes and trainers Image */
 /* Stats animation */
 /* Login Screen back button */
 /* Responsiveness Update */
@@ -20,6 +19,7 @@ html {
 
 button {
   font-family: "Poppins";
+  cursor: pointer;
 }
 
 a {
@@ -218,7 +218,7 @@ section.about {
   flex-direction: column;
   align-items: center;
   padding-block: 5rem;
-  background-color: #F0EBE3;
+  background-color: #f0ebe3;
 }
 
 h1.about-header {
@@ -323,20 +323,19 @@ p.about-p {
   line-height: 2rem;
 }
 
-
 /* Membership Section Styles */
 
 section.membership-section {
-  position: relative;
+  /* position: relative; */
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
   padding-block: 2rem;
 }
 
 h1.membership-header {
-  margin:0;
+  margin: 0;
   font-size: 3rem;
   font-weight: 700;
   color: white;
@@ -344,13 +343,13 @@ h1.membership-header {
 }
 
 span.membership-header-color {
-  color: #00FF88;
+  color: #00ff88;
 }
 
 p.membership-p {
   width: 60%;
   text-align: center;
-  color: #CBD5E0;
+  color: #cbd5e0;
   font-size: 1.2rem;
   line-height: 2rem;
   margin-bottom: 2rem;
@@ -361,7 +360,6 @@ p.membership-p {
   place-content: center;
   gap: 2rem;
   margin-bottom: 1rem;
-
 }
 
 .plan {
@@ -374,8 +372,16 @@ p.membership-p {
   flex-shrink: 0;
 
   background-color: white;
-  color: #1A1A1A; 
+  color: #1a1a1a;
+  cursor: default;
+
+  transition: all 0.4s ease-in-out;
 }
+
+.plan:hover {
+  transform: scale(1.03);
+}
+
 
 h2.plan-header {
   font-size: 1.2rem;
@@ -389,12 +395,12 @@ h3.price {
 }
 
 .price > span {
-  color: #2D3748;
+  color: #2d3748;
   font-size: 1rem;
 }
 
 p.plan-description {
-  color: #2D3748;
+  color: #2d3748;
   font-size: 0.8rem;
   line-height: 1.5rem;
   text-align: center;
@@ -412,16 +418,16 @@ p.plan-description {
 }
 
 .check::before {
-  content: "\f00c"; 
-  font-family: "Font Awesome 6 Free"; 
-  font-weight: 900; 
-  color: #00FF88; 
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #00ff88;
   font-size: 1em;
   padding-right: 1rem;
 }
 
 .check {
-  color: #2D3748;
+  color: #2d3748;
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -431,7 +437,7 @@ p.plan-description {
   margin-top: auto;
   padding: 16px 89px 15px 90px;
   border-radius: 8px;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
 
   font-size: 1.1rem;
   font-weight: 600;
@@ -440,12 +446,20 @@ p.plan-description {
   border: none;
 }
 
+.start-plan:hover {
+  background-color: #2d3748;
+}
+
 .pro > .start-plan {
   background-color: #f44;
 }
 
+.pro > .start-plan:hover {
+  background-color: #e63946;
+}
+
 .policy {
-  color: #A0AEC0;
+  color: #a0aec0;
   font-size: 1rem;
   margin-block: 0.5rem;
 }
@@ -455,29 +469,31 @@ p.plan-description {
   align-items: space-between;
   gap: 1.5rem;
   font-size: 0.8rem;
-  color: #A0AEC0;
+  color: #a0aec0;
   margin-block: 0.3rem;
 }
 
 .popular::before {
-  content: "\f005"; 
-  font-family: "Font Awesome 6 Free"; 
-  font-weight: 900; 
-  color: #ffffff; 
+  content: "\f005";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #ffffff;
   font-size: 1em;
+}
+
+.pro {
+  position: relative;
 }
 
 .popular {
   position: absolute;
+  top: 0;
+  left: 0;
   font-size: 0.8rem;
   font-weight: 600;
   background-color: #f44;
   color: white;
-  border-radius: 20px;
+  border-radius: 12px 0 20px 0;
   padding: 10px;
-  top: 22.5%;
-  margin: 0 auto;
-  z-index: 1;
 }
-
 
