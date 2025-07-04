@@ -5,6 +5,8 @@
 /* Stats animation */
 /* Login Screen back button */
 /* Responsiveness Update */
+/* hiding nav on scroll and showing logo upon hover itll show the nav 
+upon click itll take us home  */
 
 html {
   scroll-behavior: smooth;
@@ -93,7 +95,7 @@ a.login {
 }
 
 .login:hover {
-  color: #e63946;
+  color: #f97316;
 }
 
 button.join-now {
@@ -104,6 +106,12 @@ button.join-now {
   border-radius: 6px;
   border: none;
   background-color: #e63946;
+  transition: all 0.4s ease;
+}
+
+button.join-now:hover {
+  background-color: #f97316;
+  color: #f0ebe3;
 }
 
 /* Intro Section Styles */
@@ -177,6 +185,11 @@ button.start-journey {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+button.start-journey:hover {
+  transform: scale(1.05);
 }
 
 i.arrow-icon {
@@ -382,7 +395,6 @@ p.membership-p {
   transform: scale(1.03);
 }
 
-
 h2.plan-header {
   font-size: 1.2rem;
   font-weight: 700;
@@ -473,6 +485,10 @@ p.plan-description {
   margin-block: 0.3rem;
 }
 
+.pro {
+  position: relative;
+}
+
 .popular::before {
   content: "\f005";
   font-family: "Font Awesome 6 Free";
@@ -481,11 +497,7 @@ p.plan-description {
   font-size: 1em;
 }
 
-.pro {
-  position: relative;
-}
-
-.popular {
+span.popular {
   position: absolute;
   top: 0;
   left: 0;
@@ -497,3 +509,112 @@ p.plan-description {
   padding: 10px;
 }
 
+/* Testimonials Section Styles */
+
+section.testimonial-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-block: 5rem;
+}
+
+h1.testimonial-heading { 
+  font-size: 3rem;
+  font-weight: 700; 
+}
+
+span.th-color {
+  color: #f44;
+}
+
+p.testimonial-p {
+  font-size: 1.3rem;
+  color: #2D3748;
+  padding: 1rem 0 3rem 0;
+  text-align: center;
+  width: 60%;
+}
+
+.testimonial-card-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 90%;
+  margin-bottom: 4rem;
+}
+
+.testimonial-card {
+  width: 100%;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 12px;
+}
+
+.fa-quote-left{
+  color: #f44;
+  padding-bottom: 1.5rem;
+  font-size: 2em;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FBBF24;
+  font-size: 1.2em;
+}
+
+p.testimonial {
+  align-self: stretch;
+  font-size: 1.3rem;
+  font-style: italic;
+  padding: 1.5rem 0 1.8rem 0;
+  color: #2D3748;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+span.achievement {
+  padding: 0.3rem 0.5rem;
+  background-color:  rgba(0, 255, 136, 0.10);
+  color: #00FF88;
+  border-radius: 1.2rem;
+}
+
+.testimonial-cta {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 80%;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.10);
+}
+
+h2.cta-heading {
+  text-align: center;
+}
+
+p.cta-p {
+  text-align: center;
+  width: 70%;
+  font-size: 1rem;
+  color: #2D3748;
+}
+
+button.cta-button {
+  padding: 1rem 2rem;
+  border-radius: 3.5rem;
+  background-color: #f44;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+}
