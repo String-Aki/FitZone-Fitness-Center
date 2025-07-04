@@ -48,6 +48,22 @@ nav.hidden {
   transform: translateY(-100%);
 }
 
+a.pseudo-nav.show{
+  opacity:1;
+}
+
+a.pseudo-nav {
+  position: fixed;
+  left: 0.8%;
+  color: #f44;
+  z-index: 1;
+  padding: 2rem;
+  border-radius: 0 0 2rem 2rem;
+  background:rgba(26, 26, 26, 0.751); ;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
 .branding {
   display: flex;
   align-items: center;
