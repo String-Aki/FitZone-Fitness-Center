@@ -5,6 +5,7 @@
 /* Change Group Classes and trainers Image */
 /* Stats animation */
 /* Login Screen back button */
+/* Responsiveness Update */
 
 html {
   scroll-behavior: smooth;
@@ -109,7 +110,6 @@ button.join-now {
 
 section.intro {
   display: flex;
-  /* height: 100dvh; */
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
@@ -214,12 +214,11 @@ p.stat-sub {
 /* About Section Styles */
 
 section.about {
-  height: 1500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2%;
-  background-color: #f8f9fa;
+  padding-block: 5rem;
+  background-color: #F0EBE3;
 }
 
 h1.about-header {
@@ -254,6 +253,7 @@ p.about-p {
   height: 100%;
   box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
+  cursor: pointer;
 
   transform-style: preserve-3d;
   transition: all 0.8s ease;
@@ -322,3 +322,162 @@ p.about-p {
   padding: 0 12px;
   line-height: 2rem;
 }
+
+
+/* Membership Section Styles */
+
+section.membership-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1A1A1A;
+  padding-block: 2rem;
+}
+
+h1.membership-header {
+  margin:0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  padding-block: 1rem;
+}
+
+span.membership-header-color {
+  color: #00FF88;
+}
+
+p.membership-p {
+  width: 60%;
+  text-align: center;
+  color: #CBD5E0;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+}
+
+.plan-container {
+  display: flex;
+  place-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 330px;
+  border-radius: 12px;
+  padding: 1.8rem 1.2rem;
+  flex-shrink: 0;
+
+  background-color: white;
+  color: #1A1A1A; 
+}
+
+h2.plan-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+h3.price {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.price > span {
+  color: #2D3748;
+  font-size: 1rem;
+}
+
+p.plan-description {
+  color: #2D3748;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  text-align: center;
+  padding-block: 1rem;
+}
+
+.features {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-block: 1rem;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.check::before {
+  content: "\f00c"; 
+  font-family: "Font Awesome 6 Free"; 
+  font-weight: 900; 
+  color: #00FF88; 
+  font-size: 1em;
+  padding-right: 1rem;
+}
+
+.check {
+  color: #2D3748;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.start-plan {
+  align-self: center;
+  margin-top: auto;
+  padding: 16px 89px 15px 90px;
+  border-radius: 8px;
+  background-color: #1A1A1A;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+
+  border: none;
+}
+
+.pro > .start-plan {
+  background-color: #f44;
+}
+
+.policy {
+  color: #A0AEC0;
+  font-size: 1rem;
+  margin-block: 0.5rem;
+}
+
+.plan-perks {
+  display: flex;
+  align-items: space-between;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: #A0AEC0;
+  margin-block: 0.3rem;
+}
+
+.popular::before {
+  content: "\f005"; 
+  font-family: "Font Awesome 6 Free"; 
+  font-weight: 900; 
+  color: #ffffff; 
+  font-size: 1em;
+}
+
+.popular {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #f44;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  top: 22.5%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+
