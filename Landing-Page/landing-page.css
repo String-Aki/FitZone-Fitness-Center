@@ -2,7 +2,6 @@
 
 /*✅ Nav bar alignment: have to overlay navbar on homepage*/
 /*✅ Change Group Classes and trainers Image */
-/* Stats animation */
 /* Login Screen back button */
 /* Responsiveness Update */
 /* hiding nav on scroll and showing logo upon hover itll show the nav 
@@ -37,7 +36,7 @@ nav.landing-page-nav {
   justify-content: space-between;
   align-items: center;
   background-color: rgba(26, 26, 26, 0.95);
-  padding: 18px 0;
+  padding: 1.2rem 0;
   border-bottom: 1px outset rgba(255, 255, 255, 0.09);
   z-index: 1;
 
@@ -67,8 +66,8 @@ a.pseudo-nav {
 .branding {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-left: 45px;
+  gap: 0.8rem;
+  margin-left: 3rem;
 }
 
 i.logo-icon {
@@ -83,7 +82,7 @@ a.heading {
 
 .nav-menu {
   display: flex;
-  gap: 40px;
+  gap: 2.3rem;
 }
 
 a.links {
@@ -97,10 +96,10 @@ a.links {
 }
 
 .join-or-login {
-  margin-right: 45px;
+  margin-right: 2.8rem;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 1.8rem;
 }
 
 a.login {
@@ -118,8 +117,8 @@ button.join-now {
   font-size: 0.8rem;
   font-weight: 500;
   color: white;
-  padding: 7.5px 16px 8px 16px;
-  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: none;
   background-color: #e63946;
   transition: all 0.4s ease;
@@ -141,10 +140,10 @@ section.intro {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 95px 60px;
-  width: 576px;
-  height: 576px;
-  border-radius: 24px;
+  margin: 6rem 3.75rem;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(
     135deg,
@@ -156,8 +155,8 @@ section.intro {
 }
 
 .intro-img {
-  width: 510px;
-  height: 510px;
+  width: 32rem;
+  height: 32rem;
   border-radius: 1rem;
   object-fit: cover;
   position: relative;
@@ -167,17 +166,17 @@ section.intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 15px;
-  margin: 120px 0;
+  gap: 1rem;
+  margin-block: 7.5rem;
 
-  padding: 0 70px;
+  padding: 0 4.5rem;
 }
 
 h1.intro-heading {
   color: white;
   font-size: 4rem;
   font-weight: 700;
-  line-height: 85px;
+  line-height: 5.3rem;
 }
 
 .intro-heading-color {
@@ -187,13 +186,13 @@ h1.intro-heading {
 .intro-p {
   color: #d1d5db;
   font-size: 1.2rem;
-  line-height: 32px;
+  line-height: 2rem;
 }
 
 button.start-journey {
-  margin-block: 32px;
-  padding: 16px 32px;
-  border-radius: 10px;
+  margin-block: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
   border: none;
   background: linear-gradient(77deg, #ff6b35 0%, #ff8555 100%);
 
@@ -209,20 +208,20 @@ button.start-journey:hover {
 }
 
 i.arrow-icon {
-  margin-left: 5px;
+  margin-left: 0.4rem;
 }
 
 .stats-group {
   display: flex;
-  width: 550px;
+  width: 34rem;
   align-items: center;
   justify-content: space-between;
-  margin-block: 28px;
+  margin-block: 1.8rem;
 }
 
 img.stat-icon {
-  width: 40px;
-  margin-left: 8px;
+  width: 2.5rem;
+  margin-left: 0.5rem;
   vertical-align: middle;
 }
 
@@ -237,7 +236,7 @@ h3.stat-main {
 p.stat-sub {
   color: #9ca3af;
   font-size: 0.8rem;
-  margin-left: 10px;
+  margin-left: 0.6rem;
 }
 
 /* About Section Styles */
@@ -664,7 +663,6 @@ button.cta-button {
   width: 20%;
 }
 
-
 h2.info-heading {
   color: white;
 }
@@ -716,18 +714,77 @@ h3.services-heading {
 }
 
 .services > span {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .copyrights-section {
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;
-  color: #CBD5E0;
+  color: #cbd5e0;
   padding-block: 1.5rem;
 }
 
 .terms-and-policy {
   display: flex;
   gap: 1.5rem;
+}
+
+/* Testing Responsiveness */
+
+/* 4k (2560px) */
+@media (min-width: 2560px) {
+  .img-container {
+    width: min(90vw, 54rem);
+    height: 54rem;
+    margin: 9rem 5.625rem;
+    border-radius: 2.25rem;
+  }
+
+  .intro-img {
+    width: 48rem;
+    height: 48rem;
+    border-radius: 1.5rem;
+  }
+
+  .intro-content {
+    margin-block: 11.25rem;
+    padding: 0 6.75rem;
+  }
+
+  h1.intro-heading {
+    font-size: 6rem;
+    line-height: 8rem;
+  }
+
+  .intro-p {
+    font-size: 1.8rem;
+    line-height: 3rem;
+  }
+
+  button.start-journey {
+    margin-block: 3rem;
+    padding: 1.5rem 3rem;
+    border-radius: 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  .stats-group {
+    width: 51rem;
+    margin-block: 2.7rem;
+  }
+
+  img.stat-icon {
+    width: 3.75rem;
+    margin-left: 0.75rem;
+  }
+
+  h3.stat-main {
+    font-size: 3.3rem;
+  }
+
+  p.stat-sub {
+    font-size: 1.2rem;
+    margin-left: 0.9rem;
+  }
 }
