@@ -134,6 +134,7 @@ button.join-now:hover {
 section.intro {
   display: flex;
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
+  min-height: 100dvh;
 }
 
 .img-container {
@@ -733,58 +734,9 @@ h3.services-heading {
 /* Testing Responsiveness */
 
 /* 4k (2560px) */
-@media (min-width: 2560px) {
-  .img-container {
-    width: min(90vw, 54rem);
-    height: 54rem;
-    margin: 9rem 5.625rem;
-    border-radius: 2.25rem;
-  }
 
-  .intro-img {
-    width: 48rem;
-    height: 48rem;
-    border-radius: 1.5rem;
-  }
-
-  .intro-content {
-    margin-block: 11.25rem;
-    padding: 0 6.75rem;
-  }
-
-  h1.intro-heading {
-    font-size: 6rem;
-    line-height: 8rem;
-  }
-
-  .intro-p {
-    font-size: 1.8rem;
-    line-height: 3rem;
-  }
-
-  button.start-journey {
-    margin-block: 3rem;
-    padding: 1.5rem 3rem;
-    border-radius: 1.2rem;
-    font-size: 1.5rem;
-  }
-
-  .stats-group {
-    width: 51rem;
-    margin-block: 2.7rem;
-  }
-
-  img.stat-icon {
-    width: 3.75rem;
-    margin-left: 0.75rem;
-  }
-
-  h3.stat-main {
-    font-size: 3.3rem;
-  }
-
-  p.stat-sub {
-    font-size: 1.2rem;
-    margin-left: 0.9rem;
+@media screen and (min-width: 2560px){
+  section.intro {
+    padding: 6%;
   }
 }
