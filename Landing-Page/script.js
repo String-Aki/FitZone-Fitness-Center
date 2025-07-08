@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".the-about-card");
   const stars = document.querySelectorAll(".stars");
   const pseudoNav = document.querySelector(".pseudo-nav");
+  const hamburgerMenu  = document.querySelector(".hamburger");
+  const Lines = document.querySelectorAll(".line");
+  const mobileMenu = document.querySelector(".mobile-menu")
+  const mobileMenuLinks = document.querySelectorAll(".m-links");
 
   // navbar hiding on scroll
   window.addEventListener("scroll", () => {
@@ -30,11 +34,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Generating Stars
   stars.forEach((starContainer) => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       const starIcon = document.createElement("i");
       starIcon.classList.add("fas", "fa-star");
       starContainer.appendChild(starIcon);
     }
   });
   
+  // hamburger menu animation
+  hamburgerMenu.addEventListener("click",()=>{
+    hamburgerMenu.classList.toggle("is-active");
+    
+    Lines.forEach((line) => {
+      line.classList.toggle("is-active");
+    })
+
+    mobileMenu.classList.toggle("is-active");
+  });
+
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click",() => {
+      hamburgerMenu.classList.toggle("is-active");
+    
+    Lines.forEach((line) => {
+      line.classList.toggle("is-active");
+    })
+
+    mobileMenu.classList.toggle("is-active");
+    })
+  })
+
 });
+
+

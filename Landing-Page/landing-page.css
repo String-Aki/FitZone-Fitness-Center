@@ -28,7 +28,6 @@ a {
 }
 
 /* Navbar Styles */
-
 nav.landing-page-nav {
   position: fixed;
   width: 100%;
@@ -62,6 +61,90 @@ a.pseudo-nav {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
+
+/* Mobile Navbar Styles */
+
+.hamburger{
+  display: none;
+  position:fixed;
+  left: 0;
+  background: transparent;
+  border:none;
+  outline: none;
+  z-index: 3;
+}
+
+.hamburger-svg {
+  width: 40%;
+}
+
+.hamburger .line{
+    transition: 
+    Y 0.3s ease-in 0.3s, 
+    rotate 0.3s ease-in,
+    opacity 0s 0.3s;
+
+    transform-origin: center;
+}
+
+.hamburger.is-active .line{
+    transition: 
+    Y 0.3s ease-in, 
+    rotate 0.3s ease-in 0.3s,
+    opacity 0s 0.3s;
+    border-radius:  0s 0.3s;
+    fill:#1a1a1a;
+}
+
+.hamburger.is-active :is(.top,.bottom) {
+    Y:19px;
+    rx: 3.5px;
+    ry: 4.5px;
+
+}
+
+.hamburger.is-active .top{
+    rotate: 45deg;
+}
+
+.hamburger.is-active .middle{
+    opacity: 0;
+}
+
+.hamburger.is-active .bottom{
+    rotate: -45deg;
+}
+
+.mobile-menu{
+  position: fixed;
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4%;
+  padding-block: 3%;
+
+  border-radius: 0 0 1rem 1rem;
+  background: white;
+
+  transform: translateY(-100%);
+  transition: all 0.8s ease-in-out;
+}
+
+.m-links {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 500;
+  color:#1a1a1a;
+  
+}
+
+.mobile-menu.is-active {
+  transform: translateY(0);
+}
+
 
 .branding {
   display: flex;
@@ -130,20 +213,19 @@ button.join-now:hover {
 }
 
 /* Intro Section Styles */
-
 section.intro {
+  width: 100%;
   display: flex;
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
-  min-height: 100dvh;
 }
 
 .img-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6rem 3.75rem;
-  width: 36rem;
-  height: 36rem;
+  margin: 6rem 0 6rem 3.75rem;
+  width: min(36rem, 90vw);
+  height: min(36rem, 90vw);
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(
@@ -151,26 +233,29 @@ section.intro {
     rgba(249, 115, 22, 0.2) 0%,
     rgba(249, 115, 22, 0) 100%
   );
-
-  flex-shrink: 0;
+  box-sizing: border-box;
+  aspect-ratio: 1/1;
 }
 
 .intro-img {
-  width: 32rem;
-  height: 32rem;
+  width: 90%;
+  height: auto;
+  max-width: 32rem;
+  max-height: 32rem;
   border-radius: 1rem;
   object-fit: cover;
-  position: relative;
+  aspect-ratio: 1/1;
 }
 
 .intro-content {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.2rem;
   margin-block: 7.5rem;
 
-  padding: 0 4.5rem;
+  padding-left: 8%;
 }
 
 h1.intro-heading {
@@ -214,10 +299,10 @@ i.arrow-icon {
 
 .stats-group {
   display: flex;
-  width: 34rem;
+  width: 85%;
   align-items: center;
   justify-content: space-between;
-  margin-block: 1.8rem;
+  margin-block: 1.2rem;
 }
 
 img.stat-icon {
@@ -243,7 +328,7 @@ p.stat-sub {
 /* About Section Styles */
 
 section.about {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding-block: 5rem;
@@ -272,9 +357,7 @@ p.about-p {
   grid-template-columns: repeat(3, 365px);
   grid-template-rows: repeat(2, 436px);
   gap: 100px;
-
   padding-top: 45px;
-  flex-shrink: 0;
 }
 
 .the-about-card {
@@ -355,8 +438,7 @@ p.about-p {
 /* Membership Section Styles */
 
 section.membership-section {
-  /* position: relative; */
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   background-color: #1a1a1a;
@@ -528,7 +610,7 @@ span.popular {
 /* Testimonials Section Styles */
 
 section.testimonial-section {
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   padding-block: 5rem;
@@ -637,7 +719,8 @@ button.cta-button {
 
 /* Footer Styles */
 
-.footer-section {
+footer.footer-section {
+  display: none;
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
   padding: 0 4rem;
   color: white;
@@ -686,6 +769,7 @@ p.content {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  padding-right: 8%;
 }
 
 h1.heading-cu {
@@ -731,12 +815,9 @@ h3.services-heading {
   gap: 1.5rem;
 }
 
-/* Testing Responsiveness */
-
-/* 4k (2560px) */
-
-@media screen and (min-width: 2560px){
-  section.intro {
+/* Responsive Styles */
+/* @media screen and (min-width: 2560px) {
+  section.intro{
     padding: 6%;
   }
-}
+} */

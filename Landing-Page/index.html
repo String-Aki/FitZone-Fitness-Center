@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./landing-page.css" />
+    <link rel="stylesheet" href="./responsive.css" />
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
@@ -31,8 +32,31 @@
         <button class="join-now">Join Now</button>
       </div>
     </nav>
-
     <a class="pseudo-nav fas fa-dumbbell fa-xl" href="#home"></a>
+
+    <!-- Mobile Navbar -->
+    <button class="hamburger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="63"
+        height="47"
+        viewBox="0 0 63 47"
+        fill="none"
+        class="hamburger-svg"
+      >
+        <rect class="line top" width="63" height="9" fill="#D9D9D9";/>
+        <rect class="line middle" y="19" width="63" height="9" fill="#D9D9D9";/>
+        <rect class="line bottom" y="38" width="63" height="9" fill="#D9D9D9";/>
+      </svg>
+    </button>
+
+    <div class="mobile-menu">
+      <a href="#home" class="m-links">Home</a>
+      <a href="#about" class="m-links">About</a>
+      <a href="#membership-section" class="m-links">Membership</a>
+      <a href="#testimonials" class="m-links">Milestones</a>
+      <a href="" class="m-links">Contact</a>
+    </div>
 
     <main>
       <!-- Intro Section -->
@@ -267,7 +291,9 @@
               <p class="check">Locker room access</p>
               <p class="check">Mobile app access</p>
             </div>
-            <a class="start-plan" href="../Sign-In-Page/index.html">Start Basic</a>
+            <a class="start-plan" href="../Sign-In-Page/index.html"
+              >Start Basic</a
+            >
           </div>
 
           <div class="pro plan">
@@ -286,7 +312,7 @@
               <p class="check">Guest passes (2/month)</p>
               <p class="check">Premium equipment access</p>
             </div>
-            <a class="start-plan" href="../Sign-In-Page/index.html" >Go Pro</a>
+            <a class="start-plan" href="../Sign-In-Page/index.html">Go Pro</a>
           </div>
 
           <div class="elite plan">
@@ -304,7 +330,9 @@
               <p class="check">50% Off On Supplements</p>
               <p class="check">VIP parking</p>
             </div>
-            <a class="start-plan" href="../Sign-In-Page/index.html">Join Elite</a>
+            <a class="start-plan" href="../Sign-In-Page/index.html"
+              >Join Elite</a
+            >
           </div>
         </div>
 
@@ -410,8 +438,8 @@
         <div class="testimonial-cta">
           <h2 class="cta-heading">Ready to Write Your Success Story?</h2>
           <p class="cta-p">
-            Join over 500 members who have transformed their lives at FitnessZone.
-            Your journey starts with a single step.
+            Join over 500 members who have transformed their lives at
+            FitnessZone. Your journey starts with a single step.
           </p>
           <button class="cta-button">Start Your Transformation</button>
         </div>
@@ -419,18 +447,20 @@
     </main>
     <footer class="footer-section">
       <div class="footer-content">
-
         <div class="fitness-zone-info">
           <div class="footer-logo">
             <i class="logo-icon fa-solid fa-dumbbell fa-xl"></i>
             <h2 class="info-heading">FitnessZone</h2>
           </div>
 
-          <p class="content">Transform your body and mind with our premium fitness experience. Join the FitnessZone community and unlock your potential.</p>
+          <p class="content">
+            Transform your body and mind with our premium fitness experience.
+            Join the FitnessZone community and unlock your potential.
+          </p>
           <div class="socials">
-            <img src="../Assets/footer-assets/facebook.png" alt="facebook">
-            <img src="../Assets/footer-assets/instagram.png" alt="instagram">
-            <img src="../Assets/footer-assets/twitter.png" alt="twitter">
+            <img src="../Assets/footer-assets/facebook.png" alt="facebook" />
+            <img src="../Assets/footer-assets/instagram.png" alt="instagram" />
+            <img src="../Assets/footer-assets/twitter.png" alt="twitter" />
           </div>
         </div>
 
@@ -447,11 +477,13 @@
           <span>Nutrition Counseling</span>
           <span>Personal Training</span>
         </div>
-
       </div>
-      <hr/>
+      <hr />
       <div class="copyrights-section">
-        <p class="copy-rights">&copy; 2025 FitnessZone. All rights reserved. Built with passion for fitness.</p>
+        <p class="copy-rights">
+          &copy; 2025 FitnessZone. All rights reserved. Built with passion for
+          fitness.
+        </p>
         <div class="terms-and-policy">
           <span>Privacy Policy</span>
           <span>Terms of Service</span>
