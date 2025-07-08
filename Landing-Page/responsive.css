@@ -232,7 +232,7 @@
     font-size: 2.1rem;
     border-radius: 32px 0 53px 0;
     padding: 27px;
-  }
+  }  
 }
 
 /* Smaller desktops/larger tablets (1024px–1440px) */
@@ -884,5 +884,90 @@
     font-size: 0.8rem;
     border-radius: 5vw 0 10px 0;
     padding: 8px;
+  }
+
+  /* Testimonial-Section */
+
+  h1.testimonial-heading {
+    font-size: 1.8rem;
+    padding-top: 0.5rem;
+  }
+
+  p.testimonial-p {
+    font-size: 0.9rem;
+    padding: 0.5rem 0 1rem 0;
+    width: 95%;
+    max-width: 30rem;
+  }
+
+  .testimonial-card-container {
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    max-width: 95%;
+  }
+
+  .testimonial-card {
+    width: 80vw;
+    min-width: 180px;
+    padding: 0.8rem;
+    border-radius: 2.5vw;
+  }
+
+  .fa-quote-left {
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .stars {
+    gap: 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  p.testimonial {
+    font-size: 1rem;
+    padding: 0.5rem 0 0.8rem 0;
+  }
+
+  .profile-container{
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.8vw;
+    padding-block: 5%;
+  }
+
+  .profile-name{
+    font-size: 2.8vw;
+  }
+
+  .achievement {
+    font-size: 2vw;
+  }
+
+  span.achievement {
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.5rem;
+  }
+
+  .testimonial-cta {
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 6px;
+    max-width: 95%;
+  }
+
+  h2.cta-heading {
+    font-size: 0.9rem;
+  }
+
+  p.cta-p {
+    font-size: 0.6rem;
+    width: 95%;
+    max-width: 300px;
+  }
+
+  button.cta-button {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.6rem;
   }
 }
