@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize",()=>{
     const mobileStartingWidth = 767;
     if(window.innerWidth <= mobileStartingWidth ){
-      pseudoNav.classList.remove("show")
+      pseudoNav.style.display = "none";
     }
   })
 
