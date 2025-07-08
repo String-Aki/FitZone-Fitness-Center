@@ -1,6 +1,5 @@
 /* 4K Reponsiveness */
 @media (min-width: 2560px) {
-
   /* Navbar */
   nav.landing-page-nav {
     padding: min(3.2rem, 1.5vw) 0;
@@ -154,7 +153,7 @@
   }
 
   /* Membership Section */
-   h1.membership-header {
+  h1.membership-header {
     font-size: 8rem;
     padding-block: 2.7rem;
   }
@@ -232,12 +231,11 @@
     font-size: 2.1rem;
     border-radius: 32px 0 53px 0;
     padding: 27px;
-  }  
+  }
 }
 
 /* Smaller desktops/larger tablets (1024px–1440px) */
-@media (max-width: 1024px){
-
+@media (max-width: 1024px) {
   /* Navbar */
   nav.landing-page-nav {
     padding: min(0.9rem, 1.2vw) 0;
@@ -355,8 +353,8 @@
 
   .main-card-container {
     grid-template-columns: repeat(3, min(259px, 25vw));
-    grid-template-rows: repeat(2, min(309px, 30vw)); 
-    gap: min(71px, 5vw); 
+    grid-template-rows: repeat(2, min(309px, 30vw));
+    gap: min(71px, 5vw);
     padding-top: min(32px, 2.5vw);
   }
 
@@ -442,16 +440,20 @@
     gap: 1.1rem;
   }
 
-    span.popular {
+  span.popular {
     font-size: 0.6rem;
     border-radius: 8px 0 12px 0;
     padding: 1vw;
+  }
+
+  /* Footer */
+  .footer-logo > i {
+    font-size: 2.2vw;
   }
 }
 
 /* Tablet Responsive */
 @media (max-width: 768px) {
-
   /* Navbar - Hamburger Menu */
   nav.landing-page-nav {
     display: none;
@@ -781,7 +783,6 @@
     transform: scale(1.1);
   }
 
-
   .img-box {
     width: min(80px, 17vw);
     height: min(75px, 15vw);
@@ -928,14 +929,14 @@
     padding: 0.5rem 0 0.8rem 0;
   }
 
-  .profile-container{
+  .profile-container {
     flex-direction: column;
     flex-wrap: wrap;
     gap: 1.8vw;
     padding-block: 5%;
   }
 
-  .profile-name{
+  .profile-name {
     font-size: 2.8vw;
   }
 
@@ -969,5 +970,97 @@
     padding: 0.4rem 0.8rem;
     border-radius: 1rem;
     font-size: 0.6rem;
+  }
+
+  /* Footer */
+  footer.footer-section {
+    padding: 3vw;
+  }
+
+  .footer-content {
+    max-width: 95%;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    gap: 0.4rem;
+  }
+
+  .footer-logo > i {
+    font-size: 1.2rem;
+  }
+
+  .fitness-zone-info {
+    gap: 0.8rem;
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  h2.info-heading {
+    font-size: 1.2rem;
+  }
+
+  p.content {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+
+  .socials {
+    gap: 0.8rem;
+  }
+
+  .socials > img {
+    width: 8vw;
+  }
+
+  .contact-us {
+    padding-right: 0;
+  }
+
+  h1.heading-cu {
+    font-size: 1.8rem;
+  }
+
+  a.send-enquires {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 0.4rem;
+  }
+
+  .services {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .services > span::before {
+    content: "| ";
+  }
+
+  h3.services-heading {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .copyrights-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    padding-block: 0.8rem;
+    max-width: 95%;
+  }
+
+  .terms-and-policy {
+    gap: 0.8rem;
+    justify-content: center;
   }
 }
