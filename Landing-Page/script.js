@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // navbar hiding on scroll
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 600) {
+    if (window.innerWidth > 768 &&   window.scrollY > 600) {
       navbar.classList.add("hidden");
       pseudoNav.classList.add("show");
     }
-    if (window.scrollY < 10) {
+    if (window.innerWidth > 768 && window.scrollY < 10) {
       navbar.classList.remove("hidden");
       pseudoNav.classList.remove("show");
     }
@@ -63,6 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMenu.classList.toggle("is-active");
     })
   })
+
+  //Removing Pseudo-Nav for Mobile Devices
+  window.addEventListener("resize",()=>{
+    const mobileStartingWidth = 767;
+    if(window.innerWidth <= mobileStartingWidth ){
+      pseudoNav.classList.remove("show")
+    }
+  })
+
 
 });
 

@@ -1,5 +1,7 @@
 /* 4K Reponsiveness */
 @media (min-width: 2560px) {
+
+  /* Navbar */
   nav.landing-page-nav {
     padding: min(3.2rem, 1.5vw) 0;
   }
@@ -50,6 +52,7 @@
     border-radius: min(1.3rem, 0.8vw);
   }
 
+  /* Intro-Section */
   .img-container {
     width: min(50vw, 96rem);
     height: min(50vw, 96rem);
@@ -111,10 +114,76 @@
     font-size: min(2.1rem, 1.2vw);
     margin-left: min(1.6rem, 0.8vw);
   }
+
+  /* About-Section */
+  section.about-section {
+    padding-block: min(13.3rem, 6vw);
+  }
+
+  h1.about-header {
+    font-size: min(8rem, 4vw);
+    padding-top: min(2.7rem, 1.5vw);
+  }
+
+  p.about-p {
+    width: min(80%, 160rem);
+    font-size: min(4rem, 2vw);
+    margin-top: min(1.67rem, 1vw);
+  }
+
+  .main-card-container {
+    grid-template-columns: repeat(3, min(974px, 25vw));
+    grid-template-rows: repeat(2, min(1163px, 30vw));
+    gap: min(267px, 6vw);
+    padding-top: min(120px, 3vw);
+  }
+
+  .the-about-card {
+    box-shadow: 0px min(27px, 0.8vw) min(67px, 2vw) 0px rgba(0, 0, 0, 0.1);
+    border-radius: min(32px, 1vw);
+  }
+
+  .the-about-card:hover {
+    box-shadow: 0 min(21px, 0.6vw) min(53px, 1.5vw) rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: min(32px, 1vw);
+  }
+
+  .card-front > img {
+    transform: scale(1.8);
+  }
+
+  .img-box > img {
+    transform: scale(1.8);
+  }
+
+  .img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(328px, 8vw);
+    height: min(310px, 7.5vw);
+    border-radius: min(21px, 0.6vw);
+  }
+
+  .card-back > h2 {
+    font-size: min(4.8rem, 2vw);
+  }
+
+  .card-back > p {
+    font-size: min(2.9rem, 1.5vw);
+    padding: 0 min(32px, 1vw);
+    line-height: min(5.3rem, 2.5vw);
+  }
 }
 
 /* Smaller desktops/larger tablets (1024px–1440px) */
-@media (max-width: 1024px) {
+@media (max-width: 1024px){
+
+  /* Navbar */
   nav.landing-page-nav {
     padding: min(0.9rem, 1.2vw) 0;
   }
@@ -161,7 +230,8 @@
     border-radius: min(0.35rem, 0.6vw);
   }
 
-  .intro {
+  /* Intro-Section */
+  .intro-section {
     gap: min(1.5rem, 2.5vw);
     max-width: 64rem;
     padding: 0 min(1.5rem, 2.5vw);
@@ -171,7 +241,7 @@
   .img-container {
     width: min(40vw, 28rem);
     height: min(40vw, 28rem);
-    margin: 4rem auto;
+    margin: 10% auto;
     border-radius: 1.2rem;
   }
 
@@ -184,7 +254,7 @@
   }
 
   .intro-content {
-    width: min(50%, 35rem);
+    width: min(50%, 25rem);
     gap: min(1rem, 2vw);
     margin-block: 10%;
     padding-left: min(8%, 3.5rem);
@@ -229,15 +299,79 @@
     font-size: min(0.7rem, 1vw);
     margin-left: min(0.5rem, 0.6vw);
   }
+
+  /* About-Section */
+  section.about-section {
+    padding-block: min(3.6rem, 5vw);
+  }
+
+  h1.about-header {
+    font-size: min(2.1rem, 3.5vw);
+    padding-top: min(0.71rem, 1.2vw);
+  }
+
+  p.about-p {
+    width: min(80%, 45rem);
+    font-size: min(1.1rem, 1.8vw);
+    margin-top: min(0.44rem, 0.8vw);
+  }
+
+  .main-card-container {
+    grid-template-columns: repeat(3, min(259px, 25vw));
+    grid-template-rows: repeat(2, min(309px, 30vw)); 
+    gap: min(71px, 5vw); 
+    padding-top: min(32px, 2.5vw);
+  }
+
+  .the-about-card {
+    box-shadow: 0px min(7.1px, 0.6vw) min(17.8px, 1.5vw) 0px rgba(0, 0, 0, 0.1);
+    border-radius: min(8.5px, 0.8vw);
+  }
+
+  .the-about-card:hover {
+    box-shadow: 0 min(5.7px, 0.5vw) min(14.2px, 1.2vw) rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: min(8.5px, 0.8vw);
+  }
+
+  .card-front > img {
+    transform: scale(0.7);
+  }
+
+  .img-box > img {
+    transform: scale(0.7);
+  }
+
+  .img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(87px, 8vw);
+    height: min(82px, 7.5vw);
+    border-radius: min(5.7px, 0.5vw);
+    padding: min(25.6px, 2vw) min(24.1px, 1.8vw);
+  }
+
+  .card-back > h2 {
+    font-size: min(1.3rem, 2.2vw);
+    margin-block: min(21.3px, 1.8vw);
+  }
+
+  .card-back > p {
+    font-size: min(0.9rem, 1.3vw);
+    padding: 0 min(8.5px, 0.8vw);
+    line-height: min(1.4rem, 2.2vw);
+  }
 }
 
 /* Tablet Responsive */
 @media (max-width: 768px) {
-  nav.landing-page-nav {
-    display: none;
-  }
 
-  .pseudo-nav {
+  /* Navbar - Hamburger Menu */
+  nav.landing-page-nav {
     display: none;
   }
 
@@ -245,7 +379,8 @@
     display: block;
   }
 
-  .intro {
+  /* Intro-Section */
+  .intro-section {
     flex-direction: column;
     padding: 0 min(1rem, 3vw);
     height: 100%;
@@ -315,10 +450,70 @@
     font-size: min(0.7rem, 1.5vw);
     margin-left: min(0.5rem, 1vw);
   }
+
+  /* About-Section */
+  section.about-section {
+    padding-block: min(3rem, 5vw);
+  }
+
+  h1.about-header {
+    font-size: min(2rem, 5vw);
+    padding-top: min(0.6rem, 1.5vw);
+  }
+
+  p.about-p {
+    width: min(90%, 40rem);
+    font-size: min(1rem, 2.5vw);
+    margin-top: min(0.4rem, 1vw);
+  }
+
+  .main-card-container {
+    grid-template-columns: repeat(2, 40vw);
+    grid-template-rows: repeat(3, 50vw);
+    gap: 4vw;
+    padding-top: 5%;
+  }
+
+  .the-about-card {
+    box-shadow: 0px min(6px, 0.8vw) min(15px, 2vw) 0px rgba(0, 0, 0, 0.1);
+    border-radius: min(8px, 1vw);
+  }
+
+  .the-about-card:hover {
+    box-shadow: 0 min(5px, 0.6vw) min(12px, 1.5vw) rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: min(8px, 1vw);
+  }
+
+  .card-front > img {
+    transform: scale(0.9);
+  }
+
+  .img-box {
+    width: min(100px, 10vw);
+    height: min(94px, 9vw);
+    border-radius: min(6px, 0.6vw);
+    padding: min(20px, 2.5vw) min(18px, 2.3vw);
+  }
+
+  .card-back > h2 {
+    font-size: min(1.5rem, 3vw);
+    margin-block: min(20px, 2.5vw);
+  }
+
+  .card-back > p {
+    font-size: 2.3vw;
+    padding: 0 min(10px, 1.5vw);
+    line-height: min(1.6rem, 5vw);
+  }
 }
 
 /* Mobile Responsive */
 @media (max-width: 480px) {
+  /* Intro-Section */
   .img-container {
     width: min(90vw, 18rem);
     height: min(90vw, 18rem);
@@ -377,5 +572,66 @@
   p.stat-sub {
     font-size: min(0.6rem, 4vw);
     margin-left: min(0.4rem, 1vw);
+  }
+
+  /* About-Section */
+  section.about-section {
+    padding-block: min(2rem, 4vw);
+  }
+
+  h1.about-header {
+    font-size: min(1.8rem, 8vw);
+    padding-top: 5vw;
+  }
+
+  p.about-p {
+    width: min(95%, 30rem);
+    font-size: 4vw;
+    margin-block: 4vw;
+  }
+
+  .main-card-container {
+    grid-template-columns: repeat(1, 85vw);
+    grid-template-rows: repeat(6, 55vh);
+    gap: 4vh;
+    padding-top: 5%;
+  }
+
+  .the-about-card {
+    box-shadow: 0px min(5px, 0.8vw) min(12px, 2vw) 0px rgba(0, 0, 0, 0.1);
+    border-radius: 5vw;
+  }
+
+  .the-about-card:hover {
+    box-shadow: 0 min(4px, 0.6vw) min(10px, 1.5vw) rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front,
+  .card-back {
+    border-radius: 5vw;
+  }
+
+  .card-front > img {
+    transform: scale(1.1);
+  }
+
+
+  .img-box {
+    width: min(80px, 17vw);
+    height: min(75px, 15vw);
+    border-radius: 1.5vw;
+    padding: min(15px, 3vw) min(13px, 2.3vw);
+  }
+
+  .card-back > h2 {
+    font-size: 6vw;
+    margin-block: min(15px, 3.5vw);
+  }
+
+  .card-back > p {
+    font-size: 5vw;
+    padding: 0 min(8px, 1.5vw);
+    padding-top: 4vw;
+    line-height: 7vw;
   }
 }

@@ -4,7 +4,7 @@
 /*✅ Change Group Classes and trainers Image */
 /* Login Screen back button */
 /* Responsiveness Update */
-/* hiding nav on scroll and showing logo upon hover itll show the nav 
+/*✅ hiding nav on scroll and showing logo upon hover itll show the nav 
 upon click itll take us home  */
 
 html {
@@ -213,8 +213,7 @@ button.join-now:hover {
 }
 
 /* Intro Section Styles */
-section.intro {
-  width: 100%;
+section.intro-section {
   display: flex;
   background: linear-gradient(114deg, #1a1a1a 0%, #2d2d2d 100%);
 }
@@ -224,8 +223,8 @@ section.intro {
   align-items: center;
   justify-content: center;
   margin: 6rem 0 6rem 3.75rem;
-  width: min(36rem, 90vw);
-  height: min(36rem, 90vw);
+  width: min(34rem, 90vw);
+  height: min(34rem, 90vw);
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(
@@ -327,8 +326,8 @@ p.stat-sub {
 
 /* About Section Styles */
 
-section.about {
-  display: none;
+section.about-section {
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding-block: 5rem;
@@ -354,8 +353,8 @@ p.about-p {
 
 .main-card-container {
   display: grid;
-  grid-template-columns: repeat(3, 365px);
-  grid-template-rows: repeat(2, 436px);
+  grid-template-columns: repeat(3, 23.8vw);
+  grid-template-rows: repeat(2, 28vw);
   gap: 100px;
   padding-top: 45px;
 }
