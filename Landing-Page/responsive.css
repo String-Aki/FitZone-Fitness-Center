@@ -11,10 +11,6 @@
     border-radius: 0 0 min(5.3rem, 2.5vw) min(5.3rem, 2.5vw);
   }
 
-  .branding {
-    gap: min(2.1rem, 1vw);
-  }
-
   i.logo-icon {
     font-size: min(3.5rem, 1.5vw);
   }
@@ -29,7 +25,6 @@
   .img-container {
     width: min(50vw, 96rem);
     height: min(50vw, 96rem);
-    border-radius: 2rem;
     margin-top: 8%;
     margin-left: 2%;
   }
@@ -37,7 +32,6 @@
   .intro-img {
     max-width: 85.33rem;
     max-height: 85.33rem;
-    border-radius: 1.5rem;
     width: 88.89%;
     height: 88.89%;
   }
@@ -59,19 +53,8 @@
   }
 
   button.start-journey {
-    margin-block: min(5.3rem, 3vw);
     padding: min(2.7rem, 1.5vw) min(5.3rem, 3vw);
-    border-radius: min(2.1rem, 1vw);
     font-size: min(2.7rem, 1.5vw);
-  }
-
-  i.arrow-icon {
-    margin-left: min(1.1rem, 0.5vw);
-  }
-
-  .stats-group {
-    width: min(85%, 90rem);
-    margin-block: min(3.2rem, 2vw);
   }
 
   img.stat-icon {
@@ -85,22 +68,16 @@
 
   p.stat-sub {
     font-size: min(2.1rem, 1.2vw);
-    margin-left: min(1.6rem, 0.8vw);
   }
 
   /* About-Section */
-  section.about-section {
-    padding-block: min(13.3rem, 6vw);
-  }
-
   h1.about-header {
     font-size: min(8rem, 4vw);
-    padding-top: min(2.7rem, 1.5vw);
   }
 
   p.about-p {
-    width: min(80%, 160rem);
     font-size: min(4rem, 2vw);
+    width: min(80%, 160rem);
     margin-top: min(1.67rem, 1vw);
   }
 
@@ -162,13 +139,11 @@
     width: 60%;
     font-size: 3.2rem;
     line-height: 5.3rem;
-    margin-bottom: 5.3rem;
   }
 
   .plan-container {
     gap: 4rem;
     margin-bottom: 2.7rem;
-    max-width: 90%;
   }
 
   .plan {
@@ -179,11 +154,10 @@
 
   h2.plan-header {
     font-size: 3.2rem;
-    padding-bottom: 2.7rem;
   }
 
   h3.price {
-    font-size: 5.9rem;
+    font-size: 5rem;
   }
 
   .price > span {
@@ -192,14 +166,12 @@
 
   p.plan-description {
     font-size: 2.1rem;
-    line-height: 4rem;
+    line-height: 3rem;
     padding-block: 2.7rem;
   }
 
   .features {
-    padding-block: 2.7rem;
-    gap: 3.2rem;
-    margin-bottom: 3.2rem;
+    gap: 3.2rem; 
   }
 
   .check::before {
@@ -212,8 +184,8 @@
   }
 
   .start-plan {
-    border-radius: 21px;
-    font-size: 3rem;
+    border-radius: 1.5rem;
+    font-size: 2rem;
   }
 
   .policy {
@@ -228,48 +200,27 @@
   }
 
   span.popular {
-    font-size: 2.1rem;
-    border-radius: 32px 0 53px 0;
-    padding: 27px;
+    font-size: 1.8rem;
+    border-radius: 2rem 0 3rem 0;
+    padding: 1.8rem;
   }
 }
 
 /* Smaller desktops/larger tablets (1024px–1440px) */
 @media (max-width: 1024px) {
   /* Navbar */
-  nav.landing-page-nav {
-    padding: min(0.9rem, 1.2vw) 0;
-  }
-
   a.pseudo-nav {
     left: min(0.8%, 0.4rem);
     padding: min(1.4rem, 2vw);
     border-radius: 0 0 min(1.4rem, 2vw) min(1.4rem, 2vw);
   }
 
-  .branding {
-    gap: min(0.6rem, 0.8vw);
-    margin-left: min(2.1rem, 2.5vw);
-  }
-
   i.logo-icon {
     font-size: min(0.92rem, 1.2vw);
   }
 
-  a.heading {
-    font-size: min(0.92rem, 1.2vw);
-  }
-
-  button.join-now {
-    font-size: min(0.57rem, 0.8vw);
-    padding: min(0.35rem, 0.6vw) min(0.71rem, 1vw);
-    border-radius: min(0.35rem, 0.6vw);
-  }
-
   /* Intro-Section */
   .intro-section {
-    gap: min(1.5rem, 2.5vw);
-    max-width: 64rem;
     padding: 0 min(1.5rem, 2.5vw);
   }
 
@@ -289,15 +240,14 @@
   }
 
   .intro-content {
-    width: min(50%, 25rem);
+    width: min(70%, 25rem);
     gap: min(1rem, 2vw);
     margin-block: 10%;
-    padding-left: min(8%, 3.5rem);
+    padding-left: 2%;
   }
 
   h1.intro-heading {
     font-size: min(3rem, 4.5vw);
-    line-height: min(4rem, 6vw);
   }
 
   .intro-p {
@@ -306,19 +256,8 @@
   }
 
   button.start-journey {
-    margin-block: min(1.5rem, 2.5vw);
     padding: min(0.8rem, 1.2vw) min(1.5rem, 2.5vw);
-    border-radius: min(0.6rem, 0.8vw);
     font-size: min(0.9rem, 1.3vw);
-  }
-
-  i.arrow-icon {
-    margin-left: min(0.3rem, 0.4vw);
-  }
-
-  .stats-group {
-    width: min(85%, 32rem);
-    margin-block: min(1rem, 1.8vw);
   }
 
   img.stat-icon {
@@ -336,19 +275,8 @@
   }
 
   /* About-Section */
-  section.about-section {
-    padding-block: min(3.6rem, 5vw);
-  }
-
   h1.about-header {
     font-size: min(2.1rem, 3.5vw);
-    padding-top: min(0.71rem, 1.2vw);
-  }
-
-  p.about-p {
-    width: min(80%, 45rem);
-    font-size: min(1.1rem, 1.8vw);
-    margin-top: min(0.44rem, 0.8vw);
   }
 
   .main-card-container {
@@ -367,11 +295,6 @@
     box-shadow: 0 min(5.7px, 0.5vw) min(14.2px, 1.2vw) rgba(0, 0, 0, 0.2);
   }
 
-  .card-front,
-  .card-back {
-    border-radius: min(8.5px, 0.8vw);
-  }
-
   .card-front > img {
     transform: scale(0.7);
   }
@@ -381,12 +304,8 @@
   }
 
   .img-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: min(87px, 8vw);
     height: min(82px, 7.5vw);
-    border-radius: min(5.7px, 0.5vw);
     padding: min(25.6px, 2vw) min(24.1px, 1.8vw);
   }
 
@@ -402,7 +321,6 @@
   }
 
   /* Membership Section */
-
   h1.membership-header {
     font-size: 2.5rem;
   }
@@ -421,17 +339,6 @@
     font-size: 0.71rem;
   }
 
-  .features {
-    padding-block: 0.71rem;
-    gap: 0.85rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .check::before {
-    font-size: 0.71rem;
-    padding-right: 0.71rem;
-  }
-
   .check {
     font-size: 0.78rem;
   }
@@ -440,11 +347,6 @@
     gap: 1.1rem;
   }
 
-  span.popular {
-    font-size: 0.6rem;
-    border-radius: 8px 0 12px 0;
-    padding: 1vw;
-  }
 
   /* Footer */
   .footer-logo > i {
@@ -464,23 +366,14 @@
   }
 
   /* Intro-Section */
-  .intro-section {
+  section.intro-section {
     flex-direction: column;
-    padding: 0 min(1rem, 3vw);
-    height: 100%;
+    align-items: center;
   }
 
   .img-container {
     width: 70dvw;
-    height: 50dvh;
-    margin: 15% auto 0 auto;
-    border-radius: 1rem;
-  }
-
-  .intro-img {
-    width: 90%;
-    height: 90%;
-    border-radius: 0.75rem;
+    margin: 5% auto 0 auto;
   }
 
   .intro-content {
@@ -490,7 +383,7 @@
   }
 
   h1.intro-heading {
-    width: 70%;
+    width: 60%;
     font-size: min(2.5rem, 6vw);
     line-height: min(3.3rem, 7vw);
     text-align: center;
@@ -509,21 +402,15 @@
     font-size: min(0.9rem, 2vw);
   }
 
-  i.arrow-icon {
-    margin-left: min(0.3rem, 0.8vw);
-  }
-
   .stats-group {
     width: 100%;
-    margin-block: min(0.8rem, 2vw);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 4vw;
     justify-content: center;
   }
 
   img.stat-icon {
     width: min(2rem, 4vw);
-    margin-left: min(0.4rem, 1vw);
   }
 
   h3.stat-main {
@@ -532,14 +419,9 @@
 
   p.stat-sub {
     font-size: min(0.7rem, 1.5vw);
-    margin-left: min(0.5rem, 1vw);
   }
 
   /* About-Section */
-  section.about-section {
-    padding-block: min(3rem, 5vw);
-  }
-
   h1.about-header {
     font-size: min(2rem, 5vw);
     padding-top: min(0.6rem, 1.5vw);
@@ -548,13 +430,11 @@
   p.about-p {
     width: min(90%, 40rem);
     font-size: min(1rem, 2.5vw);
-    margin-top: min(0.4rem, 1vw);
   }
 
   .main-card-container {
     grid-template-columns: repeat(2, 40vw);
     grid-template-rows: repeat(3, 50vw);
-    gap: 4vw;
     padding-top: 5%;
   }
 
@@ -565,11 +445,6 @@
 
   .the-about-card:hover {
     box-shadow: 0 min(5px, 0.6vw) min(12px, 1.5vw) rgba(0, 0, 0, 0.2);
-  }
-
-  .card-front,
-  .card-back {
-    border-radius: min(8px, 1vw);
   }
 
   .card-front > img {
@@ -590,48 +465,21 @@
 
   .card-back > p {
     font-size: 2.3vw;
-    padding: 0 min(10px, 1.5vw);
     line-height: min(1.6rem, 5vw);
   }
 
   /* Membership-Section */
-  h1.membership-header {
-    font-size: 2rem;
-    padding-block: 0.6rem;
-  }
-
-  p.membership-p {
-    width: 90%;
-    max-width: 40rem;
-    font-size: 1rem;
-    line-height: 1.6rem;
-    margin-bottom: 1.5rem;
-  }
-
   .plan-container {
-    gap: 1rem;
-    margin-bottom: 0.6rem;
-    max-width: 90%;
     flex-wrap: wrap;
   }
 
   .plan {
     width: 40vw;
-    border-radius: 8px;
     padding: 1.2rem 0.8rem;
   }
 
   h2.plan-header {
     font-size: 1rem;
-    padding-bottom: 0.6rem;
-  }
-
-  h3.price {
-    font-size: 1.6rem;
-  }
-
-  .price > span {
-    font-size: 0.7rem;
   }
 
   p.plan-description {
@@ -647,17 +495,10 @@
   }
 
   .check::before {
-    font-size: 0.7rem;
     padding-right: 0.6rem;
   }
 
-  .check {
-    font-size: 0.8rem;
-  }
-
   .start-plan {
-    padding: 10px 60px 9px 61px;
-    border-radius: 6px;
     font-size: 0.8rem;
   }
 
@@ -667,14 +508,11 @@
   }
 
   .plan-perks {
-    gap: 1rem;
     font-size: 0.6rem;
-    margin-block: 0.2rem;
   }
 
   span.popular {
-    font-size: 0.6rem;
-    border-radius: 8px 0 12px 0;
+    font-size: 0.7rem;
     padding: 6px;
   }
 }
@@ -685,19 +523,18 @@
   .img-container {
     width: min(90vw, 18rem);
     height: min(90vw, 18rem);
-    margin: 15% auto 0 auto;
+    margin: 8% auto 0 auto;
   }
 
   .intro-img {
-    width: 80%;
     height: 80%;
     max-width: 16rem;
     max-height: 16rem;
   }
 
   .intro-content {
-    width: 95%;
-    padding-left: 4%;
+    width: 90%;
+    align-items: center;
     gap: min(2rem, 6vw);
   }
 
@@ -715,22 +552,15 @@
   button.start-journey {
     margin-block: min(1rem, 3vw);
     padding: 2.3vh 4.3vw;
-    border-radius: min(0.5rem, 1.5vw);
     font-size: min(0.8rem, 3vw);
   }
 
-  i.arrow-icon {
-    margin-left: min(0.2rem, 0.8vw);
-  }
-
   .stats-group {
-    margin-block: min(0.6rem, 2vw);
     gap: 1.8rem;
   }
 
   img.stat-icon {
     width: 9vw;
-    margin-left: min(0.3rem, 1vw);
   }
 
   h3.stat-main {
@@ -739,29 +569,21 @@
 
   p.stat-sub {
     font-size: min(0.6rem, 4vw);
-    margin-left: min(0.4rem, 1vw);
   }
 
   /* About-Section */
-  section.about-section {
-    padding-block: min(2rem, 4vw);
-  }
-
   h1.about-header {
     font-size: min(1.8rem, 8vw);
-    padding-top: 5vw;
   }
 
   p.about-p {
     width: min(95%, 30rem);
     font-size: 4vw;
-    margin-block: 4vw;
   }
 
   .main-card-container {
     grid-template-columns: repeat(1, 85vw);
     grid-template-rows: repeat(6, 55vh);
-    gap: 4vh;
     padding-top: 5%;
   }
 
@@ -787,28 +609,21 @@
     width: min(80px, 17vw);
     height: min(75px, 15vw);
     border-radius: 1.5vw;
-    padding: min(15px, 3vw) min(13px, 2.3vw);
   }
 
   .card-back > h2 {
     font-size: 6vw;
-    margin-block: min(15px, 3.5vw);
+    margin-block: 2vw;
   }
 
   .card-back > p {
-    font-size: 5vw;
+    font-size: 4.5vw;
     padding: 0 min(8px, 1.5vw);
-    padding-top: 4vw;
+    padding-top: 3vw;
     line-height: 7vw;
   }
 
   /* Membership-Section */
-  h1.membership-header {
-    font-size: 1.8rem;
-    padding-block: 0.5rem;
-    text-align: center;
-  }
-
   p.membership-p {
     width: 95%;
     max-width: 30rem;
@@ -827,63 +642,41 @@
     width: 85vw;
     min-width: 180px;
     border-radius: 5vw;
-    padding: 1rem 0.7rem;
   }
 
   h2.plan-header {
-    font-size: 2rem;
-    padding-bottom: 0.5rem;
-  }
-
-  h3.price {
     font-size: 1.8rem;
   }
 
+  h3.price {
+    font-size: 2rem;
+  }
+
   .price > span {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   p.plan-description {
     font-size: 0.8rem;
     font-weight: 500;
-    line-height: 1rem;
-    padding-block: 0.8rem;
   }
 
   .features {
-    padding-block: 0.5rem;
     gap: 1.5rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .check::before {
-    font-size: 1.2rem;
-    padding-right: 0.5rem;
   }
 
   .check {
     font-size: 1.2rem;
   }
 
-  .start-plan {
-    border-radius: 6px;
-    font-size: 1rem;
-  }
-
-  .policy {
-    font-size: 0.6rem;
-    margin-block: 0.2rem;
-  }
-
   .plan-perks {
     gap: 0.8rem;
     font-size: 0.5rem;
-    margin-block: 0.15rem;
   }
 
   span.popular {
     font-size: 0.8rem;
-    border-radius: 5vw 0 10px 0;
+    border-radius: 5vw 0 4vw 0;
     padding: 8px;
   }
 
@@ -1064,3 +857,4 @@
     justify-content: center;
   }
 }
+
