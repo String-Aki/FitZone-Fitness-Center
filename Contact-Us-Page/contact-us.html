@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Contact-Us</title>
+  </head>
+  <body>
+    <!-- nav bar -->
+    <nav class="nav-bar">
+      <div class="branding">
+        <i class="logo-icon fa-solid fa-dumbbell fa-xl"></i>
+        <a class="heading" href="#home">FitZone</a>
+      </div>
+
+      <div class="nav-menu">
+        <a href="../index.html#home" class="links">Home</a>
+        <a href="../index.html#about" class="links">About</a>
+        <a href="../index.html#membership-section" class="links">Membership</a>
+        <a href="../index.html#testimonials" class="links">Milestones</a>
+        <a href="./contact-us.html" class="links">Contact</a>
+      </div>
+
+      <div class="join-or-login">
+        <a href="./Sign-In-Page/index.html" class="login">Login</a>
+        <button class="join-now">Join Now</button>
+      </div>
+    </nav>
+
+    <section class="contact-us-section">
+      <div class="form-container">
+        <h1 class="contact-us-heading">Contact Us</h1>
+        <p class="contact-p">
+          We're here to help! Reach out to us with any questions or feedback.
+        </p>
+        <form action="" method="post" class="contact-us-form">
+          <label for="name-field">Name</label>
+          <input type="text" name="name" id="name-field" placeholder="Your Name" />
+
+          <label for="email-field">Email</label>
+          <input type="text" name="email" id="email-field" placeholder="Your Email"/>
+
+          <label for="phone-number-field">Phone Number</label>
+          <input type="tel" name="phone" id="phone-number-field" placeholder="Your Phone Number"/>
+
+          <label for="subject-field">Subject</label>
+          <input type="text" name="Subject" id="subject-field" placeholder="Subject">
+
+          <label for="message-area">Message</label>
+          <textarea name="message" id="message-area" cols="50" rows="5"></textarea>
+
+          <button class="send" type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <div class="location-container">
+        <h2 class="location-heading">Our Location</h2>
+        <p class="location-p">Visit us at our state-of-the-art facility. We're located in the heart of the city, easily accessible by public transport and with ample parking.</p>
+        <img src="../Assets/contact-us-page-assets/map-preview.png" alt="map-preview" class="map-preview">
+          <h3 class="contact-info-heading">Contact Information</h3>
+          <p class="contact-info">Phone: (555) 123-4567</p>
+          <p class="contact-info">Email: info@fitzone.com</p>
+          <p class="contact-info">Address: No.123, 2nd Lane, Kurunagale</p>
+      </div>
+
+    </section>
+
+    <script
+      src="https://kit.fontawesome.com/15767cca17.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
