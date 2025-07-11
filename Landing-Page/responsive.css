@@ -395,6 +395,24 @@
     text-align: center;
   }
 
+  .button-group{
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    justify-content: center;
+  }
+
+  button.login-button-for-mobile{
+    display: block;
+    background-color: rgb(239, 45, 45);
+    color: white;
+    font-size: min(0.9rem, 2vw);
+    font-weight: 600;
+    padding: min(0.8rem, 2vw) min(1.5rem, 4vw);
+    border-radius: min(0.6rem, 1.5vw);
+    border: none;
+  }
+
   button.start-journey {
     margin-block: min(1.5rem, 3vw);
     padding: min(0.8rem, 2vw) min(1.5rem, 4vw);
@@ -552,6 +570,12 @@
   button.start-journey {
     margin-block: min(1rem, 3vw);
     padding: 2.3vh 4.3vw;
+    font-size: min(0.8rem, 3vw);
+  }
+
+  button.login-button-for-mobile{
+    margin-block: min(1rem, 3vw);
+    padding: 2.3vh 5vw;
     font-size: min(0.8rem, 3vw);
   }
 

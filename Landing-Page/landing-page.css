@@ -293,6 +293,10 @@ button.start-journey:hover {
   transform: scale(1.05);
 }
 
+button.login-button-for-mobile{
+  display: none;
+}
+
 i.arrow-icon {
   margin-left: 0.4vw;
 }
