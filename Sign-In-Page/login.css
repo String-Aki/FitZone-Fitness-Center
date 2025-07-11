@@ -2,6 +2,7 @@
 
 body {
   box-sizing: border-box;
+  position: relative;
   background-color: #f8f8f8;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -10,7 +11,7 @@ body {
 }
 
 .img-box {
-  height: 100dvh;
+  /* height: 100dvh; */
   width: 50vw;
   background: url("../Assets/login-assets/img-desktop.jpg");
   background-position: right 55%;
@@ -156,7 +157,7 @@ button {
   color: #ea454c;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1000px) {
   body {
     flex-direction: column-reverse;
     justify-content: center;
@@ -165,7 +166,7 @@ button {
   }
 
   .img-box {
-    /* height: 100vh; */
+    height: 100dvh;
     width: 100vw;
     background: url("../Assets/login-assets/img-desktop.jpg") no-repeat center/cover;
   }
@@ -176,7 +177,6 @@ button {
     padding-top: 15%;
   }
 }
-
 
 
 

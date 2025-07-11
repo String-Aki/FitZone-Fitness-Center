@@ -197,7 +197,7 @@ a.login {
   color: #f97316;
 }
 
-button.join-now {
+a.join-now {
   font-size: 0.8vw;
   font-weight: 500;
   color: white;

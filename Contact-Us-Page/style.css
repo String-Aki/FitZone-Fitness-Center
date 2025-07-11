@@ -102,8 +102,12 @@ section.contact-us-section{
 }
 
 .form-container {
-    width: 40%;
+    width: 40vw;
     padding-left: 3vw;
+}
+
+h1.contact-us-heading {
+    font-size: 1.7vw;
 }
 
 form.contact-us-form{
@@ -112,14 +116,14 @@ form.contact-us-form{
 }
 
 p.contact-p {
-    font-size: 1rem;
+    font-size: 1.2vw;
     color: #877363;
     padding-bottom: 1.5vw;
     padding-top: 0.8vw;
 }
 
 label {
-    font-size: 1rem;
+    font-size: 1vw;
     font-weight: 500;
     color: #171412;
     padding: 1vw 1vw 1vw 0 ;
@@ -146,7 +150,7 @@ textarea {
 button.send {
     width: 30%;
     background-color: #E87D30;
-    padding: 1rem;
+    padding: 1vw;
     border-radius: 0.5rem;
     margin-top: 1.5vw;
     border: none;
@@ -158,15 +162,21 @@ button.send {
 }
 
 .location-container{
-    width:35%;
+    width:35vw;
+}
+
+h2.location-heading{
+    font-size: 1.7vw;
 }
 
 p.location-p {
+    font-size: 1.2vw;
     padding-block: 0.8vw;
     line-height: 1.5vw;
 }
 
 h3.contact-info-heading{
+    font-size: 1.3vw;
     padding-block: 0.8vw;
 }
 
