@@ -13,7 +13,6 @@ html {
 }
 body{
     display: flex;
-    /* justify-content: space-between; */
 }
 .main-img {
     height: 100vh;
@@ -23,43 +22,43 @@ body{
 
 .back-home{
     text-decoration: none;
-    padding: 2vw 0 0.5vw 2.5vw;
-    font-size: 1.5vw;
+    padding: max(1.5rem,2vw) 0 max(0.5rem,0.5vw) max(1.2rem,2.5vw);
+    font-size: max(1.2rem,1.5vw);
+    color: black;
 }
 
 form.registration-form {
-    margin-left: 6vw;
+    margin: auto 6vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: 2px solid black; */
 }
 
 h1.register-heading {
     color:#333;
-    font-size: 2vw;
+    font-size: max(2rem,2vw);
     font-weight: 500;
 }
 
 p.register-p {
     color: rgba(102, 102, 102, 0.80);
-    font-size: 1vw;
-    padding-bottom: 2vw;
+    font-size: max(1rem,1vw);
+    padding-bottom: max(1.5rem,2vw);
 }
 
 label {
     color: #666;
-    font-size: 1vw;
-    padding-bottom: 0.5vw;
+    font-size: max(0.8rem, 1vw);
+    padding-bottom: max(0.5rem,0.5vw);
 }
 
 input {
-    height:3vw;
-    border-radius: 0.8vw;
+    height:max(2rem,3vw);
+    border-radius: max(0.8rem,0.8vw);
     border: 1px solid rgba(102, 102, 102, 0.35);
-    margin-bottom: 1vw;
-    padding: 0 0 0 1vw;
-    font-size: 1vw;
+    margin-bottom:max(0.8rem,1vw);
+    padding: 0 0 0 max(1rem,1vw);
+    font-size: max(0.8rem,1vw);
 }
 
 .name-fields {
@@ -70,7 +69,7 @@ input {
 }
 
 #first-name-field, #last-name-field {
-    margin-top: 0.5vw;
+    margin-top: max(0.5rem,0.5vw);
     width: 100%;
 }
 
@@ -82,38 +81,54 @@ input {
 
 .pass-toggle {
     color: #666;
-    font-size: 1vw;
+    font-size: max(0.8rem, 1vw);
     padding-right: 1vw;
     text-decoration: none;
     cursor: pointer;
 }
 
 #password-field{
-    margin-bottom: 0.5vw;
+    margin-bottom: max(0.5rem,0.5vw);
 }
 
 .password-constraints {
-    font-size: 0.8vw;
+    font-size: max(0.8rem,0.8vw);
     color: #666;
-    padding-bottom: 2.5vw;
+    padding-bottom: max(1.2rem,2.5vw);
 }
 
 .submit-button {
     background-color: #666;
     color: white;
 
-    font-size: 1.2vw;
+    font-size: max(1rem,1.2vw);
     font-family: "Poppins";
     font-weight: 500;
 
     width: 30%;
-    padding: 0.8vw 0;
-    border-radius: 2vw;
+    padding: max(0.8rem,0.8vw) 0;
+    border-radius: max(2rem,2vw);
     border: none;
 }
 
 .account-exist > p {
     color:#333;
-    font-size: 1vw;
-    padding-top: 0.5vw;
+    font-size: max(0.8rem,1vw);
+    padding-top: max(0.5rem,0.5vw);
+}
+
+@media screen and (max-width: 768px) {
+    *{overflow: scroll;}
+
+    body{
+        flex-direction: column;
+    }
+
+    img.main-img{
+        width: 100dvw;
+        height: 100dvh;
+        object-fit: cover;
+    }
+
+
 }

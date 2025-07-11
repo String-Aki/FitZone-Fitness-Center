@@ -1,5 +1,7 @@
 const passwordToggle = document.querySelector(".pass-toggle");
 const passwordField = document.querySelector(".password-field");
+const form = document.querySelector(".registration-form");
+const screenWidth = window.innerWidth;
 
 passwordToggle.addEventListener("click", function () {
   const type =
@@ -10,3 +12,10 @@ passwordToggle.addEventListener("click", function () {
   this.classList.toggle("fa-eye-slash");
 
 });
+
+if(screenWidth < 768) {
+  setTimeout(() => {
+    form.scrollIntoView({ behavior: "smooth" });
+  }, 2000);
+}
+
