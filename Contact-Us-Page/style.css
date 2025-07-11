@@ -37,6 +37,7 @@ nav.nav-bar{
 
 i.logo-icon {
   color: #f44;
+  font-size: 1.5vw;
 }
 
 a.heading {
@@ -107,7 +108,7 @@ section.contact-us-section{
 }
 
 h1.contact-us-heading {
-    font-size: 1.7vw;
+    font-size: max(1.7rem, 1.7vw);
 }
 
 form.contact-us-form{
@@ -116,26 +117,26 @@ form.contact-us-form{
 }
 
 p.contact-p {
-    font-size: 1.2vw;
+    font-size: max(1.2rem,1.2vw);
     color: #877363;
     padding-bottom: 1.5vw;
     padding-top: 0.8vw;
 }
 
 label {
-    font-size: 1vw;
+    font-size: max(1rem, 1vw);
     font-weight: 500;
     color: #171412;
     padding: 1vw 1vw 1vw 0 ;
 }
 
 input {
-    height: 4vw;
+    height: max(2rem , 4vw);
     width: 100%;
     border-radius: 0.5rem;
     border: 2px solid #E5E0DB;
     background-color: white;
-    font-size: 1vw;
+    font-size: max(1rem,1vw);
     padding: 1vw;
 }
 
@@ -155,7 +156,7 @@ button.send {
     margin-top: 1.5vw;
     border: none;
 
-    font-size: 1rem;
+    font-size: max(1rem, 1vw);
     font-family: "Poppins";
     font-weight: 500;
     color:#171412;
@@ -166,21 +167,59 @@ button.send {
 }
 
 h2.location-heading{
-    font-size: 1.7vw;
+    font-size: max(1.7rem,1.7vw);
 }
 
 p.location-p {
-    font-size: 1.2vw;
+    font-size:max(1.2rem , 1.2vw);
     padding-block: 0.8vw;
-    line-height: 1.5vw;
+    line-height:max(1.5rem, 1.5vw);
 }
 
+
 h3.contact-info-heading{
-    font-size: 1.3vw;
+    font-size:max(1.3rem,1.3vw);
     padding-block: 0.8vw;
 }
 
 p.contact-info {
-    font-size: 1vw;
+    font-size: max(1rem,1vw);
     padding-bottom: 0.8vw;
+}
+
+@media screen and (max-width: 1000px) {
+  nav.nav-bar {
+    display: none;
+  }
+
+  .back-home{
+    padding: 3vw;
+    font-size: 1.5rem;
+    color: black; 
+  }
+
+  section.contact-us-section{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container{
+    width: 100%;
+    padding: 0 3vw;
+  }
+
+  .location-container{
+    width: 100%;
+    padding: 2vw 3vw 0 3vw;
+  }
+
+  img.map-preview {
+  transform: scale(0.8);
+}
+
+  button.send{
+    width: 20%;
+    font-size: 1rem;
+  }
+  
 }
