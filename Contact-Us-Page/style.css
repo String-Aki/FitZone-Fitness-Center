@@ -102,6 +102,10 @@ section.contact-us-section{
     padding-block: 2vw;
 }
 
+a.back-home {
+  display: none;
+}
+
 .form-container {
     width: 40vw;
     padding-left: 3vw;
@@ -192,7 +196,7 @@ p.contact-info {
     display: none;
   }
 
-  .back-home{
+  a.back-home{
     padding: 3vw;
     font-size: 1.5rem;
     color: black; 
