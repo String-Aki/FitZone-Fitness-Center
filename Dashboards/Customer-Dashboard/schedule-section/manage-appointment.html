@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Manage Appointment</title>
+</head>
+<body>
+        <nav class="customer-dashboard-navbar">
+        <div class="branding">
+            <i class="fas fa-dumbbell logo"></i>
+            <span class="logo-header">FitZone</span>
+        </div>
+
+        <div class="links-and-profile-container">
+            <div class="links">
+                <a href="../overview-section/dashboard-overview.html" class="nav-link">Overview</a>
+                <a href="./book-appointment.html" class="nav-link">Schedule</a>
+                <a href="" class="nav-link">Nutrition</a>
+                <a href="" class="nav-link">Contact</a>
+            </div>
+            <button class="profile-button" onclick=""><img  src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img" class="profile-img"></button>
+        </div>
+    </nav>
+
+    <section class="book-appointment dashboard-sections">
+        <h1 class="headers">My Schedule</h1>
+        <div class="Schedule-indicator indicator-div">
+                <div class="manage-schedule">
+                    <h2 onclick="window.location.href = './book-appointment.html'" class="book-appointment sub-header" style="color:#637587;">Book Appointment</h2>
+                    <h2 onclick="window.location.href = './manage-appointment.html'" class="manage-appointment sub-header">Manage Appointment</h2>
+                </div>
+            </div>
+            <hr class="line">
+        </div>
+
+        <h3 class="section-subheader">Upcoming</h3>
+
+        <script type="module" src="./script.js"></script>
+</body>
+</html>

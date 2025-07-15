@@ -11,7 +11,7 @@ body {
 }
 
 .img-box {
-  /* height: 100dvh; */
+  height: 100dvh;
   width: 50vw;
   background: url("../Assets/login-assets/img-desktop.jpg");
   background-position: right 55%;
@@ -91,45 +91,11 @@ button {
   cursor: pointer;
 }
 
-.below-fields-box {
-  width: 310px;
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.remember-label {
-  font-size: 0.8rem;
-  margin-left: 5px;
-}
-
-.checkbox {
-  width: 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  background: rgba(196, 196, 196, 0);
-}
-
-.forgot-pass {
-  color: #181818;
-
-  font-family: "Poppins";
-  font-size: 0.8rem;
-  font-weight: 500;
-
-  position: absolute;
-  right: 0;
-}
-
-.forgot-pass:hover {
-  color: #ea454c;
-}
 
 .sign-in-btn {
   width: 312px;
   height: 40px;
-  margin: 30px auto 18px auto;
+  margin: 20px auto 18px auto;
   padding: 3px;
   
 

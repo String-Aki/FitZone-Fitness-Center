@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Create Account</title>
-</head>
-<body>
-    <img src="../Assets/registration-page-assets/register-page-image.png" alt="main-image" class="main-img"/>
+  </head>
+  <body>
+    <img
+      src="../Assets/registration-page-assets/register-page-image.png"
+      alt="main-image"
+      class="main-img"
+    />
     <section class="sign-up-container">
-        <a href="../index.html" class="back-home fas fa-arrow-left"></a>
-        <form action="" method="post" class="registration-form">
-            <h1 class="register-heading">Sign Up</h1>
-            <p class="register-p">Create your account and start your fitness journey with us today.</p>
-            <div class="name-fields">
-                <div>
-                    <label for="first-name-field">First Name</label>
-                    <input type="text" name="firstName" id="first-name-field" />
-                </div>
-                <div>
-                    <label for="last-name-field">Last Name</label>
-                    <input type="text" name="lastName" id="last-name-field">
-                </div>
-            </div>
-            <label for="phone-number-field">Phone Number</label>
-            <input type="tel" name="phoneNumber" id="phone-number-field" placeholder="e.g +(55) 123 4567 890">
+      <a href="../index.html" class="back-home fas fa-arrow-left"></a>
+      <form action="" method="post" class="registration-form">
+        <h1 class="register-heading">Sign Up</h1>
+        <p class="register-p">
+          Create your account and start your fitness journey with us today.
+        </p>
+        <div class="name-fields">
+          <div>
+            <label for="first-name-field">First Name</label>
+            <input type="text" name="firstName" id="first-name-field" />
+          </div>
+          <div>
+            <label for="last-name-field">Last Name</label>
+            <input type="text" name="lastName" id="last-name-field" />
+          </div>
+        </div>
+        <label for="phone-number-field">Phone Number</label>
+        <input
+          type="tel"
+          name="phoneNumber"
+          id="phone-number-field"
+          placeholder="e.g +(55) 123 4567 890"
+        />
 
-            <label for="email-field">Email address</label>
-            <input type="email" name="email" id="email-field" placeholder="e.g example@gmail.com">
+        <label for="email-field">Email address</label>
+        <input
+          type="email"
+          name="email"
+          id="email-field"
+          placeholder="e.g example@gmail.com"
+        />
 
-            <div class="password-container">
-                <label for="password-field">Password</label>
-                <i class="fa-solid fa-eye pass-toggle"></i>
-            </div>
-            <input type="password" name="password" id="password-field" class="password-field" >
-            <p class="password-constraints">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+        <div class="password-container">
+          <label for="password-field">Password</label>
+          <i class="fa-solid fa-eye pass-toggle"></i>
+        </div>
+        <input
+          type="password"
+          name="password"
+          id="password-field"
+          class="password-field"
+        />
+        <p class="password-constraints">
+          Use 8 or more characters with a mix of letters, numbers & symbols
+        </p>
 
-            <button type="submit" class="submit-button">Sign up</button>
-            <div class="account-exist">
-                <p>Already have an ccount? <a href="../Sign-In-Page/index.html">Log in</a></p>
-            </div>
-        </form>
+        <button type="submit" class="submit-button">Sign up</button>
+        <div class="account-exist">
+          <p>
+            Already have an ccount?
+            <a href="../Sign-In-Page/index.html">Log in</a>
+          </p>
+        </div>
+      </form>
     </section>
+    
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="./script.js"></script>
-</body>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
 </html>
