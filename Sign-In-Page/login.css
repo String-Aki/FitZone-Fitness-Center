@@ -91,6 +91,16 @@ button {
   cursor: pointer;
 }
 
+.auth-message-container {
+  width: 310px;
+  margin-top: 0;
+}
+
+p.auth-msg {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
 
 .sign-in-btn {
   width: 312px;

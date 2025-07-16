@@ -83,7 +83,7 @@
         <div class="account-exist">
           <p>
             Already have an ccount?
-            <a href="../Sign-In-Page/index.html">Log in</a>
+            <a href="../Sign-In-Page/index.php">Log in</a>
           </p>
         </div>
 
@@ -117,7 +117,7 @@
 
       if($stmt->execute()){
         echo '<script type="text/javascript">alert("Account Created Successfully. Now you can login");
-        window.location.href="../Sign-In-Page/index.html";
+        window.location.href="../Sign-In-Page/index.php";
         </script>';
       }
 
