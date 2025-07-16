@@ -95,7 +95,8 @@
     session_regenerate_id();
     include("../includes/dbconnect.php");
     error_reporting(E_ALL);
-    
+
+    $errors = [];
     if(isset($_POST["signup"])){
       $firstn = trim($_POST["firstName"]);
       $lastn = trim($_POST["lastName"]);
@@ -108,7 +109,8 @@
       $stmt = $conn->prepare("INSERT INTO users (First_Name, Last_Name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?)");
 
       if(!$stmt){
-        die("Prepare failed: " . $conn->error);
+        die();
+        $error["prepare"] = "Prepare Failed".$conn->error;
       }
 
       $stmt->bind_param("ssiss", $firstn, $lastn, $phonenum, $email, $hashed_password);
@@ -120,12 +122,13 @@
       }
 
       else{
-        echo "Error executing query: " . $stmt->error;
+        $errors['bind'] = "Error executing query: ". $stmt->error;
       }
       $stmt->close();
     }
 
     $conn->close();
+   $jsonResponse = json_encode(['errors' => $errors, 'success' => empty($errors)]);
     ?>
 
     <script
@@ -137,6 +140,20 @@
       type="text/javascript" 
       src="./script.js"
     ></script>
+
+    <?php if ($jsonResponse) : ?>
+        <script>
+            const response = <?php echo $jsonResponse; ?>;
+            if (response.errors) {
+                Object.entries(response.errors).forEach(([field, error]) => {
+                    console.log(`[${field}] ${error}`);
+                });
+            }
+            if (response.success) {
+                console.log('Registration successful');
+            }
+        </script>
+    <?php endif; ?>
   </body>
 </html>
 
