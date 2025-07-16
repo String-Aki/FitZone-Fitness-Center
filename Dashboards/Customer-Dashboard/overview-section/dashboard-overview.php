@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("../../../includes/dbconnect.php");
+error_reporting(0);
+
+$isLoggedIn = isset($_SESSION['loggedIn']);
+$isLoggedId = isset($_SESSION['user_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +23,8 @@
 
         <div class="links-and-profile-container">
             <div class="links">
-                <a href="../overview-section/dashboard-overview.html" class="nav-link">Overview</a>
-                <a href="../schedule-section/book-appointment.html" class="nav-link">Schedule</a>
+                <a href="../overview-section/dashboard-overview.php" class="nav-link">Overview</a>
+                <a href="../schedule-section/book-appointment.php" class="nav-link">Schedule</a>
                 <a href="" class="nav-link">Nutrition</a>
                 <a href="" class="nav-link">Contact</a>
             </div>
@@ -25,7 +33,9 @@
     </nav>
 
     <section class="overview dashboard-sections">
-        <h1 class="welcome headers">Welcome Back, Sarah</h1>
+        <?php if($isLoggedIn): ?>
+        <h1 class="welcome headers">Welcome Back, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
+        <?php endif; ?>
         <div class="overview-indicator indicator-div">
             <h2 class="overview sub-header">Overview</h2>
             <hr class="line">

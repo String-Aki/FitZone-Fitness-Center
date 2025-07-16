@@ -15,8 +15,8 @@
 
         <div class="links-and-profile-container">
             <div class="links">
-                <a href="../overview-section/dashboard-overview.html" class="nav-link">Overview</a>
-                <a href="./book-appointment.html" class="nav-link">Schedule</a>
+                <a href="../overview-section/dashboard-overview.php" class="nav-link">Overview</a>
+                <a href="./book-appointment.php" class="nav-link">Schedule</a>
                 <a href="" class="nav-link">Nutrition</a>
                 <a href="" class="nav-link">Contact</a>
             </div>
@@ -28,8 +28,8 @@
         <h1 class="headers">My Schedule</h1>
         <div class="Schedule-indicator indicator-div">
                 <div class="manage-schedule">
-                    <h2 onclick="window.location.href = './book-appointment.html'" class="book-appointment sub-header">Book Appointment</h2>
-                    <h2 onclick="window.location.href = './manage-appointment.html'" class="manage-appointment sub-header" style="color:#637587;">Manage Appointment</h2>
+                    <h2 onclick="window.location.href = './book-appointment.php'" class="book-appointment sub-header">Book Appointment</h2>
+                    <h2 onclick="window.location.href = './manage-appointment.php'" class="manage-appointment sub-header" style="color:#637587;">Manage Appointment</h2>
                 </div>
             </div>
             <hr class="line">

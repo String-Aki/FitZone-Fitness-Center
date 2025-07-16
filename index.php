@@ -28,12 +28,12 @@ session_start();
         <a href="#about" class="links">About</a>
         <a href="#membership-section" class="links">Membership</a>
         <a href="#testimonials" class="links">Milestones</a>
-        <a href="./Contact-Us-Page/contact-us.html" class="links">Contact</a>
+        <a href="./Contact-Us-Page/contact-us.php" class="links">Contact</a>
       </div>
 
       <div class="join-or-login">
-        <a href="./Sign-In-Page/index.html" class="login">Login</a>
-        <a href="./Registration-Page/register.html" class="join-now"
+        <a href="./Sign-In-Page/index.php" class="login">Login</a>
+        <a href="./Registration-Page/register.php" class="join-now"
           >Join Now</a
         >
       </div>
@@ -75,7 +75,7 @@ session_start();
       <a href="#about" class="m-links">About</a>
       <a href="#membership-section" class="m-links">Membership</a>
       <a href="#testimonials" class="m-links">Milestones</a>
-      <a href="./Contact-Us-Page/contact-us.html" class="m-links">Contact</a>
+      <a href="./Contact-Us-Page/contact-us.php" class="m-links">Contact</a>
     </div>
 
     <main>
@@ -99,14 +99,14 @@ session_start();
           </p>
           <div class="button-group">
             <button
-              onclick="window.location.href='./Registration-Page/register.html'"
+              onclick="window.location.href='./Registration-Page/register.php'"
               class="start-journey"
             >
               Start Your Journey
               <i class="fa-solid fa-arrow-right arrow-icon"></i>
             </button>
             <button
-              onclick="window.location.href='./Sign-In-Page/index.html'"
+              onclick="window.location.href='./Sign-In-Page/index.php'"
               class="login-button-for-mobile"
             >
               Sign In
@@ -322,7 +322,7 @@ session_start();
               <p class="check">Locker room access</p>
               <p class="check">Mobile app access</p>
             </div>
-            <a class="start-plan" href="./Sign-In-Page/index.html"
+            <a class="start-plan" href="./Sign-In-Page/index.php"
               >Start Basic</a
             >
           </div>
@@ -343,7 +343,7 @@ session_start();
               <p class="check">Guest passes (2/month)</p>
               <p class="check">Premium equipment access</p>
             </div>
-            <a class="start-plan" href="./Sign-In-Page/index.html">Go Pro</a>
+            <a class="start-plan" href="./Sign-In-Page/index.php">Go Pro</a>
           </div>
 
           <div class="elite plan">
@@ -361,7 +361,7 @@ session_start();
               <p class="check">50% Off On Supplements</p>
               <p class="check">VIP parking</p>
             </div>
-            <a class="start-plan" href="./Sign-In-Page/index.html"
+            <a class="start-plan" href="./Sign-In-Page/index.php"
               >Join Elite</a
             >
           </div>
@@ -473,7 +473,7 @@ session_start();
             Your journey starts with a single step.
           </p>
           <button
-            onclick="window.location.href='./Registration-Page/register.html'"
+            onclick="window.location.href='./Registration-Page/register.php'"
             class="cta-button"
           >
             Start Your Transformation
@@ -502,7 +502,7 @@ session_start();
 
         <div class="contact-us">
           <h1 class="heading-cu">GOT Questions?</h1>
-          <a href="./Contact-Us-Page/contact-us.html" class="send-enquires"
+          <a href="./Contact-Us-Page/contact-us.php" class="send-enquires"
             >Send Us Your Enquires</a
           >
         </div>
