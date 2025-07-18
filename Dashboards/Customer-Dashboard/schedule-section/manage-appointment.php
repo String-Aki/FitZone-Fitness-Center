@@ -66,9 +66,12 @@
 
                     $results->data_seek(0);
 
-                    echo '<h3 class="section-subheader">Past</h3>';
                     while($row = $results->fetch_assoc()){
-                    if($row['Status'] === "completed"|| $row['Status'] === "cancelled"){
+                        if($row['Status'] === "completed"|| $row['Status'] === "cancelled"){
+                            if(!$pastDisplayed){
+                            echo '<h3 class="section-subheader">Past</h3>';
+                            $pastDisplayed = true;
+                        }
                         echo '
                        <div class="session-log-container">
                        <div class="info-wrap">

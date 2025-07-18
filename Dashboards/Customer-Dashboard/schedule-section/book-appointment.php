@@ -69,7 +69,7 @@ error_reporting(E_ALL);
             <button type="submit" class="submit-button" name="book">Submit Request</button>
         </form>
     </section>
-
+                                    
     <?php
     if(isset($_POST['book'])){
         $user_id = $_SESSION['user_id'];

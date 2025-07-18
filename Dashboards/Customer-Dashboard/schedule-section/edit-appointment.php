@@ -27,13 +27,6 @@ error_reporting(E_ALL);
 
             $results = $conn->query($fetch_query);
             $edit_row =  $results->fetch_assoc();
-
-            // if($edit_row){
-            //     echo "<script>alert('Appointment updated successfully!')</script>";
-            // }
-            // else{
-            //     echo "<script>alert('Appointment updated failed!')</script>";
-            // }
         }
         ?>
         <form action="" method="post" class="appointment-form edit ">
@@ -62,7 +55,7 @@ error_reporting(E_ALL);
             <label for="training-session-type-field" class="training-session-type-label">Training Session Type</label>
             <select name="training-session-type" id="training-session-type-field" required>
                 <option value="">-- Choose Session Type --</option>
-                <option value="Strength">Strength Training</option>
+                <option value="Strength" selected>Strength Training</option>
                 <option value="Cardio">Cardio Workouts</option>
                 <option value="Yoga">Yoga</option>
                 <option value="Pilates">Pilates</option>
@@ -79,10 +72,49 @@ error_reporting(E_ALL);
 
             <div class="button-wrap">
                 <button type="submit" class="save-button" name="save">Save Changes</button>
-                <button type="button" class="delete-button" name="del">Cancel Appointment</button>
+                <button onclick="return confirm('Confirm to cancel this booking');" type="submit" class="delete-button" name="del">Cancel Appointment</button>
             </div>
         </form>
     </section>
+
+    <?php
+    // Update And Delete Appointment 
+        if(isset($_POST['save'])){
+            $trainer_id = $_POST['trainer'];
+            $session_type = $_POST['training-session-type'];
+            $session_date = $_POST['session-date'];
+            $session_time = $_POST['session-time'];
+
+            $sqlUpdate = "UPDATE appointments SET Trainer_ID = '$trainer_id', Session_Type = '$session_type', Session_Date = '$session_date', Session_Time = '$session_time' WHERE Appointment_ID = '$edit_id' AND appointments.User_ID = '".$_SESSION['user_id']."'";
+
+            if($conn->query($sqlUpdate) === TRUE){
+                echo '<script type="text/javascript">alert("Booking Changes Saved");
+            window.location.href="./manage-appointment.php";
+            </script>';
+            }
+            else {
+                echo '<script type="text/javascript">alert("Failed to Save Changes");
+                </script>';
+            }
+        }
+
+        elseif(isset($_POST['del'])){
+            $sqlDelete = "DELETE FROM appointments WHERE Appointment_ID = '$edit_id' AND User_ID = '".$_SESSION['user_id']."'";
+
+            if($conn->query($sqlDelete) === TRUE){
+                echo '<script type="text/javascript">alert("Booking Cancelled Successfully");
+            window.location.href="./manage-appointment.php";
+            </script>';
+            }
+
+            else {
+                echo '<script type="text/javascript">alert("Failed to Cancelled Booking");
+                </script>';
+            }
+        }
+        $conn->close();
+
+    ?>
 
     <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
 </body>
