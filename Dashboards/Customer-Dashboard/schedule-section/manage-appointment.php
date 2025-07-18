@@ -25,29 +25,72 @@
             <hr class="line">
         </div>
 
-        <h3 class="section-subheader upcoming">Upcoming</h3>
-
             <?php
-                $fetch_query = "SELECT appointments.Session_Type, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
+                $fetch_query = "SELECT appointments.Session_Type, appointments.Status, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
 
                 $results = $conn->query($fetch_query);
         
                 if($results->num_rows > 0){
+                    $pastDisplayed = false;
+                    echo '<h3 class="section-subheader">Upcoming</h3>';
+
                     while($row = $results->fetch_assoc()){
-                        echo '<div class="session-log-container">
-                                <div class="info-wrap">
-                                <i class="fas fa-calendar log-marker"></i>
-                                <div class="text-wrap">
-                                <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
-                                <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
-                                </div>
-                                </div>
-            
-                                <button class="manage">Manage</button>
-                            </div>';
-                            }
-                        }
-                    ?>
+                        if($row['Status'] === "pending"){
+                            echo '
+                        <div class="session-log-container">
+                        <div class="info-wrap">
+                        <i class="fas fa-calendar log-marker"></i>
+                        <div class="text-wrap">
+                        <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
+                        <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                        </div>
+                        </div>
+                        <button class="manage">Manage</button>
+                        </div>';
+                       }
+
+                       elseif($row['Status'] === "confirmed"){
+                            echo '
+                        <div class="session-log-container">
+                        <div class="info-wrap">
+                        <i class="fas fa-calendar log-marker"></i>
+                        <div class="text-wrap">
+                        <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
+                        <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                        </div>
+                        </div>
+                        <p>' . htmlspecialchars($row['Status']) . '</p>
+                        </div>';
+                       }
+                    }
+
+                    $results->data_seek(0);
+
+                    echo '<h3 class="section-subheader">Past</h3>';
+                    while($row = $results->fetch_assoc()){
+                    if($row['Status'] === "completed"|| $row['Status'] === "cancelled"){
+                        echo '
+                       <div class="session-log-container">
+                       <div class="info-wrap">
+                       <i class="fas fa-calendar log-marker"></i>
+                       <div class="text-wrap">
+                       <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
+                       <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                       </div>
+                       </div>
+                       <p class="past-log">'.htmlspecialchars($row['Status']).'</p>
+                       </div>';
+                    }
+                }
+                    
+                }
+                else {
+                    echo '
+                        <h3 class="section-subheader">You have no appointments scheduled</h3>
+                        ';
+                    }
+                    $results->free()
+            ?>
     </section>
 
         <script type="text/javascript" src="./script.js"></script>

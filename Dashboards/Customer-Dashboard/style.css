@@ -102,6 +102,7 @@ h3.section-subheader {
   font-size: 1.5vw;
   font-weight: 600;
   padding-block: 1vw;
+  margin-block: 0.5vw;
 }
 
 .next-class-section,
@@ -160,10 +161,6 @@ p.activity-date {
   color: #637587;
 }
 
-.request-class {
-  margin-block: 0.5vw;
-}
-
 form.book-appointment-form {
   display: flex;
   flex-direction: column;
@@ -205,10 +202,6 @@ button.submit-button {
 }
 
 /* Schedule Section Styles: Manage Appointment */
-
-.upcoming {
-  margin-block: 0.5vw;
-}
 
 .session-log-container {
   display: flex;
