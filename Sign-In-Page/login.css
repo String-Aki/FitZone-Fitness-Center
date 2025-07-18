@@ -101,13 +101,11 @@ p.auth-msg {
   text-align: center;
 }
 
-
 .sign-in-btn {
   width: 312px;
   height: 40px;
-  margin: 20px auto 18px auto;
+  margin: 20px 0 18px 0;
   padding: 3px;
-  
 
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -143,7 +141,8 @@ p.auth-msg {
   .img-box {
     height: 100dvh;
     width: 100vw;
-    background: url("../Assets/login-assets/img-desktop.jpg") no-repeat center/cover;
+    background: url("../Assets/login-assets/img-desktop.jpg") no-repeat
+      center/cover;
   }
 
   .login-form {
@@ -152,6 +151,3 @@ p.auth-msg {
     padding-top: 15%;
   }
 }
-
-
-

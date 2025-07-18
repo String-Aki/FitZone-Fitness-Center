@@ -68,8 +68,27 @@ error_reporting(0);
         $row = $result->fetch_assoc();
 
         if($row && password_verify($passw, $row['Password'])){
-          $_SESSION['user_id'] = $row['User_id'];
+          $_SESSION['user_id'] = $row['User_ID'];
           $_SESSION['username'] = $row['First_Name'];
+          $_SESSION['role'] = $row['Role'];
+
+          if($_SESSION['role'] === 'staff'){
+            echo '<script>
+              alert("Redirecting to staff dashboard...");
+          </script>';
+  
+          $_SESSION['loggedIn'] = true;
+          }
+
+          elseif($_SESSION['role'] === 'admin'){
+            echo '<script>
+              alert("Redirecting to admin dashboard...");
+          </script>';
+  
+          $_SESSION['loggedIn'] = true;
+          }
+
+          else{
 
           echo '<script>
             alert("You have successfully logged in!");
@@ -77,6 +96,8 @@ error_reporting(0);
         </script>';
 
         $_SESSION['loggedIn'] = true;
+        }
+
         }
 
         else {

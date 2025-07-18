@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include("../../../includes/dbconnect.php");
+    error_log(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,22 +12,7 @@
     <title>Manage Appointment</title>
 </head>
 <body>
-        <nav class="customer-dashboard-navbar">
-        <div class="branding">
-            <i class="fas fa-dumbbell logo"></i>
-            <span class="logo-header">FitZone</span>
-        </div>
-
-        <div class="links-and-profile-container">
-            <div class="links">
-                <a href="../overview-section/dashboard-overview.php" class="nav-link">Overview</a>
-                <a href="./book-appointment.php" class="nav-link">Schedule</a>
-                <a href="" class="nav-link">Nutrition</a>
-                <a href="" class="nav-link">Contact</a>
-            </div>
-            <button class="profile-button" onclick=""><img  src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img" class="profile-img"></button>
-        </div>
-    </nav>
+        <?php include("../../components/customer-dashboard-navbar.php");?>
 
     <section class="book-appointment dashboard-sections">
         <h1 class="headers">My Schedule</h1>
@@ -35,8 +25,32 @@
             <hr class="line">
         </div>
 
-        <h3 class="section-subheader">Upcoming</h3>
+        <h3 class="section-subheader upcoming">Upcoming</h3>
 
-        <script type="module" src="./script.js"></script>
+            <?php
+                $fetch_query = "SELECT appointments.Session_Type, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
+
+                $results = $conn->query($fetch_query);
+        
+                if($results->num_rows > 0){
+                    while($row = $results->fetch_assoc()){
+                        echo '<div class="session-log-container">
+                                <div class="info-wrap">
+                                <i class="fas fa-calendar log-marker"></i>
+                                <div class="text-wrap">
+                                <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
+                                <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                                </div>
+                                </div>
+            
+                                <button class="manage">Manage</button>
+                            </div>';
+                            }
+                        }
+                    ?>
+    </section>
+
+        <script type="text/javascript" src="./script.js"></script>
+        <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
 </body>
 </html>

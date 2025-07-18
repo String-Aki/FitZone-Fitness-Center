@@ -17,6 +17,7 @@ a {
 
 button {
   cursor: pointer;
+  font-family: "Poppins";
 }
 
 nav.customer-dashboard-navbar {
@@ -78,71 +79,75 @@ img.profile-img {
 }
 
 section.dashboard-sections {
-    padding: 4vw 12vw;
+  padding: 4vw 12vw;
 }
 
 h1.headers {
-    font-size: 2vw;
-    font-weight: 600;
-    padding-bottom: 1vw;
+  font-size: 2vw;
+  font-weight: 600;
+  padding-bottom: 1vw;
 }
 
 .indicator-div {
-    padding-block: 1vw;
+  padding-block: 1vw;
 }
 
 h2.sub-header {
-    font-size: 1vw;
-    font-weight: 600;
-    padding-left: 0.5vw;
+  font-size: 1vw;
+  font-weight: 600;
+  padding-left: 0.5vw;
 }
 
 h3.section-subheader {
-    font-size: 1.5vw;
-    font-weight: 600;
-    padding-block: 1vw;
+  font-size: 1.5vw;
+  font-weight: 600;
+  padding-block: 1vw;
 }
 
-.next-class-section, .your-membership-section{
-    display: flex;
-    justify-content: space-between;
+.next-class-section,
+.your-membership-section {
+  display: flex;
+  justify-content: space-between;
 }
 
-p.next-class-p, p.your-membership-p {
-    font-size: 1.2vw;
-    font-weight: 500;
+p.next-class-p,
+p.your-membership-p {
+  font-size: 1.2vw;
+  font-weight: 500;
 }
 
-p.date-and-time, p.expiry-date {
-    font-size: 0.8vw;
-    color:#61758A;
+p.date-and-time,
+p.expiry-date {
+  font-size: 0.8vw;
+  color: #61758a;
 }
 
 .img-container {
-    width: 15vw;
-    height: 10vw;
+  width: 15vw;
+  height: 10vw;
 }
 
-img.next-class-img, img.membership-img{
-    width: 100%;
-    border-radius: 1vw;
-    object-fit: cover;
+img.next-class-img,
+img.membership-img {
+  width: 100%;
+  border-radius: 1vw;
+  object-fit: cover;
 }
 
 p.recent-activity {
-    font-size: 1vw;
-    font-weight: 500;
+  font-size: 1vw;
+  font-weight: 500;
 }
 
-p.activity-date{
-    font-size: 0.8vw;
-    color:#61758A;
-    padding-bottom: 1.5vw;
+p.activity-date {
+  font-size: 0.8vw;
+  color: #61758a;
+  padding-bottom: 1.5vw;
 }
 
 /* Schedule Section Styles: Book Appointment */
 
-.manage-schedule{
+.manage-schedule {
   display: flex;
   gap: 2vw;
 }
@@ -151,15 +156,15 @@ p.activity-date{
   cursor: pointer;
 }
 
-.clicked{
-  color:#637587;
+.clicked {
+  color: #637587;
 }
 
-.request-class{
+.request-class {
   margin-block: 0.5vw;
 }
 
-form.book-appointment-form{
+form.book-appointment-form {
   display: flex;
   flex-direction: column;
   padding: 1vw auto;
@@ -171,14 +176,14 @@ label {
   padding-bottom: 0.5vw;
 }
 
-.book-appointment-form > select, .book-appointment-form > input {
+.book-appointment-form > select,
+.book-appointment-form > input {
   width: 35%;
   height: 2.5vw;
   font-size: 1vw;
-  color: #9CA8B3;
   margin-bottom: 1vw;
   border-radius: 0.6vw;
-  border: 1px solid #E3DEDE;
+  border: 1px solid #e3dede;
 }
 
 .book-appointment-form > select {
@@ -189,15 +194,57 @@ label {
   padding: 1vw;
 }
 
-.submit-button {
+button.submit-button {
   width: 15%;
   padding: 1vw;
   border-radius: 1vw;
   background-color: transparent;
   margin-top: 1vw;
   align-self: flex-end;
+  font-weight: 500;
 }
 
 /* Schedule Section Styles: Manage Appointment */
 
+.upcoming {
+  margin-block: 0.5vw;
+}
 
+.session-log-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 1vw;
+  padding-bottom: 1vw;
+}
+
+.info-wrap {
+  display: flex;
+  align-items: center;
+}
+
+i.log-marker {
+  padding: 1vw;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+
+  margin-right: 1.5vw;
+}
+
+p.log-header {
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+p.choosen-trainer {
+  align-self: stretch;
+  font-size: 0.9vw;
+  color: #637587;
+}
+
+button.manage {
+  padding: 0.5vw 1vw;
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+}
