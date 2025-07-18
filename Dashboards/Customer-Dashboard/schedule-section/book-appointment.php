@@ -26,7 +26,7 @@ error_reporting(E_ALL);
         </div>
 
         <h3 class="section-subheader request-class">Request a Class</h3>
-        <form action="" method="post" class="book-appointment-form">
+        <form action="" method="post" class="appointment-form">
             <label for="trainer-field">Select Trainer</label>
             <select name="trainer" id="trainer-field">
                 <option value="">-- Pick Your Trainer --</option>
@@ -51,13 +51,13 @@ error_reporting(E_ALL);
             <label for="training-session-type-field" class="training-session-type-label">Training Session Type</label>
             <select name="training-session-type" id="training-session-type-field" required>
                 <option value="">-- Choose Session Type --</option>
-                <option value="Strength">Strength Training</option>
+                <option value="Strength Training">Strength Training</option>
                 <option value="Cardio">Cardio Workouts</option>
                 <option value="Yoga">Yoga</option>
                 <option value="Pilates">Pilates</option>
                 <option value="HIIT">High-Intensity Interval Training (HIIT)</option>
                 <option value="Spin">Spin Classes</option>
-                <option value="Personal">Personal Training Sessions</option>
+                <option value="Personal Training">Personal Training Sessions</option>
             </select>
 
             <label for="session-date">Session Date</label>

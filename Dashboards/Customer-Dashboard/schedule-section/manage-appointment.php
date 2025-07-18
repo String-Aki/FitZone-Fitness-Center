@@ -26,7 +26,7 @@
         </div>
 
             <?php
-                $fetch_query = "SELECT appointments.Session_Type, appointments.Status, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
+                $fetch_query = "SELECT appointments.Appointment_ID, appointments.Session_Type, appointments.Status, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
 
                 $results = $conn->query($fetch_query);
         
@@ -45,7 +45,7 @@
                         <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
                         </div>
                         </div>
-                        <button class="manage">Manage</button>
+                        <button onclick="window.location.href=\'./edit-appointment.php?edit_id='. $row['Appointment_ID'] .'\'" class="manage">Manage</button>
                         </div>';
                        }
 

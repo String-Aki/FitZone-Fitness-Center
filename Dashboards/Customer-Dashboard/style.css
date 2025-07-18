@@ -17,7 +17,7 @@ a {
 
 button {
   cursor: pointer;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
 }
 
 nav.customer-dashboard-navbar {
@@ -161,7 +161,7 @@ p.activity-date {
   color: #637587;
 }
 
-form.book-appointment-form {
+form.appointment-form {
   display: flex;
   flex-direction: column;
   padding: 1vw auto;
@@ -173,8 +173,8 @@ label {
   padding-bottom: 0.5vw;
 }
 
-.book-appointment-form > select,
-.book-appointment-form > input {
+.appointment-form > select,
+.appointment-form > input {
   width: 35%;
   height: 2.5vw;
   font-size: 1vw;
@@ -183,11 +183,11 @@ label {
   border: 1px solid #e3dede;
 }
 
-.book-appointment-form > select {
+.appointment-form > select {
   text-indent: 1vw;
 }
 
-.book-appointment-form > input {
+.appointment-form > input {
   padding: 1vw;
 }
 
@@ -240,4 +240,48 @@ button.manage {
   border-radius: 12px;
   border: none;
   font-weight: 500;
+}
+
+/* Schedule Section Styles: Edit Appointment */
+
+section.edit {
+  padding: 3vw 12vw;
+}
+
+i.back {
+  font-size: 1.5vw;
+  cursor: pointer;
+  padding-bottom: 1vw;
+}
+
+form.edit {
+  padding-block: 1vw;
+}
+
+.button-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button.save-button {
+  width: 15%;
+  padding: 1vw;
+  border-radius: 1vw;
+  background-color: #f44;
+  color: white;
+  margin-top: 1vw;
+  font-weight: 500;
+  font-size: 1vw;
+  border:none;
+}
+
+button.delete-button {
+  width: 15%;
+  padding: 1.2vw;
+  border-radius: 1vw;
+  margin-top: 1vw;
+  font-weight: 500;
+  border:none;
 }
