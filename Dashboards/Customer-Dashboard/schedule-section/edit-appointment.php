@@ -55,13 +55,21 @@ error_reporting(E_ALL);
             <label for="training-session-type-field" class="training-session-type-label">Training Session Type</label>
             <select name="training-session-type" id="training-session-type-field" required>
                 <option value="">-- Choose Session Type --</option>
-                <option value="Strength" selected>Strength Training</option>
-                <option value="Cardio">Cardio Workouts</option>
-                <option value="Yoga">Yoga</option>
-                <option value="Pilates">Pilates</option>
-                <option value="HIIT">High-Intensity Interval Training (HIIT)</option>
-                <option value="Spin">Spin Classes</option>
-                <option value="Personal">Personal Training Sessions</option>
+                <?php
+                    $session_type_array = [
+                        'Strength Training' => 'Strength Training',
+                        'Cardio' => 'Cardio Workouts',
+                        'Yoga' => 'Yoga',
+                        'Pilates' => 'Pilates',
+                        'HIIT' => 'High-Intensity Interval Training (HIIT)',
+                        'Spin' => 'Spin Classes',
+                        'Personal Training' => 'Personal Training Sessions'
+                    ];
+
+                    foreach($session_type_array as $value => $label){
+                        echo '<option value="' . htmlspecialchars($value) . '" ' . ($edit_row['Session_Type'] === $value ? 'selected' : '') . '>' . htmlspecialchars($label) . '</option>';
+                    }
+                ?>
             </select>
 
             <label for="session-date">Session Date</label>
