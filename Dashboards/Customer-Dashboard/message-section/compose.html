@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Compose</title>
+  </head>
+  <body>
+    <nav class="customer-dashboard-navbar">
+      <div class="branding">
+        <i class="fas fa-dumbbell logo"></i>
+        <span class="logo-header">FitZone</span>
+      </div>
+
+      <div class="links-and-profile-container">
+        <div class="links">
+          <a href="../overview-section/dashboard-overview.php" class="nav-link"
+            >Overview</a
+          >
+          <a href="../schedule-section/book-appointment.php" class="nav-link"
+            >Schedule</a
+          >
+          <a href="" class="nav-link">Nutrition</a>
+          <a href="" class="nav-link">Contact</a>
+        </div>
+        <button class="profile-button" onclick="">
+          <img
+            src="../../../Assets/customer-dashboard-assets/profile.png"
+            alt="profile-img"
+            class="profile-img"
+          />
+        </button>
+      </div>
+    </nav>
+
+    <section class="compose-section dashboard-sections">
+      <h1 class="headers messages-header">Messages</h1>
+      <!-- <p class="message-about">We're here to help! Please fill out the form below, and we'll get back to you as soon as possible.</p> -->
+      <div class="messages-indicator indicator-div">
+        <div class="manage-message">
+          <h2
+            onclick="window.location.href ='./compose.html'"
+            class="compose sub-header"
+          >
+            Compose
+          </h2>
+          <h2
+            onclick="window.location.href ='./inbox.html'"
+            class="inbox sub-header"
+            style="color: #637587"
+          >
+            Inbox
+          </h2>
+        </div>
+      </div>
+      <hr class="line"/>
+
+      <h3 class="section-subheader">Spark a Chat with Us!</h3>
+
+      <form action="" method="post" class="message-form all-forms">
+        <label for="topic">Inquiry Topic</label>
+        <select name="inquiry-topic" id="topic" required>
+          <option value="">Select a topic</option>
+          <option value="Membership Inquiry">Membership Inquiry</option>
+          <option value="Class Schedule">Class Schedule</option>
+          <option value="Personal Training">Personal Training</option>
+          <option value="Facility Access">Facility Access</option>
+          <option value="Billing and Payments">Billing and Payments</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="recipient"></label>
+        <select name="recipient" id="recipient" required>
+            <option value="">Select a Recipient</option>
+            <!-- php -->
+        </select>
+
+        <label for="subject-field">Subject</label>
+        <input type="text" name="subject" id="subject-field" required>
+
+        <label for="message-area">Message</label>
+        <textarea name="message-area" id="message-area" cols="50"
+        rows="3"></textarea>
+
+        <button type="submit" class="message-submit" name="message">Hit Send!</button>
+      </form>
+
+    </section>
+  </body>
+</html>

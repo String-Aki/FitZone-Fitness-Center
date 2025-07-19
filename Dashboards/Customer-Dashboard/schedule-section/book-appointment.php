@@ -23,10 +23,9 @@ error_reporting(E_ALL);
                 </div>
             </div>
             <hr class="line">
-        </div>
 
         <h3 class="section-subheader request-class">Request a Class</h3>
-        <form action="" method="post" class="appointment-form">
+        <form action="" method="post" class="appointment-form all-forms">
             <label for="trainer-field">Select Trainer</label>
             <select name="trainer" id="trainer-field">
                 <option value="">-- Pick Your Trainer --</option>

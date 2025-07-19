@@ -148,12 +148,14 @@ p.activity-date {
 
 /* Schedule Section Styles: Book Appointment */
 
-.manage-schedule {
+.manage-schedule,
+.manage-message {
   display: flex;
   gap: 2vw;
 }
 
-.manage-schedule > h2 {
+.manage-schedule,
+.manage-message > h2 {
   cursor: pointer;
 }
 
@@ -161,7 +163,7 @@ p.activity-date {
   color: #637587;
 }
 
-form.appointment-form {
+form.all-forms{
   display: flex;
   flex-direction: column;
   padding: 1vw auto;
@@ -173,8 +175,8 @@ label {
   padding-bottom: 0.5vw;
 }
 
-.appointment-form > select,
-.appointment-form > input {
+.all-forms > select,
+.all-forms > input {
   width: 35%;
   height: 2.5vw;
   font-size: 1vw;
@@ -183,11 +185,11 @@ label {
   border: 1px solid #e3dede;
 }
 
-.appointment-form > select {
+.all-forms > select {
   text-indent: 1vw;
 }
 
-.appointment-form > input {
+.all-forms > input {
   padding: 1vw;
 }
 
@@ -220,7 +222,6 @@ i.log-marker {
   padding: 1vw;
   background-color: #f0f2f5;
   border-radius: 8px;
-
   margin-right: 1.5vw;
 }
 
@@ -229,7 +230,7 @@ p.log-header {
   font-weight: 500;
 }
 
-p.choosen-trainer {
+p.log-subheader {
   align-self: stretch;
   font-size: 0.9vw;
   color: #637587;
@@ -274,7 +275,7 @@ button.save-button {
   margin-top: 1vw;
   font-weight: 500;
   font-size: 1vw;
-  border:none;
+  border: none;
 }
 
 button.delete-button {
@@ -283,5 +284,45 @@ button.delete-button {
   border-radius: 1vw;
   margin-top: 1vw;
   font-weight: 500;
-  border:none;
+  border: none;
+}
+
+/* Message Section Styles: Compose */
+
+p.message-about {
+  font-size: 1vw;
+  color: #637587;
+  padding-bottom: 1vw;
+}
+
+#message-area {
+  width: 35%;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+  border-radius: 0.6vw;
+  border: 1px solid #e3dede;
+}
+
+button.message-submit {
+  width: 12%;
+  padding: 1vw;
+  border-radius: 1vw;
+  border: none;
+  margin-top: 1vw;
+  align-self: flex-end;
+
+  background-color: #1A80E5;
+  color: white;
+  font-size: 1vw;
+}
+
+/* Message Section Styles : Inbox */
+
+.profile-picture {
+   margin-right: 1.5vw;
+}
+
+.time {
+  color: #876363;
+  
 }

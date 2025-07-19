@@ -17,13 +17,12 @@
     <section class="book-appointment dashboard-sections">
         <h1 class="headers">My Schedule</h1>
         <div class="Schedule-indicator indicator-div">
-                <div class="manage-schedule">
-                    <h2 onclick="window.location.href = './book-appointment.php'" class="book-appointment sub-header" style="color:#637587;">Book Appointment</h2>
-                    <h2 onclick="window.location.href = './manage-appointment.php'" class="manage-appointment sub-header">Manage Appointment</h2>
-                </div>
+            <div class="manage-schedule">
+                <h2 onclick="window.location.href = './book-appointment.php'" class="book-appointment sub-header" style="color:#637587;">Book Appointment</h2>
+                <h2 onclick="window.location.href = './manage-appointment.php'" class="manage-appointment sub-header">Manage Appointment</h2>
             </div>
-            <hr class="line">
         </div>
+            <hr class="line">
 
             <?php
                 $fetch_query = "SELECT appointments.Appointment_ID, appointments.Session_Type, appointments.Status, trainers.Name as Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."'";
@@ -42,7 +41,7 @@
                         <i class="fas fa-calendar log-marker"></i>
                         <div class="text-wrap">
                         <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
-                        <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                        <p class="log-subheader">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
                         </div>
                         </div>
                         <button onclick="window.location.href=\'./edit-appointment.php?edit_id='. $row['Appointment_ID'] .'\'" class="manage">Manage</button>
@@ -56,7 +55,7 @@
                         <i class="fas fa-calendar log-marker"></i>
                         <div class="text-wrap">
                         <p class="log-header">'.htmlspecialchars($row['Session_Type']).'</p>
-                        <p class="choosen-trainer">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
+                        <p class="log-subheader">Trainer: '.htmlspecialchars($row['Trainer_Name']).'</p>
                         </div>
                         </div>
                         <p>' . htmlspecialchars($row['Status']) . '</p>
