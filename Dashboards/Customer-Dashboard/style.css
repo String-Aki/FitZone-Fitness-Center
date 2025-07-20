@@ -21,6 +21,8 @@ button {
 }
 
 nav.customer-dashboard-navbar {
+  position: relative;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -144,6 +146,88 @@ p.activity-date {
   font-size: 0.8vw;
   color: #61758a;
   padding-bottom: 1.5vw;
+}
+
+/* Profile Menu Sidebar Styles */
+
+.profile-menu {
+  position: fixed;
+  width: 25%;
+  height: 35vw;
+  padding: 1vw;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  background: rgba(255, 250, 249, 0.5);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 1vw;
+  backdrop-filter: blur(5px);
+  
+  
+  right: -100%;
+  transition: all 1.5s ease-in-out;
+}
+
+.show {
+  right: 1%;
+}
+
+.profile-info-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img-sidebar-container {
+  width: 74px;
+  height: 74px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: url("../../Assets/ben-sweet-2LowviVHZ-E-unsplash.jpg") lightgray
+    50% / cover no-repeat;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+  margin-block: 1vw;
+}
+.user-id {
+  color: #b2a3a3;
+  margin-bottom: 1vw;
+}
+
+.links-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-block: 1vw;
+}
+
+.link-icon {
+  padding: 1vw;
+  border-radius: 0.5vw;
+  background: #f0f2f5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.account-settings-link,
+.manage-memebership-link {
+  font-size: 1vw;
+}
+
+.logout {
+  margin-block: 1vw;
+  padding: 0.8vw 1.2vw;
+  background-color: #1a80e5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: white;
+  border: none;
+  border-radius: 0.8vw;
+  font-size: 1vw;
+  font-weight: 600;
 }
 
 /* Schedule Section Styles: Book Appointment */
@@ -366,11 +450,11 @@ input[type="file"]::file-selector-button:active {
   border-radius: 1vw;
 }
 
-.message-view::backdrop{
+.message-view::backdrop {
   backdrop-filter: blur(5px);
 }
 
-.message-view:focus{
+.message-view:focus {
   outline: none;
 }
 
