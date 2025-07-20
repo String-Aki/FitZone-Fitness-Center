@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    session_regenerate_id();
+    include("../includes/dbconnect.php");
+    error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,12 +97,6 @@
     </section>
     
     <?php
-    session_start();
-    session_regenerate_id();
-    include("../includes/dbconnect.php");
-    error_reporting(E_ALL);
-
-    $errors = [];
     if(isset($_POST["signup"])){
       $firstn = trim($_POST["firstName"]);
       $lastn = trim($_POST["lastName"]);
@@ -110,7 +110,8 @@
 
       if(!$stmt){
         die();
-        $error["prepare"] = "Prepare Failed".$conn->error;
+        echo '<script type="text/javascript">alert("Prepare Failed");
+        </script>';
       }
 
       $stmt->bind_param("ssiss", $firstn, $lastn, $phonenum, $email, $hashed_password);
@@ -122,13 +123,13 @@
       }
 
       else{
-        $errors['bind'] = "Error executing query: ". $stmt->error;
+       echo '<script type="text/javascript">alert("Error executing query");
+        </script>';
       }
       $stmt->close();
     }
 
     $conn->close();
-   $jsonResponse = json_encode(['errors' => $errors, 'success' => empty($errors)]);
     ?>
 
     <script
@@ -140,20 +141,6 @@
       type="text/javascript" 
       src="./script.js"
     ></script>
-
-    <?php if ($jsonResponse) : ?>
-        <script>
-            const response = <?php echo $jsonResponse; ?>;
-            if (response.errors) {
-                Object.entries(response.errors).forEach(([field, error]) => {
-                    console.log(`[${field}] ${error}`);
-                });
-            }
-            if (response.success) {
-                console.log('Registration successful');
-            }
-        </script>
-    <?php endif; ?>
   </body>
 </html>
 

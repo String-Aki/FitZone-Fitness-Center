@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../../../includes/dbconnect.php");
-error_reporting(E_ALL);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +49,7 @@ error_reporting(E_ALL);
                         echo "<option value=''>No Trainers Available</option>";
                     }
                     $results->free();
+                    $conn->close();
                 ?>
             </select>
 

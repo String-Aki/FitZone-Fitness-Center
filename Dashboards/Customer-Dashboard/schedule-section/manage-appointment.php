@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("../../../includes/dbconnect.php");
-    error_log(E_ALL);
+    error_log(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,11 +91,10 @@
                         <h3 class="section-subheader">You have no appointments scheduled</h3>
                         ';
                     }
-                    $results->free()
+                    $results->free();
+                    $conn->close();
             ?>
     </section>
-
-        <script type="text/javascript" src="./script.js"></script>
         <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../../../includes/dbconnect.php");
-error_reporting(E_ALL);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,8 +93,6 @@ error_reporting(E_ALL);
         $conn->close();
     }
     ?>
-
-    <script type="text/javascript" src="./script.js"></script>
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
