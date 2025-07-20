@@ -16,7 +16,7 @@
             <div class="links">
                 <a href="../overview-section/dashboard-overview.php" class="nav-link">Overview</a>
                 <a href="../schedule-section/book-appointment.php" class="nav-link">Schedule</a>
-                <a href="" class="nav-link">Connect</a>
+                <a href="../message-section/compose.php" class="nav-link">Connect</a>
                 <a href="" class="nav-link">Nutrition</a>
             </div>
             <button class="profile-button" onclick=""><img  src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img" class="profile-img"></button>

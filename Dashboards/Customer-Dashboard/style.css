@@ -163,7 +163,7 @@ p.activity-date {
   color: #637587;
 }
 
-form.all-forms{
+form.all-forms {
   display: flex;
   flex-direction: column;
   padding: 1vw auto;
@@ -172,7 +172,7 @@ form.all-forms{
 label {
   font-size: 1vw;
   font-weight: 500;
-  padding-bottom: 0.5vw;
+  padding-bottom: 1vw;
 }
 
 .all-forms > select,
@@ -180,7 +180,7 @@ label {
   width: 35%;
   height: 2.5vw;
   font-size: 1vw;
-  margin-bottom: 1vw;
+  margin-bottom: 1.5vw;
   border-radius: 0.6vw;
   border: 1px solid #e3dede;
 }
@@ -298,9 +298,10 @@ p.message-about {
 #message-area {
   width: 35%;
   font-size: 1vw;
-  margin-bottom: 1vw;
+  margin-bottom: 1.5vw;
   border-radius: 0.6vw;
   border: 1px solid #e3dede;
+  padding: 1vw;
 }
 
 button.message-submit {
@@ -311,7 +312,7 @@ button.message-submit {
   margin-top: 1vw;
   align-self: flex-end;
 
-  background-color: #1A80E5;
+  background-color: #1a80e5;
   color: white;
   font-size: 1vw;
 }
@@ -319,10 +320,115 @@ button.message-submit {
 /* Message Section Styles : Inbox */
 
 .profile-picture {
-   margin-right: 1.5vw;
+  margin-right: 1.5vw;
 }
 
 .time {
-  color: #876363;
-  
+  color: #637587;
+}
+
+input[type="file"] {
+  height: 100%;
+}
+
+input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 1vw;
+  height: 2.2vw;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 1vw;
+  transition: background-color 200ms;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+input[type="file"]::file-selector-button:active {
+  background-color: #e5e7eb;
+}
+
+.inbox-log {
+  cursor: pointer;
+}
+
+/* Message Section Styles : Message Modal */
+
+.message-view {
+  width: 50%;
+  height: 70%;
+  margin: auto;
+  padding: 2vw;
+  border: none;
+  border-radius: 1vw;
+}
+
+.message-view::backdrop{
+  backdrop-filter: blur(5px);
+}
+
+.message-view:focus{
+  outline: none;
+}
+
+.message-view::-webkit-scrollbar {
+  display: none;
+}
+
+.inner-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+i.close-button {
+  font-size: 1.5vw;
+  color: #f44;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+p.trainer-name {
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+h1.topic {
+  font-size: 1.5vw;
+  padding-top: 2vw;
+  padding-bottom: 1vw;
+  text-align: center;
+}
+
+p.message-content {
+  font-size: 1vw;
+  font-weight: 500;
+  text-align: center;
+}
+
+p.inquiry {
+  padding-block: 5vw;
+  text-align: center;
+  color: #637587;
+}
+
+.inquiry-header {
+  color: black;
+}
+
+.responded-time {
+  padding-top: 1vw;
+  text-align: end;
 }
