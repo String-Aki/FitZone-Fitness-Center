@@ -29,7 +29,7 @@ error_reporting(0);
             $edit_row =  $results->fetch_assoc();
         }
         ?>
-        <form action="" method="post" class="appointment-form edit ">
+        <form action="" method="post" class="appointment-form all-forms edit ">
             <label for="trainer-field">Select Trainer</label>
             <select name="trainer" id="trainer-field">
                 <option value="">-- Pick Your Trainer --</option>

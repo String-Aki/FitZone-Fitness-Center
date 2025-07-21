@@ -516,3 +516,142 @@ p.inquiry {
   padding-top: 1vw;
   text-align: end;
 }
+
+
+/* Nutrition Section Styles */
+
+.nutrition-header{
+  font-size: 2vw;
+  font-weight: 600;
+}
+
+.about-page{
+  color: #6B7582;
+  font-size: 1.2vw;
+}
+
+.featured {
+  display: flex;
+  align-items: center;
+  padding-top: 2.5vw;
+  padding-bottom: 5vw;
+}
+
+.blog-img-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18vw;
+  width: 40%;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 2vw;
+}
+
+.blog-img {
+  transform: scale(0.4);
+  object-fit: cover;
+}
+
+.tag {
+  color:#6B7582;
+}
+
+.title{
+  text-decoration: none;
+  color: black;
+  font-size: 2vw;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.content-preview {
+  width: 85%;
+  color:#6B7582;
+  font-size: 1.2vw;
+}
+
+.latest {
+  padding-bottom: 1vw;
+  font-weight: 600;
+}
+
+.articles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2vw;
+}
+
+.article-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vw;
+  width: 30%;
+  border-radius: 12px;
+
+  background-color: #121417;
+  overflow: hidden;
+}
+
+.article-img {
+  transform: scale(0.3);
+  object-fit: cover;
+}
+
+/* Article Styles*/
+
+h1.article-h1 {
+  margin: auto;
+  font-size: 2.8vw;
+  text-align: center;
+  width: 80%;
+  color: rgb(36, 36, 36);
+}
+
+h2.article-sub-headers {
+  font-size: 2.2vw;
+  padding-top: 1vw;
+  color: rgb(36, 36, 36);
+}
+
+.para,li {
+  color: rgb(36, 36, 36);
+  font-size: 1.3vw;
+  line-height: 2.8vw;
+}
+
+ol,ul {
+  padding-left: 2.5vw;
+}
+
+.section-img-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block: 5% ;
+  border-radius: 1vw;
+}
+
+.section-img{
+  border-radius: 1vw;
+  height: 30vw;
+}
+
+.helper {
+  padding-bottom: 1vw;
+
+}
+
+.written-by{
+  padding-top: 2vw;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.written-by-para {
+  text-align: center;
+  font-size: 1vw;
+}
