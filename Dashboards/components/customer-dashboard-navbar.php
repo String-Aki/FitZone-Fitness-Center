@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("../../../includes/dbconnect.php");
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +32,8 @@
       <div class="button-seperator">
           <div class="profile-info-wrap">
             <div class="profile-img-sidebar-container"></div>
-            <h1 class="username">Akira</h1>
-            <p class="user-id">User ID: 1234</p>
+            <h1 class="username"><?php echo htmlspecialchars($_SESSION['username'])?></h1>
+            <p class="user-id"><?php echo "USER ID: ".htmlspecialchars($_SESSION['user_id'])?></p>
           </div>
           <div class="wrapper-container">
             <div class="links-wrap">
@@ -58,6 +63,12 @@
         logout.addEventListener("click", ()=>{
             window.location.href = "../../../includes/logout.php";
         })
+
+        window.addEventListener("scroll", () => {
+        if (window.innerWidth > 768 &&   window.scrollY > 1) {
+          profileMenu.classList.remove("show");
+          }
+        });
     </script>
     <script
       src="https://kit.fontawesome.com/15767cca17.js"

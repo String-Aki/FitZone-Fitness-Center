@@ -1,8 +1,3 @@
-<?php
-    session_start();
-    include("../../../includes/dbconnect.php");
-    error_log(0);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

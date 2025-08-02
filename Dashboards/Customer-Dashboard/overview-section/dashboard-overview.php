@@ -1,11 +1,3 @@
-<?php
-session_start();
-include("../../../includes/dbconnect.php");
-error_reporting(0);
-
-$isLoggedIn = isset($_SESSION['loggedIn']);
-$isLoggedId = isset($_SESSION['user_id']);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +7,10 @@ $isLoggedId = isset($_SESSION['user_id']);
     <title>Dashboard Overview</title>
 </head>
 <body>
-   <?php include("../../components/customer-dashboard-navbar.php"); ?>
+   <?php include("../../components/customer-dashboard-navbar.php");
+    $isLoggedIn = isset($_SESSION['loggedIn']);
+    $isLoggedId = isset($_SESSION['user_id']);
+    ?>
    
     <section class="overview dashboard-sections">
         <?php if($isLoggedIn): ?>
