@@ -128,13 +128,62 @@ p.expiry-date {
 .img-container {
   width: 15vw;
   height: 10vw;
+  border-radius: 1vw;
+  overflow: hidden;
 }
 
-img.next-class-img,
-img.membership-img {
+.next-class-container {
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+img.next-class-img {
   width: 100%;
-  border-radius: 1vw;
   object-fit: cover;
+}
+
+.membership-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.Basic-card {
+  background: linear-gradient(90deg, #43c6ac 0%, #191654 100%);
+}
+
+.Basic-title {
+  background: linear-gradient(90deg, #dde1e8 0%, #c2b5d9 100%);
+}
+
+.Pro-card {
+  background: linear-gradient(90deg, #c04848 0%, #480048 100%);
+}
+
+.Pro-title {
+  background: linear-gradient(90deg, #e1eec3 0%, #f05053 100%);
+}
+
+.Elite-card {
+  background: linear-gradient(90deg, #434343 0%, #000 100%);
+}
+
+.Elite-title {
+  background: linear-gradient(90deg, #bcbcbc 0%, #757575 100%);
+}
+
+h1.membership-plan {
+  font-size: 2.5vw;
+  font-style: italic;
+  font-weight: 500;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.not {
+  padding-bottom: 2vw;
 }
 
 p.recent-activity {
@@ -155,7 +204,7 @@ p.activity-date {
   width: 25%;
   height: 35vw;
   padding: 1vw;
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -166,8 +215,7 @@ p.activity-date {
   border: none;
   border-radius: 1vw;
   backdrop-filter: blur(5px);
-  
-  
+
   right: -100%;
   transition: all 1.5s ease-in-out;
 }
@@ -517,16 +565,15 @@ p.inquiry {
   text-align: end;
 }
 
-
 /* Nutrition Section Styles */
 
-.nutrition-header{
+.nutrition-header {
   font-size: 2vw;
   font-weight: 600;
 }
 
-.about-page{
-  color: #6B7582;
+.about-page {
+  color: #6b7582;
   font-size: 1.2vw;
 }
 
@@ -537,7 +584,7 @@ p.inquiry {
   padding-bottom: 5vw;
 }
 
-.blog-img-container{
+.blog-img-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -555,10 +602,10 @@ p.inquiry {
 }
 
 .tag {
-  color:#6B7582;
+  color: #6b7582;
 }
 
-.title{
+.title {
   text-decoration: none;
   color: black;
   font-size: 2vw;
@@ -568,7 +615,7 @@ p.inquiry {
 
 .content-preview {
   width: 85%;
-  color:#6B7582;
+  color: #6b7582;
   font-size: 1.2vw;
 }
 
@@ -617,35 +664,36 @@ h2.article-sub-headers {
   color: rgb(36, 36, 36);
 }
 
-.para,li {
+.para,
+li {
   color: rgb(36, 36, 36);
   font-size: 1.3vw;
   line-height: 2.8vw;
 }
 
-ol,ul {
+ol,
+ul {
   padding-left: 2.5vw;
 }
 
-.section-img-container{
+.section-img-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-block: 5% ;
+  margin-block: 5%;
   border-radius: 1vw;
 }
 
-.section-img{
+.section-img {
   border-radius: 1vw;
   height: 30vw;
 }
 
 .helper {
   padding-bottom: 1vw;
-
 }
 
-.written-by{
+.written-by {
   padding-top: 2vw;
   font-size: 1vw;
   text-align: center;
