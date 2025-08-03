@@ -44,7 +44,6 @@
                         echo "<option value=''>No Trainers Available</option>";
                     }
                     $results->free();
-                    $conn->close();
                 ?>
             </select>
 

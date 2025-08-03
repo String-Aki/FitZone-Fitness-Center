@@ -27,7 +27,7 @@
                         $response_time = strtotime($datetime);
                         $diff = $now - $response_time;
                         if ($diff < 60) {
-                            return $diff . ($diff == 1 ? ' second ago' : ' seconds ago');
+                            return ($diff == 1 ? ' second ago' : ' seconds ago');
                         } elseif ($diff < 3600) {
                             $minutes = floor($diff / 60);
                             return $minutes . ($minutes == 1 ? ' minute ago' : ' minutes ago');
