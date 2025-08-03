@@ -60,7 +60,10 @@
             <label for="session-time">Session Time</label>
             <input type="time" name="session-time" id="session-time">
 
-            <button type="submit" class="submit-button" name="book">Submit Request</button>
+            <button type="submit" class="submit-button" name="book"
+            <?php
+            echo ($_SESSION['card'] != 'Approved') ? 'disabled' : '';
+            ?>>Submit Request</button>
         </form>
     </section>
                                     
