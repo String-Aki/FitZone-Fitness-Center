@@ -1,6 +1,6 @@
 <?php
     session_start();
-    session_regenerate_id();
+    session_regenerate_id(true);
     include("../includes/dbconnect.php");
     error_reporting(0);
 ?>

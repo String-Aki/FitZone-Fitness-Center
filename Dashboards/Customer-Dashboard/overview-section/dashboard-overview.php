@@ -67,6 +67,7 @@
 
             $result = $conn->query($fetch_query);
             $row = $result->fetch_assoc();
+            if($row){
             $_SESSION['card'] = $row['Status'];
             if($row['Status'] == 'Approved'){
                 echo '
@@ -83,7 +84,7 @@
                 </div>';
             }
 
-            else{
+            elseif($row['Status'] == 'Not Approved'){
                 echo 
                 '
                 <div class="your-membership-section">
@@ -94,6 +95,18 @@
                 </div>
                 ';
             }
+        }
+        else{
+            echo 
+                '
+                <div class="your-membership-section">
+                    <div>
+                        <p class="your-membership-p">Has Not Been Approved Yet.</p>
+                    </div>
+                    <div class="img-container membership-card" style="box-shadow: none;"></div>
+                </div>
+                ';
+        }
             $result->free();
         ?>
 
