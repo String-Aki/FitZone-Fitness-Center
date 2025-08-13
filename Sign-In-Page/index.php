@@ -83,6 +83,7 @@ error_reporting(0);
           elseif($_SESSION['role'] === 'admin'){
             echo '<script>
               alert("Redirecting to admin dashboard...");
+              window.location.href = "../Dashboards/Admin-Dashboard/first-view.php";
           </script>';
   
           $_SESSION['loggedIn'] = true;

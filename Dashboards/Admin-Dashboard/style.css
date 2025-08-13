@@ -91,6 +91,14 @@ li.list {
   padding: 1.5vw 2vw 1vw 6vw;
 }
 
+li.list > a {
+  color:#637587;
+}
+
+li.list > a:hover {
+  color: black;
+}
+
 /* First View Styles*/
 
 section.dashboard-selection {

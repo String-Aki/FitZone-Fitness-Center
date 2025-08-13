@@ -38,15 +38,28 @@
         const iconToPower = document.querySelector(".menu-icon");
         
         const displayLink = document.querySelector(".selected");
-        if(displayLink.textContent.trim() != "Admin"){
+        if(displayLink.textContent.trim() == "Admin")
+            {
+                hoverElem2.addEventListener("mouseenter", ()=>{
+                    iconToPower.classList.remove("fa-dumbbell");
+                    iconToPower.classList.add("fa-power-off");
+
+                    document.querySelector(".fa-power-off").addEventListener("click",()=>{
+                    window.location.href = "../../includes/logout.php";
+                    })
+                })
+            }
+        else
+            {
             hoverElem2.addEventListener("mouseenter", ()=>{
             showElem.classList.add("active");
             iconToPower.classList.remove("fa-dumbbell");
             iconToPower.classList.add("fa-power-off");
             document.querySelector(".fa-power-off").addEventListener("click",()=>{
-            window.location.href = "../../../includes/logout.php";
+            window.location.href = "../../includes/logout.php";
         })
-        });}
+        });
+            }
         hoverElem.addEventListener("mouseleave", ()=>{
             showElem.classList.remove("active")
             iconToPower.classList.remove("fa-power-off");
