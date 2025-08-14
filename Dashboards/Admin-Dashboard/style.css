@@ -267,6 +267,12 @@ img.profile-picture{
   cursor: pointer;
 }
 
+.not{
+  font-size: 1.5vw;
+  font-style: italic;
+  margin:0 auto;
+}
+
 /* Broadcast Section Styles */
 
 form.broadcast-form {

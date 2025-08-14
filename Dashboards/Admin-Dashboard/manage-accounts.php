@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include("../../includes/dbconnect.php");
+  // error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,25 +28,49 @@
         </div>
       </form>
 
-      <div class="account-container">
-        <div class="info-wrap">
-          <div class="profile-img-container">
-              <img
-                src="../../../Assets/customer-dashboard-assets/profile.png"
-                alt="profile-picture"
-                class="profile-picture"
-              />
-          </div>
-          <div class="text-wrap">
-              <p class="account-name">Mark</p>
-              <p class="account-email">Mark@fitzone.com</p>
-          </div>
-        </div>
-        <div class="actions-wrap">
-            <i class="fas fa-pen-to-square edit-account" onclick="window.location.href='./edit-account.php?selected=Edit Account'"></i>
-            <i class="fa-regular fa-circle-xmark delete-account"></i>
-        </div>
-      </div>
+      <?php
+        $sql = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID";
+
+        $result = $conn->query($sql);
+
+        if($result->num_rows > 0){
+          
+          while($row = $result->fetch_assoc()){
+            echo 
+            '
+              <div class="account-container">
+                <div class="info-wrap">
+                  <div class="profile-img-container">
+                      <img
+                        src="../../Assets/customer-dashboard-assets/profile.png"
+                        alt="profile-picture"
+                        class="profile-picture"
+                      />
+                  </div>
+                  <div class="text-wrap">
+                      <p class="account-name">'.$row['Name'].'</p>
+                      <p class="account-email">'.$row['Email'].'</p>
+                  </div>
+                </div>
+                <div class="actions-wrap">
+                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$row['User_ID'].'\'"></i>
+                    <i class="fa-regular fa-circle-xmark delete-account"></i>
+                </div>
+              </div>
+            ';
+          }
+        }
+
+        else
+          {
+            echo
+            '<div class="account-container">
+                <h1 class="account-name not">No Trainers Add Yet</h1>
+            </div>';
+          }
+          $result->free();
+          $conn->close();
+      ?>     
     </section>
 
     <script>
