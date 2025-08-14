@@ -14,22 +14,67 @@
   <body>
     <?php include("../components/admin-menu.php")?>
     <section class="manage-accounts-section">
-      <form action="" method="get" class="search-accounts">
+      <form method="get" class="search-accounts">
         <div class="search-container">
+          <input type="hidden" name="selected" value="Searching">
           <input
             type="text"
-            name="search"
+            name="searchFor"
             class="search-input"
             placeholder="Search Accounts"
           />
-          <button type="submit" class="search-button">
+          <button type="submit" name="search" class="search-button" >
             <i class="fas fa-arrow-right search-icon"></i>
           </button>
         </div>
       </form>
 
       <?php
-        $sql = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID";
+
+        if(isset($_GET['search'])){
+          $search = trim($_GET['searchFor']);
+          $search_query = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID WHERE users.First_Name = '$search'";
+
+          $search_results = $conn->query($search_query);
+          if($search_results->num_rows > 0){
+            while($searched_rows = $search_results->fetch_assoc()){
+            echo 
+            '
+              <div class="account-container">
+                <div class="info-wrap">
+                  <div class="profile-img-container">
+                      <img
+                        src="../../Assets/customer-dashboard-assets/profile.png"
+                        alt="profile-picture"
+                        class="profile-picture"
+                      />
+                  </div>
+                  <div class="text-wrap">
+                      <p class="account-name">'.$searched_rows['Name'].'</p>
+                      <p class="account-email">'.$searched_rows['Email'].'</p>
+                  </div>
+                </div>
+                <div class="actions-wrap">
+                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$searched_rows['User_ID'].'\'"></i>
+                    <i class="fa-regular fa-circle-xmark delete-account"></i>
+                </div>
+              </div>
+            ';
+          }
+          }
+
+          else
+          {
+            echo
+            '<div class="account-container">
+                <h1 class="account-name not">Trainer Not Found</h1>
+            </div>';
+          }
+        }
+
+        else
+        {
+          $sql = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID";
 
         $result = $conn->query($sql);
 
@@ -70,7 +115,8 @@
           }
           $result->free();
           $conn->close();
-      ?>     
+        }
+      ?>
     </section>
 
     <script>
@@ -85,6 +131,7 @@
         }
       });
     </script>
+
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"

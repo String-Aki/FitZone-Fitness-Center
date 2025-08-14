@@ -14,8 +14,8 @@ error_reporting(0);
 <body>
     <?php include("../components/admin-menu.php")?>
     <section class="create-account-section">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="create-account-form">
-            
+        <form method="post" class="create-account-form">
+            <input type="hidden" name="selected" value="Create Account">
             <div class="group">
                 <label for="full-name">Trainer Name</label>
                 <input type="text" name="full-name" id="full-name" placeholder="Full name">
