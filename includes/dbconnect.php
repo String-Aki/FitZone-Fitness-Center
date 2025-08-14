@@ -8,5 +8,4 @@ $conn=mysqli_connect($server, $user, $password, $dbase );
 if(!$conn){
 	die();
 }
-echo '<script type="text/javascript">console.log("Database Connected successfully");</script>';
  ?>

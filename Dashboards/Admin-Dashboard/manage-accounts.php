@@ -99,7 +99,7 @@
                 </div>
                 <div class="actions-wrap">
                     <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$row['User_ID'].'\'"></i>
-                    <i class="fa-regular fa-circle-xmark delete-account"></i>
+                    <i class="fa-regular fa-circle-xmark delete-account" onclick="DeleteTrainer('.$row['User_ID'].')"></i>
                 </div>
               </div>
             ';
@@ -130,6 +130,30 @@
           searchCont.style.outline = "none";
         }
       });
+
+
+      function DeleteTrainer(userid){
+        if(confirm("Are you sure you want to delete this account?")){
+          fetch('./delete-account.php',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'delete_id=' + userid
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data.success);
+            if(data.success){
+              alert('Account Deleted Successfully');
+              window.location.reload();
+            }
+            else{
+              alert('Account Deletion Failed!');
+            }
+          })
+        }
+      }
     </script>
 
     <script
