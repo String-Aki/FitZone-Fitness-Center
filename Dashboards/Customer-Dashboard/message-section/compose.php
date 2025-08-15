@@ -89,7 +89,7 @@
           $status = 'pending';
 
           if(isset($_FILES['uploads']) && $_FILES['uploads']['error'] != UPLOAD_ERR_NO_FILE){
-            $target_dir = "Uploads/";
+            $target_dir = "../../../includes/Uploads/files/";
             $upload_name = basename($_FILES["uploads"]["name"]);
             $upload_path = $target_dir . $upload_name;
 
