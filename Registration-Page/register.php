@@ -75,7 +75,7 @@
           name="password"
           id="password-field"
           class="password-field"
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%])[A-Za-z\d@#$%]{8,}$"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%_])[A-Za-z\d@#$_%]{8,}$"
           minlength="8"
           title="Password must be at least 8 characters and include an uppercase letter, lowercase letter, number, and special character (@#$%)."
           required
