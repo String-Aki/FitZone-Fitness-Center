@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../../../includes/dbconnect.php");
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,25 +24,33 @@ include("../../../includes/dbconnect.php");
                 <a href="../message-section/compose.php" class="nav-link">Connect</a>
                 <a href="../nutrition-section/nutrition.php" class="nav-link">Nutrition</a>
             </div>
-            <button class="profile-button"><img  src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img" class="profile-img"></button>
+            <?php
+              $pfp_query = $conn->query("SELECT Profile_Img_Path FROM users WHERE User_ID = '".$_SESSION['user_id']."'");
+              $pfp_path = $pfp_query->fetch_assoc();
+              $default_path = "../../../Assets/customer-dashboard-assets/profile.png";
+              $pfp_relative = "../../../includes/Uploads/pfp/".$pfp_path['Profile_Img_Path'];
+              
+            ?>
+            <button class="profile-button"><img  src="<?php echo !empty($pfp_path['Profile_Img_Path']) ? $pfp_relative : $default_path; ?>" alt="profile-img" class="profile-img"></button> 
         </div>
     </nav>
-
     <div class="profile-menu">
       <div class="button-seperator">
           <div class="profile-info-wrap">
-            <div class="profile-img-sidebar-container"></div>
+            <div class="profile-img-sidebar-container">
+              <img  src="<?php echo !empty($pfp_path['Profile_Img_Path']) ? $pfp_relative : $default_path; ?>" alt="profile-img" class="profile-img">
+            </div>
             <h1 class="username"><?php echo htmlspecialchars($_SESSION['username'])?></h1>
             <p class="user-id"><?php echo "USER ID: ".htmlspecialchars($_SESSION['user_id'])?></p>
           </div>
           <div class="wrapper-container">
-            <div class="links-wrap">
+            <div class="links-wrap settings">
               <i class="fas fa-gear link-icon"></i>
-              <h2 class="account-settings-link">Account Settings</h2>
+              <h2 class="account-settings-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/account-settings.php'">Account Settings</h2>
             </div>
-            <div class="links-wrap">
+            <div class="links-wrap membership">
               <i class="fa-regular fa-credit-card link-icon"></i>
-              <h2 class="manage-memebership-link">Manage Memberships</h2>
+              <h2 class="manage-memebership-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/manage-membership.php'">Manage Memberships</h2>
             </div>
           </div>
       </div>
@@ -57,17 +66,38 @@ include("../../../includes/dbconnect.php");
         profileToggle.addEventListener("click", ()=>{
             profileMenu.classList.toggle("show");
             console.log("clicked");
-        })
+        });
 
         logout.addEventListener("click", ()=>{
             window.location.href = "../../../includes/logout.php";
-        })
+        });
 
         window.addEventListener("scroll", () => {
         if (window.innerWidth > 768 &&   window.scrollY > 1) {
           profileMenu.classList.remove("show");
           }
         });
+
+        const settings_icon = document.querySelector(".fa-gear");
+        const membership_icon = document.querySelector(".fa-credit-card");
+        const settings_link = document.querySelector(".settings");
+        const membership_link = document.querySelector(".membership");
+        
+          settings_link.addEventListener('mouseenter', () => {
+              settings_icon.classList.add("highlight");
+          });
+
+          membership_link.addEventListener('mouseenter', () => {
+            membership_icon.classList.add("highlight");
+          });
+
+          settings_link.addEventListener('mouseleave',() => {
+              settings_icon.classList.remove("highlight");
+          });
+
+          membership_link.addEventListener('mouseleave',() => {
+              membership_icon.classList.remove("highlight");
+          });          
     </script>
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
