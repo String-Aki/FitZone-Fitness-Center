@@ -1,3 +1,6 @@
+<?php
+    error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +46,58 @@
                         }
                     }
                 ?>
+
+                <?php
+                $fetch_broadcast = "SELECT * FROM broadcasts";
+
+                $broadcast_result = $conn->query($fetch_broadcast);
+
+                if($broadcast_result->num_rows > 0){
+                   echo '<h3 class="section-subheader">Announcements</h3>';
+                   while($broadcast = $broadcast_result->fetch_assoc()){
+                    
+                    $ShortMessage = implode(' ', array_slice(explode(' ', $broadcast['Announcement']), 0, 3)) . " . . .";
+                    $dialogID = "message-popup".htmlspecialchars($broadcast['Broadcast_ID']);
+                    
+                            echo '
+                            <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
+                                <div class="info-wrap">
+                                    <img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture">
+                                        <div class="text-wrap">
+                                            <p class="log-header">'.htmlspecialchars($ShortMessage).'</p>
+                                            <p class="log-subheader">'.htmlspecialchars($broadcast['Topic']).'</p>
+                                        </div>
+                                </div>
+                                <p class="time">'.timesinceResponded($broadcast['Created_At']).'</p>
+                            </div>
+
+                            <dialog id="'.$dialogID.'" class="message-view">
+                                <div class="inner-wrapper">
+                                    <div class="header-wrapper">
+                                        <div class="profile-wrapper">
+                                            <img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img">
+                                            <p class="trainer-name">Admin</p>
+                                        </div>
+                                        <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\''.$dialogID.'\').close();"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h1 class="topic">'.htmlspecialchars($broadcast['Topic']).'</h1>
+                                        <p class="message-content"><strong class="message-header">Message:</strong> <br>'.htmlspecialchars($broadcast['Announcement']).'</p>
+                                        <p class="responded-time">'.timesinceResponded($broadcast['Created_At']).'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dialog>
+
+                            ';
+                   }
+                }
+
+                else
+                {
+                    echo '<h3 class="section-subheader">No Announcements</h3>';
+                }
+            ?>
     
             <?php
                 $query = "SELECT Message_ID, Topic, Message, Response, Responded_At, Status, trainers.Name FROM messages JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE messages.User_ID = '".$_SESSION['user_id']."'";
