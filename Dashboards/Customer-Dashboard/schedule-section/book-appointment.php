@@ -62,7 +62,7 @@
 
             <button type="submit" class="submit-button" name="book"
             <?php
-            echo ($_SESSION['card'] != 'Approved') ? 'disabled' : '';
+            echo ($_SESSION['card'] != 'Approved' || ($_SESSION['card'] == NULL)) ? 'disabled' : '';
             ?>>Submit Request</button>
         </form>
     </section>
