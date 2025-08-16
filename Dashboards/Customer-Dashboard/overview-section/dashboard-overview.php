@@ -130,13 +130,6 @@
                     <p class="activity-date">'.date('l, F j, Y', strtotime($recents['Session_Date'])).'</p>
                     ';
                 }
-
-                if($recents['Status'] == NULL || $recents['Status'] == 'confirmed' ){
-                    echo
-                    '
-                    <p class="recent-activities">No Recent Updates</p>
-                    ';
-                }
             }
             $activity_result->free();
             $conn->close();
