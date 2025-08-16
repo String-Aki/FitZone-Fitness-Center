@@ -44,6 +44,8 @@
                     }
                 ?>
 
+                
+
                 <?php
                 $fetch_broadcast = "SELECT * FROM broadcasts";
                 $broadcast_result = $conn->query($fetch_broadcast);
@@ -96,10 +98,9 @@
             ?>
     
             <?php
-                $query = "SELECT Message_ID, Topic, Message, Response, Responded_At, Status, trainers.Name FROM messages JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE messages.User_ID = '".$_SESSION['user_id']."'";
+                $query = "SELECT m.Message_ID, m.Topic, m.Message, m.Response, m.Responded_At, m.Status, t.Name, u.Profile_Img_Path FROM messages AS m JOIN trainers AS t ON m.Recipient_ID = t.Trainer_ID JOIN users AS u ON t.User_ID = u.User_ID WHERE m.User_ID = '".$_SESSION['user_id']."'";
     
                 $results = $conn->query($query);
-    
                 if($results->num_rows > 0){
                     $inbox_header = false;
                     while($row = $results->fetch_assoc()){
@@ -109,10 +110,12 @@
                                 $inbox_header = true;
                             }
                             $dialogID = "message-popup".htmlspecialchars($row['Message_ID']);
+                            $pfp_path = (!empty($row['Profile_Img_Path'])) ? $row['Profile_Img_Path'] : "../../../Assets/customer-dashboard-assets/profile.png";
+
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
-                                    <div class="profile-cont"><img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture"></div>
+                                    <div class="profile-cont"><img src="'.htmlspecialchars($pfp_path).'" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
                                             <p class="log-header">'.htmlspecialchars($row['Name']).'</p>
                                             <p class="log-subheader">'.htmlspecialchars($row['Topic']).'</p>
@@ -125,7 +128,7 @@
                                 <div class="inner-wrapper">
                                     <div class="header-wrapper">
                                         <div class="profile-wrapper">
-                                            <div class="profile-cont"><img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img"></div>
+                                            <div class="profile-cont"><img class="profile-img" src="'.htmlspecialchars($pfp_path).'" alt="profile-img"></div>
                                             <p class="trainer-name">'.htmlspecialchars($row['Name']).'</p>
                                         </div>
                                         <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\''.$dialogID.'\').close();"></i>
