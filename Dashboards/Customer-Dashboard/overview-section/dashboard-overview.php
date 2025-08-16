@@ -10,6 +10,7 @@
    <?php include("../../components/customer-dashboard-navbar.php");
     $isLoggedIn = isset($_SESSION['loggedIn']);
     $isLoggedId = isset($_SESSION['user_id']);
+    $_SESSION['card'] = NULL;
     ?>
    
     <section class="overview dashboard-sections">
@@ -63,7 +64,7 @@
         <h3 class="your-membership-header overview-subheaders section-subheader">Your Membership</h3>
 
         <?php
-            $fetch_query = "SELECT memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN trainers ON trainers.Trainer_ID = memberships.Trainer_ID WHERE memberships.User_ID = '".$_SESSION['user_id']."'";
+            $fetch_query = "SELECT memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN users ON users.User_ID = memberships.User_ID WHERE memberships.User_ID = '".$_SESSION['user_id']."'";
 
             $result = $conn->query($fetch_query);
             $row = $result->fetch_assoc();
@@ -127,6 +128,13 @@
                     '
                     <p class="recent-activities">Booked: '.htmlspecialchars($recents['Session_Type']).' with '.htmlspecialchars($recents['Trainer_Name']).'</p>
                     <p class="activity-date">'.date('l, F j, Y', strtotime($recents['Session_Date'])).'</p>
+                    ';
+                }
+
+                if($recents['Status'] == NULL || $recents['Status'] == 'confirmed' ){
+                    echo
+                    '
+                    <p class="recent-activities">No Recent Updates</p>
                     ';
                 }
             }
