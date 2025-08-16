@@ -46,7 +46,6 @@
 
                 <?php
                 $fetch_broadcast = "SELECT * FROM broadcasts";
-
                 $broadcast_result = $conn->query($fetch_broadcast);
 
                 if($broadcast_result->num_rows > 0){
@@ -59,7 +58,7 @@
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
-                                    <img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture">
+                                    <div class="profile-cont"><img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
                                             <p class="log-header">'.htmlspecialchars($ShortMessage).'</p>
                                             <p class="log-subheader">'.htmlspecialchars($broadcast['Topic']).'</p>
@@ -72,7 +71,7 @@
                                 <div class="inner-wrapper">
                                     <div class="header-wrapper">
                                         <div class="profile-wrapper">
-                                            <img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img">
+                                            <div class="profile-cont"><img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img"></div>
                                             <p class="trainer-name">Admin</p>
                                         </div>
                                         <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\''.$dialogID.'\').close();"></i>
@@ -113,7 +112,7 @@
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
-                                    <img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture">
+                                    <div class="profile-cont"><img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
                                             <p class="log-header">'.htmlspecialchars($row['Name']).'</p>
                                             <p class="log-subheader">'.htmlspecialchars($row['Topic']).'</p>
@@ -126,7 +125,7 @@
                                 <div class="inner-wrapper">
                                     <div class="header-wrapper">
                                         <div class="profile-wrapper">
-                                            <img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img">
+                                            <div class="profile-cont"><img class="profile-img" src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-img"></div>
                                             <p class="trainer-name">'.htmlspecialchars($row['Name']).'</p>
                                         </div>
                                         <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\''.$dialogID.'\').close();"></i>
