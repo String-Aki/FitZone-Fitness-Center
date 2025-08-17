@@ -83,7 +83,6 @@
           $recipient_id = $_POST['recipient'];
           $topic = $_POST['inquiry-topic'];
           $message = trim($_POST['message-area']);
-          $created_at = date('Y-m-d H:i:s');
           $upload_name = '';
           $upload_path = '';
           $status = 'pending';
@@ -99,14 +98,14 @@
             }
           }
 
-          $sql = "INSERT INTO messages (User_ID, Recipient_ID, Topic, Message, Created_At, Upload_Name, Upload_Path, Status) VALUES (?,?,?,?,?,?,?,?)";
+          $sql = "INSERT INTO messages (User_ID, Recipient_ID, Topic, Message, Upload_Name, Upload_Path, Status) VALUES (?,?,?,?,?,?,?)";
 
           $stmt = $conn->prepare($sql);
           if(!$stmt){
             echo '<script>alert("Prepare Failed")</script>';
           }
 
-          $stmt->bind_param("ssssssss",$user_id,$recipient_id, $topic, $message, $created_at, $upload_name, $upload_path,$status);
+          $stmt->bind_param("sssssss",$user_id,$recipient_id, $topic, $message, $upload_name, $upload_path,$status);
 
 
           if($stmt->execute()){
