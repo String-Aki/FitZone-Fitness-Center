@@ -104,6 +104,9 @@ body {
 }
 
 main {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 2vw;
 }
@@ -158,14 +161,21 @@ header {
   align-items: center;
   column-gap: 1rem;
 }
-.avatar {
+
+.profile-container {
+  display: flex;
+  flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+  overflow: hidden;
+}
+.avatar {
+  object-fit: cover;
 }
 .user-info p:first-child {
   font-weight: 600;
-  color: #a0aec0;
+  color: #4a5568;
   margin: 0;
 }
 .user-info p:last-child {
@@ -175,11 +185,16 @@ header {
 }
 
 /* Dashboard Styles */
+.staff-dashboard-section {
+  display: flex;
+  flex-grow: 1;
+}
 
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
+  width: 100%;
 }
 
 .span-1 {
@@ -191,11 +206,28 @@ header {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  overflow: hidden;
+  overflow-y: auto;
+  flex-grow: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.approval-card, 
+.appointment-card{
+  height: 19vw;
+}
+
+.message-card, .task-summary {
+  height: 15vw;
 }
 
 .card-header {
@@ -217,15 +249,9 @@ header {
   cursor: pointer;
 }
 
-/* Message Card */
+/* Approval Card */
 
-.message-card {
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.message-item {
+.approval-item {
   display: flex;
   align-items: center;
   column-gap: 1rem;
@@ -233,26 +259,81 @@ header {
   border-radius: 0.5rem;
 }
 
-.message-item:hover {
+.approval-item:hover {
+  border-left: 4px solid #6b7280;
+  background-color: #f9fafb;
+  color: #4a5568;
+}
+
+.approval-item-profile {
+  display: flex;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.approval-content {
+  font-size: 0.8vw;
+}
+
+.review {
+  font-size: 0.875vw;
+}
+
+.review:hover {
+    cursor: pointer;
+    color: #dd6b20;
+}
+
+/* Message Card, Appointment Card & Approval Card*/
+.message-space,
+.appointment-space,
+.approval-space {
+  overflow-y: auto;
+  flex-grow: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.message-item,
+.appointment-item {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.75vw;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.message-item:hover,
+.appointment-item:hover {
   border-left: 4px solid #ed8936;
   background-color: #fffaf0;
   color: #dd6b20;
 }
 
-.message-content-wrapper {
+.message-content-wrapper,
+.appointment-content-wrapper,
+.approval-content-wrapper {
   flex-grow: 1;
 }
 
-.message-content p {
+.message-content p,
+.appointment-content p {
   margin: 0;
 }
 
-.message-content p:first-child {
+.message-content p:first-child,
+.appointment-content p:first-child {
   font-weight: 500;
   color: #1a202c;
 }
 
-.message-content p:nth-child(2) {
+.message-content p:nth-child(2),
+.appointment-content p:nth-child(2) {
   font-size: 0.875vw;
   color: #4a5568;
 }
@@ -295,4 +376,186 @@ header {
 }
 .task-icon {
   font-size: 1.2vw;
+}
+
+/* Modal View Styles */
+
+.modal-view {
+  width: 50%;
+  height: 70%;
+  margin: auto;
+  padding: 2vw;
+  border: none;
+  border-radius: 1vw;
+}
+
+.modal-view-view::backdrop {
+  backdrop-filter: blur(5px);
+}
+
+.modal-view-view:focus {
+  outline: none;
+}
+
+.modal-view::-webkit-scrollbar {
+  display: none;
+}
+
+.inner-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+i.close-button {
+  font-size: 1.5vw;
+  color: #f44;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+p.user-name {
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+h1.topic {
+  font-size: 1.5vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  text-align: center;
+}
+
+p.messages-content {
+  font-size: 1vw;
+  font-weight: 500;
+  text-align: center;
+}
+
+.time-received {
+  padding-top: 1vw;
+  text-align: end;
+}
+
+
+.reply-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 1vw;
+}
+
+.reply-form > label {
+  font-size: 1vw;
+  font-weight: 700;
+  padding-bottom: 1vw;
+}
+
+.reply-field{
+  width: 60%;
+  border-radius: 0.6vw;
+  border: 1px solid #e3dede;
+}
+
+.reply-button {
+  width: 15%;
+  border-radius: 1rem;
+  padding: 0.5vw 1vw;
+  background: transparent;
+  font-size: 1vw;
+  font-weight: 600;
+  margin-block: 1.5vw;
+}
+
+/* Appointment Modal View */
+
+.appointment-view {
+  height: 50%;
+}
+
+.date-and-time {
+  padding-bottom: 1vw ;
+}
+
+p.appointments-content {
+  font-size: 1.2vw;
+}
+
+.appointment-action-form {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appointment-action-form > button {
+  width: auto;
+}
+
+.decline-button {
+  border: 2px solid red;
+  color: red;  
+
+}
+
+/* Membership Approval Modal View */
+
+.img-container {
+  margin: 1vw auto;
+  width: 15vw;
+  height: 10vw;
+  border-radius: 1vw;
+  overflow: hidden;
+}
+
+.membership-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.Basic-card {
+  background: linear-gradient(90deg, #43c6ac 0%, #191654 100%);
+}
+
+.Basic-title {
+  background: linear-gradient(90deg, #dde1e8 0%, #c2b5d9 100%);
+}
+
+.Pro-card {
+  background: linear-gradient(90deg, #c04848 0%, #480048 100%);
+}
+
+.Pro-title {
+  background: linear-gradient(90deg, #e1eec3 0%, #f05053 100%);
+}
+
+.Elite-card {
+  background: linear-gradient(90deg, #434343 0%, #000 100%);
+}
+
+.Elite-title {
+  background: linear-gradient(90deg, #bcbcbc 0%, #757575 100%);
+}
+
+h1.membership-plan {
+  font-size: 2.5vw;
+  font-style: italic;
+  font-weight: 500;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

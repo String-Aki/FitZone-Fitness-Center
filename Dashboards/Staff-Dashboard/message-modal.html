@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <dialog id="modal" class="modal-view">
+      <div class="inner-wrapper">
+        <div class="header-wrapper">
+          <div class="profile-wrapper">
+            <div class="profile-cont">
+              <img
+                class="avatar"
+                src="../../Assets/customer-dashboard-assets/profile.png"
+                alt="profile-img"
+              />
+            </div>
+            <p class="user-name"></p>
+          </div>
+          <i class="fas fa-circle-xmark close-button"></i>
+        </div>
+
+        <div class="content">
+          <h1 class="topic">Topic Details</h1>
+          <p class="messages-content">
+            <strong class="message-header">Inquiry:</strong>
+            <br />customer message here
+          </p>
+          <p class="time-received">
+            responded time
+          </p>
+          <form method="post" class="reply-form">
+            <label for="response">Response</label>
+            <textarea name="reply-message" id="response" rows="5" class="reply-field"></textarea>
+            <button type="submit" name="reply" class="reply-button">Reply</button>
+          </form>
+        </div>
+      </div>
+
+      </div>
+    </dialog>
+    <script>
+      document.getElementById("modal").showModal();
+    </script>
+    <script
+      src="https://kit.fontawesome.com/15767cca17.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
