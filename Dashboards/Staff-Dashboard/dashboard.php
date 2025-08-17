@@ -146,8 +146,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $fetch_approval = "SELECT Membership_ID, memberships.User_ID, Plan_Type, Requested_Date, Status, users.Profile_Img_Path, users.First_Name, users.Last_Name FROM memberships JOIN users ON memberships.User_ID = users.User_ID WHERE Status = 'NOT Approved'";
 
                 $memberships = $conn->query($fetch_approval);
+
+                
                 if($memberships->num_rows > 0)
-                {
+                  {
+                  $membership_task_summary = $memberships->num_rows;
                   while($request = $memberships->fetch_assoc()){
                     if (substr($request['Profile_Img_Path'], 0, 3) === '../') {
                       $correct_path = substr($request['Profile_Img_Path'], 3);
@@ -215,6 +218,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   <p>No new approvals</p>
                   </div>
                   </div>';
+                  $membership_task_summary = 0;
                 }
                 $memberships->close();
               ?>
@@ -231,8 +235,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
               $fetch_appointments = "SELECT appointments.*,users.First_Name, users.Last_Name, users.Profile_Img_Path FROM appointments JOIN users on appointments.User_ID = users.User_ID JOIN trainers on appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND appointments.Status = 'pending'";
 
               $appointments = $conn->query($fetch_appointments);
-              
+
               if($appointments->num_rows > 0){
+
+                $appointment_task_summary = $appointments->num_rows;
+
                 while($available_appointments = $appointments->fetch_assoc()){
                   if (substr($available_appointments['Profile_Img_Path'], 0, 3) === '../') {
                       $path = substr($available_appointments['Profile_Img_Path'], 3);
@@ -316,6 +323,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   </div>
                 </div>
                 ';
+                $appointment_task_summary = 0;
               }
             ?>
             </div>
@@ -334,7 +342,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
               $messages = $conn->query($fetch_messages);
 
+              
               if($messages->num_rows > 0 ){
+                $message_task_summary = $messages->num_rows;
 
                 while($received_messages = $messages->fetch_assoc()){
 
@@ -419,6 +429,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   </div>
                 </div>
                 ';
+                $message_task_summary = 0;
               }
             ?>
             </div>
@@ -438,14 +449,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   ></i>
                   <span class="task-name">Membership Approvals</span>
                 </div>
-                <span class="task-count">3</span>
+                <span class="task-count"><?php echo htmlspecialchars($membership_task_summary)?></span>
               </div>
               <div class="task-item">
                 <div class="task-details">
                   <i class="fa-solid fa-clock-rotate-left task-icon"></i>
                   <span class="task-name">Pending Appointments</span>
                 </div>
-                <span class="task-count">5</span>
+                <span class="task-count"><?php echo htmlspecialchars($appointment_task_summary)?></span>
               </div>
               <div class="task-item">
                 <div class="task-details">
@@ -455,7 +466,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   ></i>
                   <span class="task-name">Unresolved Queries</span>
                 </div>
-                <span class="task-count">8</span>
+                <span class="task-count"><?php echo htmlspecialchars($message_task_summary)?></span>
               </div>
             </div>
           </div>
