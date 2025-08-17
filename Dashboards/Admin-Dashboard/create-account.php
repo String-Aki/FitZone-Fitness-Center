@@ -47,7 +47,7 @@ include("../../includes/dbconnect.php");
 
         $trainer_email = strtolower($trainer_names[0]) . "@fitzone.com";
         $role = "staff";
-        $password = "Staff@fitzone.com";
+        $password = "Staff@fitzone";
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
