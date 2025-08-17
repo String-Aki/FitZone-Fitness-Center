@@ -99,10 +99,38 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       </script>';
     }
     else{
-      echo "<script>alert('Error cancel appointment.');</script>";
+      echo "<script>alert('Error cancelling appointment.');</script>";
     }
     }
-  }
+
+    // Message Handling
+
+    if(isset($_POST['reply'])){
+      $message_id = trim($_POST['message_id']);
+      $reply_message = trim($_POST['reply-message']);
+
+      $send_reply = "UPDATE messages SET Response = ?, Status = 'responded' WHERE Message_ID = '".$message_id."'";
+
+      $reply = $conn->prepare($send_reply);
+
+      $reply->bind_param("s", $reply_message);
+
+      if($reply->execute())
+        {
+        echo 
+      '
+      <script>
+      alert("Reply Sent Successfully");
+      document.getElementById("$dialogID").close();
+      </script>';
+      }
+    
+    else
+      {
+      echo "<script>alert('Error sending reply.');</script>";
+      }
+      }
+    }
 
     ?>
 
@@ -182,7 +210,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   }}
                 else{
                   echo
-                  '<div class="approval-item">
+                  '<div>
                   <div class="approval-content-wrapper">
                   <p>No new approvals</p>
                   </div>
@@ -218,6 +246,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $appointment_date = date('l, F j, Y', strtotime($available_appointments['Session_Date']));
                     $appointment_day_Month = date('l, F j', strtotime($available_appointments['Session_Date']));
                     $appointment_time = date('g.i a', strtotime($available_appointments['Session_Time']));
+                    $appointment_Datetime = date('l, F j, Y \a\t g:i a', strtotime($available_appointments['Session_Time']));
                     $booked_time = date('F d, g.i a', strtotime($available_appointments['created_at']));
 
                     $appointment_dialogID = "appointment-popup" . htmlspecialchars($available_appointments['Appointment_ID']);
@@ -262,7 +291,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <h1 class="topic session-type">'.htmlspecialchars($available_appointments['Session_Type']).'</h1>
           <p class="messages-content appointments-content">
             <strong class="message-header date-and-time">The Appointment is on:</strong>
-            <br />'.htmlspecialchars($appointment_day_Month."th, ".$appointment_time).'
+            <br />'.htmlspecialchars($appointment_Datetime).'
           </p>
           <p class="time-received">
             Booked on: '.htmlspecialchars($booked_time).'
@@ -281,7 +310,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
               {
                 echo
                 '
-                <div class="appointment-item">
+                <div>
                   <div class="appointment-content-wrapper">
                     <p>No new appointments</p>
                   </div>
@@ -320,9 +349,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                     $message_dialogID = "appointment-popup" . htmlspecialchars($received_messages['Message_ID']);
 
-                    $ShortMessage = implode(' ', array_slice(explode(' ', $received_messages['Message']), 0, 5)). " . . .";
-
-                    $sent_time = date('g.i a', strtotime($received_messages['Created_At']));
+                    $sent_time = date('M j, g:i a', strtotime($received_messages['Created_At']));
+                    $sent_time_full = date('F j, Y \a\t g:i a', strtotime($received_messages['Created_At']));
 
                     echo
                     '
@@ -366,10 +394,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <br />'.htmlspecialchars($received_messages['Message']).'
           </p>
           <p class="time-received">
-            '.htmlspecialchars($sent_time).'
+            '.htmlspecialchars($sent_time_full).'
           </p>
           <form method="post" class="reply-form">
-            <input type="hidden" name="appointment_id" value="' . htmlspecialchars($received_messages['Message_ID']) . '">
+            <input type="hidden" name="message_id" value="' . htmlspecialchars($received_messages['Message_ID']) . '">
             <label for="response">Response</label>
             <textarea name="reply-message" id="response" rows="5" class="reply-field"></textarea>
             <button type="submit" name="reply" class="reply-button">Reply</button>
@@ -378,6 +406,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       </div>
     </dialog>';
                 }
+              }
+              else
+              {
+                echo
+                '
+                <div>
+                  <div class="message-content-wrapper">
+                      <div class="message-content">
+                        <p>No new messages</p>
+                      </div>
+                  </div>
+                </div>
+                ';
               }
             ?>
             </div>
