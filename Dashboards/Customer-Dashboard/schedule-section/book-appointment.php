@@ -75,9 +75,8 @@
         $session_date = $_POST['session-date'];
         $session_time = $_POST['session-time'];
         $status = 'pending';
-        $created_at = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO appointments (User_ID, Trainer_ID, Session_Type, Session_Date, Session_Time, Status, created_at) VALUES('$user_id', '$trainer_id', '$session_type', '$session_date', '$session_time', '$status', '$created_at')";
+        $sql = "INSERT INTO appointments (User_ID, Trainer_ID, Session_Type, Session_Date, Session_Time, Status) VALUES('$user_id', '$trainer_id', '$session_type', '$session_date', '$session_time', '$status')";
 
         if($conn->query($sql) === TRUE){
             echo '<script type="text/javascript">alert("Session Booked Successfully");
