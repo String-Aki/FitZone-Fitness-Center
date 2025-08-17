@@ -242,7 +242,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
               </div>
 
 
-              <dialog id="' . $appointment_dialogID . '" class="modal-view appointment-view">
+      <dialog id="' . $appointment_dialogID . '" class="modal-view appointment-view">
       <div class="inner-wrapper">
         <div class="header-wrapper">
           <div class="profile-wrapper">
@@ -274,8 +274,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           </form>
         </div>
       </div>
-    </dialog>
-                    ';
+    </dialog>';
                 }
               }
               else 
@@ -300,22 +299,87 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </div>
 
             <div class="message-space">
-              <div class="message-item">
+
+            <?php
+              $fetch_messages = "SELECT messages.Message_ID, messages.Topic, messages.Message, messages.Created_At, users.First_Name, users.Last_Name, users.Profile_Img_Path FROM messages JOIN users ON messages.User_ID = users.User_ID JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND messages.Status = 'pending'";
+
+              $messages = $conn->query($fetch_messages);
+
+              if($messages->num_rows > 0 ){
+
+                while($received_messages = $messages->fetch_assoc()){
+
+                  if (substr($received_messages['Profile_Img_Path'], 0, 3) === '../') {
+                      $mpath = substr($received_messages['Profile_Img_Path'], 3);
+                    }
+                    else {
+                      $mpath = "../../Assets/customer-dashboard-assets/profile.png";
+                    }
+
+                    $pfp_path_for_messages = (!empty($received_messages['Profile_Img_Path'])) ? $mpath : "../../Assets/customer-dashboard-assets/profile.png";
+
+                    $message_dialogID = "appointment-popup" . htmlspecialchars($received_messages['Message_ID']);
+
+                    $ShortMessage = implode(' ', array_slice(explode(' ', $received_messages['Message']), 0, 5)). " . . .";
+
+                    $sent_time = date('g.i a', strtotime($received_messages['Created_At']));
+
+                    echo
+                    '
+                    <div class="message-item" onclick="document.getElementById(\''.$message_dialogID.'\').showModal();">
                 <div class="profile-container">
                     <img
                       alt="Profile Image"
                       class="avatar"
-                      src="../../Assets/customer-dashboard-assets/profile.png"
+                      src="'.htmlspecialchars($pfp_path_for_messages).'"
                     />
                 </div>
                 <div class="message-content-wrapper">
                   <div class="message-content">
-                    <p>Sarah Connor</p>
-                    <p>Hi, can I reschedule my appointment for tomorrow?</p>
+                    <p>'.htmlspecialchars($received_messages['First_Name']." ".$received_messages['Last_Name']).'</p>
+                    <p>'.htmlspecialchars($received_messages['Topic']).'</p>
                   </div>
                 </div>
-                <p class="message-timestamp">10:45 AM</p>
+                <p class="message-timestamp">'.htmlspecialchars($sent_time).'</p>
               </div>
+
+               <dialog id="' . $message_dialogID . '" class="modal-view">
+      <div class="inner-wrapper">
+        <div class="header-wrapper">
+          <div class="profile-wrapper">
+            <div class="profile-container">
+              <img
+                class="avatar"
+                src="'.htmlspecialchars($pfp_path_for_messages).'"
+                alt="profile-img"
+              />
+            </div>
+            <p class="user-name">'.htmlspecialchars($received_messages['First_Name']." ".$received_messages['Last_Name']).'</p>
+          </div>
+          <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\'' . htmlspecialchars($message_dialogID) . '\').close();"></i>
+        </div>
+
+        <div class="content">
+          <h1 class="topic">'.htmlspecialchars($received_messages['Topic']).'</h1>
+          <p class="messages-content">
+            <strong class="message-header">Inquiry:</strong>
+            <br />'.htmlspecialchars($received_messages['Message']).'
+          </p>
+          <p class="time-received">
+            '.htmlspecialchars($sent_time).'
+          </p>
+          <form method="post" class="reply-form">
+            <input type="hidden" name="appointment_id" value="' . htmlspecialchars($received_messages['Message_ID']) . '">
+            <label for="response">Response</label>
+            <textarea name="reply-message" id="response" rows="5" class="reply-field"></textarea>
+            <button type="submit" name="reply" class="reply-button">Reply</button>
+          </form>
+        </div>
+      </div>
+    </dialog>';
+                }
+              }
+            ?>
             </div>
           </div>
 
