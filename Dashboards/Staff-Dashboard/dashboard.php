@@ -157,24 +157,86 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
               <h3 class="card-title">Appointments</h3>
               <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
             </div>
-
             <div class="appointment-space">
-              <div class="appointment-item item">
+            <?php
+              $fetch_appointments = "SELECT appointments.*,users.First_Name, users.Last_Name, users.Profile_Img_Path FROM appointments JOIN users on appointments.User_ID = users.User_ID JOIN trainers on appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND appointments.Status = 'pending'";
+
+              $appointments = $conn->query($fetch_appointments);
+              
+              if($appointments->num_rows > 0){
+                while($available_appointments = $appointments->fetch_assoc()){
+                  if (substr($available_appointments['Profile_Img_Path'], 0, 3) === '../') {
+                      $path = substr($available_appointments['Profile_Img_Path'], 3);
+                    }
+                    else {
+                      $path = "../../Assets/customer-dashboard-assets/profile.png";
+                    }
+
+                    $pfp_path_for_appointments = (!empty($available_appointments['Profile_Img_Path'])) ? $path : "../../Assets/customer-dashboard-assets/profile.png";
+
+                    $appointment_date = date('l, F j, Y', strtotime($available_appointments['Session_Date']));
+                    $appointment_day_Month = date('l, F j', strtotime($available_appointments['Session_Date']));
+                    $appointment_time = date('g.i a', strtotime($available_appointments['Session_Time']));
+                    $booked_time = date('F d, g.i a', strtotime($available_appointments['created_at']));
+
+                    $appointment_dialogID = "appointment-popup" . htmlspecialchars($available_appointments['Appointment_ID']);
+
+                    echo 
+                    '
+                    <div class="appointment-item item" onclick="document.getElementById(\''.$appointment_dialogID.'\').showModal();">
                 <div class="profile-container">
                     <img
                       alt="Profile Image"
                       class="avatar"
-                      src="../../Assets/customer-dashboard-assets/profile.png"
+                      src="'.htmlspecialchars($pfp_path_for_appointments).'"
                     />
                 </div>
                 <div class="appointment-content-wrapper">
                   <div class="appointment-content">
-                    <p>Sarah Connor Requests For Spin Session</p>
-                    <p>Monday, August 4, 2025</p>
+                    <p>'.htmlspecialchars($available_appointments['First_Name']." ".$available_appointments['Last_Name']).' Requests For '.htmlspecialchars($available_appointments['Session_Type']).' Session</p>
+                    <p>'.htmlspecialchars($appointment_date).'</p>
                   </div>
                 </div>
                 <i class="fa-solid fa-caret-down show-more"></i>
               </div>
+
+
+              <dialog id="' . $appointment_dialogID . '" class="modal-view appointment-view">
+      <div class="inner-wrapper">
+        <div class="header-wrapper">
+          <div class="profile-wrapper">
+            <div class="profile-container">
+              <img
+                class="avatar"
+                src="'.htmlspecialchars($pfp_path_for_appointments).'"
+                alt="profile-img"
+              />
+            </div>
+            <p class="user-name">'.htmlspecialchars($available_appointments['First_Name']." ".$available_appointments['Last_Name']).'</p>
+          </div>
+          <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\'' . htmlspecialchars($appointment_dialogID) . '\').close();"></i>
+        </div>
+
+        <div class="content">
+          <h1 class="topic session-type">'.htmlspecialchars($available_appointments['Session_Type']).'</h1>
+          <p class="messages-content appointments-content">
+            <strong class="message-header date-and-time">The Appointment is on:</strong>
+            <br />'.htmlspecialchars($appointment_day_Month."th, ".$appointment_time).'
+          </p>
+          <p class="time-received">
+            Booked on: '.htmlspecialchars($booked_time).'
+          </p>
+          <form method="post" class="appointment-action-form">
+            <button type="submit" name="confirm" class="confirm-button reply-button">Confirm</button>
+            <button type="submit" name="decline" class="decline-button reply-button">Decline</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+                    ';
+                }
+              }
+            ?>
             </div>
           </div>
 
