@@ -20,25 +20,26 @@
     <?php 
     include("../components/staff-dashboard-header.php");
     
-    // Membership handling
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-  $membership_id = $_POST['membership_id'];
+// Membership Handling
   if(isset($_POST['approve'])){
+    $membership_id = $_POST['membership_id'];
     $status = "Approved";
     $approved_Date = date('Y-m-d');
     $expiry_date = date('Y-m-d', strtotime('+1 month'));
-
+    
     $stmt=$conn->prepare("UPDATE memberships SET Status = ?, Approved_Date = ?, Expiry_Date = ? WHERE memberships.Membership_ID = ?");
-
+    
     $stmt->bind_param("sssi", $status, $approved_Date, $expiry_date, $membership_id);
-
+    
     if($stmt->execute()){
       echo 
-    '
-    <script>
-    alert("Approved!");
-    document.getElementById("$dialogID").close();
-    </script>';
+      '
+      <script>
+      alert("Approved!");
+      document.getElementById("$dialogID").close();
+      </script>';
     }
     else{
       echo "<script>alert('Error approving membership.');</script>";
@@ -46,6 +47,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $stmt->close();
   }
   elseif(isset($_POST['dis-approve'])){
+    $membership_id = $_POST['membership_id'];
     $remove_membership = $conn->prepare("DELETE FROM memberships WHERE Membership_ID = ?");
 
     $remove_membership->bind_param("i",$membership_id);
@@ -63,7 +65,45 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     $remove_membership->close();
   }
-}
+
+  // Appointment Handling
+  
+  if(isset($_POST['confirm'])){
+    $appointment_id = trim($_POST['appointment_id']);
+
+    $update_appointment = $conn->query("UPDATE appointments SET Status = 'confirmed' WHERE Appointment_ID = '".$appointment_id."'");
+
+    if($update_appointment){
+      echo 
+      '
+      <script>
+      alert("Appointment Confirmed");
+      document.getElementById("$dialogID").close();
+      </script>';
+    }
+    else{
+      echo "<script>alert('Error confirming appointment.');</script>";
+    }
+    }
+    elseif(isset($_POST['cancel'])){
+      $appointment_id = trim($_POST['appointment_id']);
+      
+      $update_appointment = $conn->query("UPDATE appointments SET Status = 'cancelled' WHERE Appointment_ID = '".$appointment_id."'");
+
+      if($update_appointment){
+      echo 
+      '
+      <script>
+      alert("Appointment Cancelled");
+      document.getElementById("$dialogID").close();
+      </script>';
+    }
+    else{
+      echo "<script>alert('Error cancel appointment.');</script>";
+    }
+    }
+  }
+
     ?>
 
       <section class="staff-dashboard-section">      
@@ -148,6 +188,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                   </div>
                   </div>';
                 }
+                $memberships->close();
               ?>
             </div>
           </div>
@@ -227,14 +268,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             Booked on: '.htmlspecialchars($booked_time).'
           </p>
           <form method="post" class="appointment-action-form">
+            <input type="hidden" name="appointment_id" value="' . htmlspecialchars($available_appointments['Appointment_ID']) . '">
             <button type="submit" name="confirm" class="confirm-button reply-button">Confirm</button>
-            <button type="submit" name="decline" class="decline-button reply-button">Decline</button>
+            <button type="submit" name="cancel" class="decline-button reply-button">Cancel</button>
           </form>
         </div>
       </div>
     </dialog>
                     ';
                 }
+              }
+              else 
+              {
+                echo
+                '
+                <div class="appointment-item">
+                  <div class="appointment-content-wrapper">
+                    <p>No new appointments</p>
+                  </div>
+                </div>
+                ';
               }
             ?>
             </div>
