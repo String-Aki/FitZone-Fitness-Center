@@ -389,11 +389,11 @@ header {
   border-radius: 1vw;
 }
 
-.modal-view-view::backdrop {
+.modal-view::backdrop {
   backdrop-filter: blur(5px);
 }
 
-.modal-view-view:focus {
+.modal-view:focus {
   outline: none;
 }
 
@@ -423,7 +423,7 @@ i.close-button {
   gap: 1vw;
 }
 
-p.user-name {
+.user-name {
   font-size: 1vw;
   font-weight: 500;
 }
@@ -558,4 +558,27 @@ h1.membership-plan {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Password Function */
+
+.key {
+  cursor: pointer;
+}
+
+.change-password-form {
+  flex-direction: column;
+}
+
+.change-password-form > input {
+  width: 80%;
+  padding: 0.5vw 1vw;
+  border-radius: 0.6vw;
+  border: 1px solid #e3dede;
+}
+
+.change-password-form > label {
+  font-size: 1vw;
+  font-weight: 700;
+  padding-block: 1vw;
 }
