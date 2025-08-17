@@ -75,6 +75,7 @@ error_reporting(0);
           if($_SESSION['role'] === 'staff'){
             echo '<script>
               alert("Redirecting to staff dashboard...");
+              window.location.href = "../Dashboards/Staff-Dashboard/dashboard.php";
           </script>';
   
           $_SESSION['loggedIn'] = true;
