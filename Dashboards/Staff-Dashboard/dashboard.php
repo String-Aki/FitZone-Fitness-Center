@@ -1,3 +1,8 @@
+<?php
+
+                
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,12 +17,56 @@
 
     <main>
 
-    <?php include("../components/staff-dashboard-header.php");?>
+    <?php 
+    include("../components/staff-dashboard-header.php");
+    
+    // Membership handling
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+  $membership_id = $_POST['membership_id'];
+  if(isset($_POST['approve'])){
+    $status = "Approved";
+    $approved_Date = date('Y-m-d');
+    $expiry_date = date('Y-m-d', strtotime('+1 month'));
 
-      <section class="staff-dashboard-section">
+    $stmt=$conn->prepare("UPDATE memberships SET Status = ?, Approved_Date = ?, Expiry_Date = ? WHERE memberships.Membership_ID = ?");
 
-      
+    $stmt->bind_param("sssi", $status, $approved_Date, $expiry_date, $membership_id);
 
+    if($stmt->execute()){
+      echo 
+    '
+    <script>
+    alert("Approved!");
+    document.getElementById("$dialogID").close();
+    </script>';
+    }
+    else{
+      echo "<script>alert('Error approving membership.');</script>";
+    }
+    $stmt->close();
+  }
+  elseif(isset($_POST['dis-approve'])){
+    $remove_membership = $conn->prepare("DELETE FROM memberships WHERE Membership_ID = ?");
+
+    $remove_membership->bind_param("i",$membership_id);
+
+    if($remove_membership->execute()){
+    echo 
+    '
+    <script>
+    alert("Membership declined");
+    document.getElementById("$dialogID").close();
+    </script>';
+    }
+    else{
+    echo "<script>alert('Error declining membership.');</script>";
+    }
+    $remove_membership->close();
+  }
+}
+    ?>
+
+      <section class="staff-dashboard-section">      
         <div class="bento-grid">
           <div class="card span-1 approval-card ">
             <div class="card-header">
@@ -82,6 +131,7 @@
                             <strong class="message-header">For the Month of : '.htmlspecialchars($For_Month).'</strong>
                         </p>
                         <form method="post" class="appointment-action-form">
+                            <input type="hidden" name="membership_id" value="' . htmlspecialchars($request['Membership_ID']) . '">
                             <button type="submit" name="approve" class="confirm-button reply-button">approve</button>
                             <button type="submit" name="dis-approve" class="decline-button reply-button">decline</button>
                         </form>
@@ -89,7 +139,7 @@
                 </div>
             </dialog>
                   ';
-                }}
+                  }}
                 else{
                   echo
                   '<div class="approval-item">

@@ -106,9 +106,10 @@
     <?php
       if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        $request_membership = "INSERT INTO memberships (User_ID, Plan_Type, Status) VALUES (?,?,?)";
+        $request_membership = "INSERT INTO memberships (User_ID, Plan_Type, Status, Requested_Date) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($request_membership);
         $status = 'Not Approved';
+        $requested_date = date('Y-m-d');
 
         if($_POST['plan'] == 'basic'){
           $plan_type = 'Basic';
@@ -120,7 +121,7 @@
           $plan_type = "Elite";
         }
 
-        $stmt->bind_param("iss", $_SESSION['user_id'], $plan_type, $status);
+        $stmt->bind_param("isss", $_SESSION['user_id'], $plan_type, $status, $requested_date);
 
         if($stmt->execute()){
           echo "<script>alert('$plan_type plan has been requested');</script>";
