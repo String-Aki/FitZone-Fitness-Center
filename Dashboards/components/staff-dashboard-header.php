@@ -29,7 +29,14 @@
 
           $isPasswordDefault = (password_verify("Staff@fitzone",$user_details['Password']));
 
-          $pfp_path = (!empty($user_details['Profile_Img_Path'])) ? $user_details['Profile_Img_Path'] : "../../Assets/customer-dashboard-assets/profile.png";
+          if (substr($user_details['Profile_Img_Path'], 0, 3) === '../') {
+              $path = substr($user_details['Profile_Img_Path'], 3);
+            }
+            else {
+              $path = "../../Assets/customer-dashboard-assets/profile.png";
+            }
+
+          $pfp_path = (!empty($user_details['Profile_Img_Path'])) ? $path : "../../Assets/customer-dashboard-assets/profile.png";
         ?>
 
         <?php
