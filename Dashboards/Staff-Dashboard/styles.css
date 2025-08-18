@@ -214,8 +214,8 @@ header {
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
   overflow: hidden;
   overflow-y: auto;
   flex-grow: 1;
@@ -223,12 +223,13 @@ header {
   scrollbar-width: none;
 }
 
-.approval-card, 
-.appointment-card{
+.approval-card,
+.appointment-card {
   height: 19vw;
 }
 
-.message-card, .task-summary {
+.message-card,
+.task-summary {
   height: 15vw;
 }
 
@@ -285,8 +286,8 @@ header {
 }
 
 .review:hover {
-    cursor: pointer;
-    color: #dd6b20;
+  cursor: pointer;
+  color: #dd6b20;
 }
 
 /* Message Card, Appointment Card & Approval Card*/
@@ -298,7 +299,6 @@ header {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 
 .message-item,
 .appointment-item {
@@ -448,7 +448,6 @@ p.messages-content {
   text-align: end;
 }
 
-
 .reply-form {
   display: flex;
   flex-direction: column;
@@ -462,7 +461,7 @@ p.messages-content {
   padding-bottom: 1vw;
 }
 
-.reply-field{
+.reply-field {
   width: 60%;
   border-radius: 0.6vw;
   border: 1px solid #e3dede;
@@ -486,7 +485,7 @@ p.messages-content {
 }
 
 .date-and-time {
-  padding-bottom: 1vw ;
+  padding-bottom: 1vw;
 }
 
 p.appointments-content {
@@ -507,8 +506,7 @@ p.appointments-content {
 
 .decline-button {
   border: 2px solid red;
-  color: red;  
-
+  color: red;
 }
 
 /* Membership Approval Modal View */
@@ -584,4 +582,117 @@ h1.membership-plan {
   font-size: 1vw;
   font-weight: 700;
   padding-block: 1vw;
+}
+
+/* Appointments Page Styles */
+
+.table-container {
+  height: 37vw;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 0 1.5vw;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  overflow-y: auto;
+  flex-grow: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  font-weight: 600;
+  font-size: 1vw;
+  color: #6c757d;
+  padding: 1.5vw;
+  border-bottom: 2px solid #e9ecef;
+}
+
+tbody tr {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 1.25vw;
+  vertical-align: middle;
+  font-size: 0.9vw;
+}
+
+.full-name {
+  font-weight: 600;
+  color: #343a40;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.action-links {
+  border: 1px solid black;
+  padding: 0.125vw 0.375vw;
+  border-radius: 30px;
+  margin-right: 0.313vw;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+
+.completed:hover {
+  border: none;
+  background-color: #33a64f;
+  color: rgb(255, 255, 255);
+}
+
+.cancelled:hover {
+  border: none;
+  background-color: #fe0808;
+  color: rgb(255, 255, 255);
+}
+
+/* Messages Section Styles */
+
+.download-icon {
+  font-size: 1vw;
+}
+
+.action-button {
+  border: 1.5px solid black;
+  padding: 0.5vw 1vw;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.not-replied {
+  color : red;
+  font-weight: 600;
+}
+
+
+/* Customer Management Section */
+
+.pfp {
+  margin: auto;
+  width: 52px;
+  height: 52px;
 }
