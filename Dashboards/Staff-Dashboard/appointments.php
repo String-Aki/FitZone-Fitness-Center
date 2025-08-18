@@ -69,6 +69,7 @@
                 <th>Phone</th>
                 <th>Date</th>
                 <th>Time</th>
+                <th>Status</th>
                 <th>Booked On</th>
                 <th style="text-align: center;">Actions</th>
               </tr>
@@ -76,7 +77,7 @@
             <tbody>
 
             <?php
-              $fetch_appointments = "SELECT appointments.*, users.First_Name, users.Last_Name,users.Phone FROM appointments JOIN users ON appointments.User_ID = users.User_ID JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND appointments.Status = 'confirmed'";
+              $fetch_appointments = "SELECT appointments.*, users.First_Name, users.Last_Name,users.Phone FROM appointments JOIN users ON appointments.User_ID = users.User_ID JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."'";
 
               $appointments = $conn->query($fetch_appointments);
 
@@ -87,6 +88,13 @@
                   $Session_Date_Formatted =date('m-d-Y', strtotime($row['Session_Date']));
                   $Session_Time_Formatted =date('g.i a', strtotime($row['Session_Time']));
                   $Booked_Date_Formatted =date('m-d-Y g:i A', strtotime($row['created_at']));
+
+                  if($row['Status'] == 'completed' || $row['Status'] == 'cancelled'){
+                     $is_completed_or_cancelled = "disabled";
+                  }
+                  else {
+                    $is_completed_or_cancelled = "";
+                  }
 
                   echo 
                   '
@@ -99,11 +107,14 @@
                 <td>'.htmlspecialchars($row['Phone']).'</td>
                 <td>'.htmlspecialchars($Session_Date_Formatted).'</td>
                 <td>'.htmlspecialchars($Session_Time_Formatted).'</td>
+                <td>'.htmlspecialchars($row['Status']).'</td>
                 <td>'.htmlspecialchars($Booked_Date_Formatted).'</td>
                 <td class="actions">
                   <form action="" method="GET" id="ap_form" class="actions">
+
                   <input name="appointment_id" value="'.htmlspecialchars($row['Appointment_ID']).'" type="hidden" />
-                  <button class="action-links completed" name="completed" type="submit" ">Completed</button> | <button class="action-links cancelled" name="cancelled" type="submit">Cancelled</button>
+
+                  <button class="action-links completed '.($is_completed_or_cancelled ? 'disabled-link' : '').'" name="completed" type="submit" " '.($is_completed_or_cancelled ? ' onclick="return false;"' : '').'>Completed</button> | <button class="action-links cancelled '.($is_completed_or_cancelled ? 'disabled-link' : '').'" name="cancelled" type="submit" '.($is_completed_or_cancelled ? ' onclick="return false;"' : '').'>Cancelled</button>
                   </form>
                 </td>
               </tr>
