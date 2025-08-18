@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Customer Management</title>
+</head>
+<body>
+        <?php include("../components/staff-dashboard-side-bar.php");?>
+
+        <main>
+
+        <?php include("../components/staff-dashboard-header.php");
+        
+        if(isset($_POST['del'])){
+            $user_id = trim($_POST['user_id']);
+            $delete_user = "DELETE FROM users WHERE User_ID = '".$user_id."'";
+
+            $delete = $conn->query($delete_user);
+
+            if($delete){
+                echo
+                '
+                <script>alert(User Deleted Succefully);
+                window.location.href="./customer.php?header_title=Customer Management"
+                </script>
+                ';
+            }
+            else 
+            {
+                echo
+                '
+                <script>alert(User Deletion Failed);
+                window.location.href="./customer.php?header_title=Customer Management"
+                </script>
+                ';
+            }
+            $delete->close();
+        }
+        ?>
+
+            <section class="staff-dashboard-section">
+                <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Profile Picture</th>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Membership Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+                        $fetch_users = "SELECT users.*, memberships.Plan_Type,memberships.Membership_ID FROM users LEFT JOIN memberships ON memberships.User_ID = users.User_ID WHERE users.Role = 'customer'";
+                        $users = $conn->query($fetch_users);
+
+                        if($users->num_rows > 0 ){
+                            while($row = $users->fetch_assoc()){
+
+                                if (substr($row['Profile_Img_Path'], 0, 3) === '../') {
+                                    $path = substr($row['Profile_Img_Path'], 3);
+                                    }
+                                    else {
+                                    $path = "../../Assets/customer-dashboard-assets/profile.png";
+                                    }
+
+                                $membership_type = empty($row['Membership_ID']) ? "Guest" : $row['Plan_Type'];
+
+                                echo
+                                '
+                                <tr>
+                            <td>
+                                <div class="profile-container pfp">
+                                    <img src="'.htmlspecialchars($path).'" alt="Profile picture" class="avatar">
+                                </div>
+                            </td>
+                            <td class="full-name">'.htmlspecialchars($row['First_Name']." ".$row['Last_Name']).'</td>
+                            <td>'.htmlspecialchars($row['Email']).'</td>
+                            <td style="text-align:center;">'.htmlspecialchars($row['Phone']).'</td>
+                            <td style="text-align:center;">'.htmlspecialchars($membership_type).'</td>
+                            <td class="actions">
+                                <form action="" method="POST" class="actions">
+                                    <input type="hidden" value="'.htmlspecialchars($row['User_ID']).'" name="user_id" />
+                                    <button type="submit" name="del" class="action-button cancelled">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                                ';
+                            }
+                        }
+                    ?>
+                    </tbody>
+                </table>
+                    </div>
+            </section>
+        </main>
+
+</body>
+</body>
+</html>

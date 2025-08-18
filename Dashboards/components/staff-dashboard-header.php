@@ -13,7 +13,18 @@
   </head>
   <body>
       <header>
-        <h2 class="header-title">Staff Dashboard</h2>
+        <h2 class="header-title">
+          <?php
+                    if (isset($_GET['header_title'])) 
+                        {
+                            echo htmlspecialchars($_GET['header_title']);
+                        }
+                        else
+                        {
+                            echo "Staff Dashboard";
+                        }
+                ?>
+        </h2>
         <form class="search-container">
           <input class="search-input" placeholder="Search" type="text" />
           <button type="submit" name="search" class="search-button">

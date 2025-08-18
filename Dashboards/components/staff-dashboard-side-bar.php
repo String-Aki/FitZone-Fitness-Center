@@ -13,15 +13,15 @@
         <h1 class="logo-name">Fitzone</h1>
       </div>
       <nav class="nav-menu">
-        <a href="" class="home-link">
+        <a href="../Staff-Dashboard/dashboard.php?header_title=Staff Dashboard" class="home-link">
           <i class="fas fa-house nav-logo"></i>
           Home
         </a>
-        <a href="" class="appointments-link">
+        <a href="../Staff-Dashboard/appointments.php?header_title=Appointments" class="appointments-link">
           <i class="fa-regular fa-calendar-check nav-logo"></i>
           Appointments
         </a>
-        <a href="" class="message-link">
+        <a href="../Staff-Dashboard/messages.php?header_title=Messages" class="message-link">
           <i class="fa-regular fa-message nav-logo"></i>
           Messages
         </a>
@@ -29,7 +29,7 @@
           <i class="fa-regular fa-id-card nav-logo"></i>
           Memberships
         </a>
-        <a href="" class="customers-link">
+        <a href="../Staff-Dashboard/customer.php?header_title=Customer Management" class="customers-link">
           <i class="fas fa-people-group nav-logo"></i>
           Customers
         </a>
