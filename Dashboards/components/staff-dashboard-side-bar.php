@@ -25,17 +25,13 @@
           <i class="fa-regular fa-message nav-logo"></i>
           Messages
         </a>
-        <a href="" class="membership-link">
-          <i class="fa-regular fa-id-card nav-logo"></i>
-          Memberships
-        </a>
         <a href="../Staff-Dashboard/customer.php?header_title=Customer Management" class="customers-link">
           <i class="fas fa-people-group nav-logo"></i>
           Customers
         </a>
       </nav>
       <div class="aside-footer">
-        <a href="../../includes/logout.php" class="logout-link">
+        <a href="../../includes/staff-logout.php" class="logout-link">
           <i class="fa-solid fa-arrow-right-from-bracket logout-logo"></i>
           Logout
         </a>
