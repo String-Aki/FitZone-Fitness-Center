@@ -27,7 +27,7 @@
             '
             <script>
             alert("Appointment Completed");
-            window.location.href = "./appointments.php";
+            window.location.href = "./appointments.php?header_title=Appointments";
             </script>';
           }
           else{
@@ -46,7 +46,7 @@
             '
             <script>
             alert("Appointment Cancelled");
-            window.location.href = "./appointments.php";
+            window.location.href = "./appointments.php?header_title=Appointments";
             </script>';
           }
           else{
@@ -103,13 +103,19 @@
                 <td class="actions">
                   <form action="" method="GET" id="ap_form" class="actions">
                   <input name="appointment_id" value="'.htmlspecialchars($row['Appointment_ID']).'" type="hidden" />
-                  <button class="action-links completed" name="completed" type="submit" href="?header_title=Appointment">Completed</button> | <button class="action-links cancelled" name="cancelled" type="submit" href="?header_title=Appointment" >Cancelled</button>
+                  <button class="action-links completed" name="completed" type="submit" ">Completed</button> | <button class="action-links cancelled" name="cancelled" type="submit">Cancelled</button>
                   </form>
                 </td>
               </tr>
                   ';
 
                 }
+              }
+              else
+              { echo
+                  '<tr>
+                    <td colspan="8" style="text-align:center; font-size:1.5vw; font-weight:500;">No new appointments</td>
+                  </tr>';
               }
             ?>
             </tbody>
