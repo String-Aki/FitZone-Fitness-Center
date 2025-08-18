@@ -41,7 +41,7 @@ include("../../includes/dbconnect.php");
     <?php 
     if(isset($_POST['create'])){
         $trainer_fullname = trim($_POST['full-name']);
-        $trainer_names = explode(" ", $trainer_fullname);
+        $trainer_names = explode(" ", $trainer_fullname, 2);
         $trainer_phone = trim($_POST['phone']);
         $trainer_speciality = trim($_POST['speciality']);
 
@@ -61,7 +61,7 @@ include("../../includes/dbconnect.php");
             </script>';
         }
 
-        $stmt->bind_param("ssisss", $trainer_names[0], $trainer_names[1], $trainer_phone, $trainer_email, $role, $hashed_password);
+        $stmt->bind_param("ssssss", $trainer_names[0], $trainer_names[1], $trainer_phone, $trainer_email, $role, $hashed_password);
 
         if($stmt->execute()){
             $user_id = $conn->insert_id;
