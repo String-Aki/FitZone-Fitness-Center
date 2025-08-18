@@ -114,7 +114,7 @@
         </script>';
       }
 
-      $stmt->bind_param("ssiss", $firstn, $lastn, $phonenum, $email, $hashed_password);
+      $stmt->bind_param("sssss", $firstn, $lastn, $phonenum, $email, $hashed_password);
 
       if($stmt->execute()){
         echo '<script type="text/javascript">alert("Account Created Successfully. Now you can login");
