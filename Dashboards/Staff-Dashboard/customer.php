@@ -14,6 +14,7 @@
         <?php include("../components/staff-dashboard-header.php");
         
         if(isset($_POST['del'])){
+
             $user_id = trim($_POST['user_id']);
             $delete_user = "DELETE FROM users WHERE User_ID = '".$user_id."'";
 
@@ -36,7 +37,6 @@
                 </script>
                 ';
             }
-            $delete->close();
         }
         ?>
 
@@ -86,7 +86,7 @@
                             <td class="actions">
                                 <form action="" method="POST" class="actions">
                                     <input type="hidden" value="'.htmlspecialchars($row['User_ID']).'" name="user_id" />
-                                    <button type="submit" name="del" class="action-button cancelled">Delete</button>
+                                    <button type="submit" name="del" class="action-button cancelled" onclick="return confirm(\'Confirm to delete this account\')">Delete</button>
                                 </form>
                             </td>
                         </tr>
