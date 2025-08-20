@@ -32,7 +32,7 @@
             <?php echo $result && $result['Status'] == 'Approved' ? htmlspecialchars($result['Plan_Type'])." Plan" : "Membership Has Not Been Approved Yet.";?>
           </p>
           <p class="expiry-date">
-            <?php echo $result && $result['Status'] == 'Approved' ? "Expirys on ".htmlspecialchars($result['Expiry_Date']) : "";?>
+            <?php echo $result && $result['Status'] == 'Approved' ? "Expires on ".htmlspecialchars($result['Expiry_Date']) : "";?>
           </p>
         </div>
         <div
