@@ -1,7 +1,7 @@
 <?php
   session_start();
   include("../../includes/dbconnect.php");
-  // error_reporting(0);
+  error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <?php include("../components/admin-menu.php")?>
+     <?php include("../components/admin/admin-menu.php")?>
     <section class="manage-accounts-section">
       <form method="get" class="search-accounts">
         <div class="search-container">
@@ -33,7 +33,7 @@
 
         if(isset($_GET['search'])){
           $search = trim($_GET['searchFor']);
-          $search_query = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID WHERE users.First_Name = '$search'";
+          $search_query = "SELECT users.User_ID, users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID WHERE users.First_Name = '$search'";
 
           $search_results = $conn->query($search_query);
           if($search_results->num_rows > 0){
@@ -56,7 +56,7 @@
                 </div>
                 <div class="actions-wrap">
                     <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$searched_rows['User_ID'].'\'"></i>
-                    <i class="fa-regular fa-circle-xmark delete-account"></i>
+                    <i class="fa-regular fa-circle-xmark delete-account" onclick="DeleteTrainer('.$searched_rows['User_ID'].')"></i>
                 </div>
               </div>
             ';
@@ -74,7 +74,7 @@
 
         else
         {
-          $sql = "SELECT users.User_ID,users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID";
+          $sql = "SELECT users.User_ID, users.Email, trainers.Name FROM users JOIN trainers ON users.User_ID = trainers.User_ID";
 
         $result = $conn->query($sql);
 
