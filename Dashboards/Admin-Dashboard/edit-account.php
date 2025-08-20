@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <?php include("../components/admin-menu.php")?>
+     <?php include("../components/admin/admin-menu.php")?>
     
     <section class="create-account-section">
         <form action="" method="post" class="create-account-form">
@@ -60,7 +60,7 @@
 
             if($conn->query($update_query)){
                 echo '<script type="text/javascript">alert("Changes Saved");
-            window.location.href="./manage-accounts.php";
+            window.location.href="./manage-accounts.php?selected=Edit Account";
             </script>';
             }
             else
