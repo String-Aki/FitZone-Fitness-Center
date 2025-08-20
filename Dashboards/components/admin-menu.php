@@ -27,7 +27,7 @@
             <li class="list"><a href="../Admin-Dashboard/create-account.php?selected=Create Account" class="nav-link">Create Account</a></li>
             <li class="list"><a href="../Admin-Dashboard/manage-accounts.php?selected=Manage Accounts" class="nav-link">Manage Accounts</a></li>
             <li class="list"><a href="../Admin-Dashboard/broadcast.php?selected=Broadcast" class="nav-link">Broadcast</a></li>
-            <li class="list"><a href="" class="nav-link">Everything Else</a></li>
+            <li class="list"><a href="../Admin-Dashboard/Everything-Else/dashboard.php" class="nav-link">Everything Else</a></li>
            </ul>
         </div>
     </nav>
