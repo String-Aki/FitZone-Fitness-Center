@@ -20,10 +20,10 @@ error_reporting(0);
       </div>
 
       <div class="nav-menu">
-        <a href="../index.html#home" class="links">Home</a>
-        <a href="../index.html#about" class="links">About</a>
-        <a href="../index.html#membership-section" class="links">Membership</a>
-        <a href="../index.html#testimonials" class="links">Milestones</a>
+        <a href="../index.php#home" class="links">Home</a>
+        <a href="../index.php#about" class="links">About</a>
+        <a href="../index.php#membership-section" class="links">Membership</a>
+        <a href="../index.php#testimonials" class="links">Milestones</a>
         <a href="./contact-us.php" class="links">Contact</a>
       </div>
 
@@ -62,7 +62,6 @@ error_reporting(0);
       </div>
 
     <?php
-      $errors = [];
       if(isset($_POST['send_query'])){
         $name = trim($_POST['name']);
         $email = trim($_POST['email']);
@@ -75,22 +74,20 @@ error_reporting(0);
         
         if(!$stmt){
           die();
-          $errors['prepare'] = "Prepare Failed: " . $conn->error;
         }
 
-        $stmt->bind_param("ssiss", $name, $email, $phone, $subject, $message);
+        $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
 
         if($stmt->execute()){
           echo '<script>alert("Message Sent Successfully")</script>';
         }
         else{
-          $errors['bind'] = "Bind Failed: " . $stmt->error;
+          echo '<script>alert("Message Failed")</script>';
         }
         $stmt->close();
       }
       $conn->close();
 
-      $jsonResponse = json_encode(['errors' => $errors, 'success' => empty($errors)]);
     ?>
 
       <div class="location-container">
@@ -105,24 +102,10 @@ error_reporting(0);
 
     </section>
 
-
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
     ></script>
 
-    <?php if ($jsonResponse) : ?>
-        <script>
-            const response = <?php echo $jsonResponse; ?>;
-            if (response.errors) {
-                Object.entries(response.errors).forEach(([field, error]) => {
-                    console.log(`[${field}] ${error}`);
-                });
-            }
-            if (response.success) {
-                console.log('Query Sent Successfully');
-            }
-        </script>
-    <?php endif; ?>
-  </body>
+ </body>
 </html>
