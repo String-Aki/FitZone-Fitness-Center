@@ -20,7 +20,7 @@
     />
     <section class="sign-up-container">
 
-      <a href="../index.html" class="back-home fas fa-arrow-left"></a>
+      <a href="../index.php" class="back-home fas fa-arrow-left"></a>
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="registration-form">
         <h1 class="register-heading">Sign Up</h1>
