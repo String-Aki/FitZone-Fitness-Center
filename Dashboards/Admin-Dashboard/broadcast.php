@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <?php include("../components/admin-menu.php")?>
+    <?php include("../components/admin/admin-menu.php")?>
 
     <form action="" method="post" class="broadcast-form">
         <div class="group">

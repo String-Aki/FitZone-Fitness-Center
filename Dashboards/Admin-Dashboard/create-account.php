@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include("../../includes/dbconnect.php");
-// error_reporting(0);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ include("../../includes/dbconnect.php");
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <?php include("../components/admin-menu.php")?>
+     <?php include("../components/admin/admin-menu.php")?>
     <section class="create-account-section">
         <form method="post" class="create-account-form">
             <input type="hidden" name="selected" value="Create Account">
