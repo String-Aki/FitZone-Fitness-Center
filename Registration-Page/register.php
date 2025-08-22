@@ -103,30 +103,44 @@
       $phonenum = trim($_POST["phoneNumber"]);
       $email = trim($_POST["email"]);
       $passw = trim($_POST["password"]);
-      
-      $hashed_password = password_hash($passw , PASSWORD_DEFAULT);
 
-      $stmt = $conn->prepare("INSERT INTO users (First_Name, Last_Name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?)");
+      $check_email = "SELECT User_ID FROM users WHERE Email = ? LIMIT 1";
+      $email_check_stmt = $conn->prepare($check_email);
+      $email_check_stmt->bind_param("s", $email);
+      $email_check_stmt->execute();
+      $email_check_stmt->store_result();
 
-      if(!$stmt){
-        die();
-        echo '<script type="text/javascript">alert("Prepare Failed");
-        </script>';
+      if($email_check_stmt->num_rows > 0){
+        echo '<script>
+                alert("Error: An account with this email address already exists.");
+              </script>';
       }
+      else
+      {
+        $hashed_password = password_hash($passw , PASSWORD_DEFAULT);
 
-      $stmt->bind_param("sssss", $firstn, $lastn, $phonenum, $email, $hashed_password);
+        $stmt = $conn->prepare("INSERT INTO users (First_Name, Last_Name, Phone, Email, Password) VALUES (?, ?, ?, ?, ?)");
 
-      if($stmt->execute()){
-        echo '<script type="text/javascript">alert("Account Created Successfully. Now you can login");
-        window.location.href="../Sign-In-Page/index.php";
-        </script>';
+        if(!$stmt){
+          die();
+          echo '<script type="text/javascript">alert("Prepare Failed");
+          </script>';
+        }
+
+        $stmt->bind_param("sssss", $firstn, $lastn, $phonenum, $email, $hashed_password);
+
+        if($stmt->execute()){
+          echo '<script type="text/javascript">alert("Account Created Successfully. Now you can login");
+          window.location.href="../Sign-In-Page/index.php";
+          </script>';
+        }
+
+        else{
+        echo '<script type="text/javascript">alert("Error executing query");
+          </script>';
+        }
+        $stmt->close();
       }
-
-      else{
-       echo '<script type="text/javascript">alert("Error executing query");
-        </script>';
-      }
-      $stmt->close();
     }
 
     $conn->close();
