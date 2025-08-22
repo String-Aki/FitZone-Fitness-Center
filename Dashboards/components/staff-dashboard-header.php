@@ -1,8 +1,3 @@
- <?php
-  session_start();
-  include("../../includes/dbconnect.php");
-  // error_reporting(0);
-?> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,7 +28,7 @@
         </form>
 
         <?php
-          $fetch_user = "SELECT First_Name, Last_Name, Password, Profile_Img_Path FROM users WHERE Role = 'staff' AND User_ID = '".$_SESSION['user_id']."'";
+          $fetch_user = "SELECT First_Name, Last_Name, Password, Profile_Img_Path FROM users WHERE Role = 'staff' AND User_ID = '$UID'";
 
           $details = $conn->query($fetch_user);
           $user_details = $details->fetch_assoc();
@@ -112,7 +107,7 @@
 
                 $confirm_password_hash = password_hash($confirm_password, PASSWORD_DEFAULT);
                 
-                $update_password_query = "UPDATE users SET Password = ? WHERE User_ID = '".$_SESSION['user_id']."'";
+                $update_password_query = "UPDATE users SET Password = ? WHERE User_ID = '".$UID."'";
                 
                 $stmt = $conn->prepare($update_password_query);
                 $stmt->bind_param("s", $confirm_password_hash);
@@ -122,7 +117,7 @@
                   '<script>
                   alert("Password Changed Successfully!\nPlease use the new password to login henceforth.");
                   document.getElementById("change-pass").close();
-                  window.location.href = "../../includes/logout.php";
+                  window.location.href = "../../includes/logout.php?role=staff&uid='.htmlspecialchars($UID).'";
                   </script>';
                 }
                 else

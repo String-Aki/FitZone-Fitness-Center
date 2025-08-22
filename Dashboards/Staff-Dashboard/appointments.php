@@ -8,17 +8,32 @@
   </head>
   <body>
     
-    <?php
+    <?php 
+    session_start();
+    include("../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['staff'][$UID])){
+        $current_user = $_SESSION['auth']['staff'][$UID];
+    }
+
+    if($current_user === NULL){
+        // header('Location: ../../Sign-In-Page/index.php');
+        // exit();
+    }
+
     include("../components/staff-dashboard-side-bar.php");?>
 
     <main>
       
       <?php include("../components/staff-dashboard-header.php");
       
-        if($_SERVER['REQUEST_METHOD'] === 'GET'){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-          if(isset($_GET['completed'])){
-            $appointment_id = trim($_GET['appointment_id']);
+          if(isset($_POST['completed'])){
+            $appointment_id = trim($_POST['appointment_id']);
 
             $update_appointment = $conn->query("UPDATE appointments SET Status = 'completed' WHERE Appointment_ID = '".$appointment_id."'");
 
@@ -27,7 +42,7 @@
             '
             <script>
             alert("Appointment Completed");
-            window.location.href = "./appointments.php?header_title=Appointments";
+            window.location.href = "./appointments.php?uid=' . htmlspecialchars($UID) . '&header_title=Appointments";
             </script>';
           }
           else{
@@ -35,9 +50,9 @@
           }
 
           }
-          elseif(isset($_GET['cancelled'])){
+          elseif(isset($_POST['cancelled'])){
 
-            $appointment_id = trim($_GET['appointment_id']);
+            $appointment_id = trim($_POST['appointment_id']);
 
             $update_appointment = $conn->query("UPDATE appointments SET Status = 'cancelled' WHERE Appointment_ID = '".$appointment_id."'");
 
@@ -46,7 +61,7 @@
             '
             <script>
             alert("Appointment Cancelled");
-            window.location.href = "./appointments.php?header_title=Appointments";
+            window.location.href = "./appointments.php?uid=' . htmlspecialchars($UID) . '&header_title=Appointments";
             </script>';
           }
           else{
@@ -77,7 +92,7 @@
             <tbody>
 
             <?php
-              $fetch_appointments = "SELECT appointments.*, users.First_Name, users.Last_Name,users.Phone FROM appointments JOIN users ON appointments.User_ID = users.User_ID JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."'";
+              $fetch_appointments = "SELECT appointments.*, users.First_Name, users.Last_Name,users.Phone FROM appointments JOIN users ON appointments.User_ID = users.User_ID JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$UID."'";
 
               $appointments = $conn->query($fetch_appointments);
 
@@ -110,7 +125,7 @@
                 <td>'.htmlspecialchars($row['Status']).'</td>
                 <td>'.htmlspecialchars($Booked_Date_Formatted).'</td>
                 <td class="actions">
-                  <form action="" method="GET" id="ap_form" class="actions">
+                  <form action="" method="POST" id="ap_form" class="actions">
 
                   <input name="appointment_id" value="'.htmlspecialchars($row['Appointment_ID']).'" type="hidden" />
 

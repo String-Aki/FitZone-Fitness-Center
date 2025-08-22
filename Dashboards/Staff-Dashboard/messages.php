@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include("../components/staff-dashboard-side-bar.php");?>
+    <?php 
+    session_start();
+    include("../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['staff'][$UID])){
+        $current_user = $_SESSION['auth']['staff'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
+    }
+
+    include("../components/staff-dashboard-side-bar.php");?>
     
     <main>
 
@@ -30,7 +46,7 @@
                     <tbody>
 
                     <?php
-                        $fetch_messages = "SELECT messages.*, users.First_Name, users.Last_Name, users.User_ID FROM messages JOIN users ON users.User_ID = messages.User_ID JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."'";
+                        $fetch_messages = "SELECT messages.*, users.First_Name, users.Last_Name, users.User_ID FROM messages JOIN users ON users.User_ID = messages.User_ID JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$UID."'";
 
                         $messages = $conn->query($fetch_messages);
                         
@@ -69,6 +85,11 @@
                         </tr>
                                 ';
                             }
+                        }else {
+                            echo 
+                            '<tr>
+                                <td colspan="8" style="text-align:center; font-size:1.5vw; font-weight:500;">No new messages</td>
+                            </tr>';
                         }
                     ?>                        
                     </tbody>

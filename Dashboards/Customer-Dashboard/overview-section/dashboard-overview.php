@@ -10,8 +10,6 @@
    <?php 
     session_start();
     include("../../../includes/dbconnect.php");
-    // $isLoggedIn = isset($_SESSION['loggedIn']);
-    // $isLoggedId = isset($_SESSION['user_id']);
 
     $UID = $_GET['uid'] ?? null;
     $current_user = NULL;

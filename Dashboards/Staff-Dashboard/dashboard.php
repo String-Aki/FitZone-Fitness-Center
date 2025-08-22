@@ -8,7 +8,23 @@
   </head>
   <body>
     
-    <?php include("../components/staff-dashboard-side-bar.php");?>
+    <?php 
+    session_start();
+    include("../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['staff'][$UID])){
+        $current_user = $_SESSION['auth']['staff'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
+    }
+
+    include("../components/staff-dashboard-side-bar.php");?>
 
     <main>
 
@@ -227,7 +243,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </div>
             <div class="appointment-space">
             <?php
-              $fetch_appointments = "SELECT appointments.*,users.First_Name, users.Last_Name, users.Profile_Img_Path FROM appointments JOIN users on appointments.User_ID = users.User_ID JOIN trainers on appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND appointments.Status = 'pending'";
+              $fetch_appointments = "SELECT appointments.*,users.First_Name, users.Last_Name, users.Profile_Img_Path FROM appointments JOIN users on appointments.User_ID = users.User_ID JOIN trainers on appointments.Trainer_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$UID."' AND appointments.Status = 'pending'";
 
               $appointments = $conn->query($fetch_appointments);
 
@@ -333,7 +349,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <div class="message-space">
 
             <?php
-              $fetch_messages = "SELECT messages.Message_ID, messages.Topic, messages.Message, messages.Created_At, users.First_Name, users.Last_Name, users.Profile_Img_Path FROM messages JOIN users ON messages.User_ID = users.User_ID JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$_SESSION['user_id']."' AND messages.Status = 'pending'";
+              $fetch_messages = "SELECT messages.Message_ID, messages.Topic, messages.Message, messages.Created_At, users.First_Name, users.Last_Name, users.Profile_Img_Path FROM messages JOIN users ON messages.User_ID = users.User_ID JOIN trainers ON messages.Recipient_ID = trainers.Trainer_ID WHERE trainers.User_ID = '".$UID."' AND messages.Status = 'pending'";
 
               $messages = $conn->query($fetch_messages);
 

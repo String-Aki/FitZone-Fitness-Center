@@ -7,7 +7,23 @@
     <title>Customer Management</title>
 </head>
 <body>
-        <?php include("../components/staff-dashboard-side-bar.php");?>
+        <?php 
+        session_start();
+        include("../../includes/dbconnect.php");
+
+        $UID = $_GET['uid'] ?? null;
+        $current_user = NULL;
+
+        if($UID && isset($_SESSION['auth']['staff'][$UID])){
+            $current_user = $_SESSION['auth']['staff'][$UID];
+        }
+
+        if($current_user === NULL){
+            header('Location: ../../Sign-In-Page/index.php');
+            exit();
+        }
+
+        include("../components/staff-dashboard-side-bar.php");?>
 
         <main>
 
@@ -24,7 +40,7 @@
                 echo
                 '
                 <script>alert(User Deleted Succefully);
-                window.location.href="./customer.php?header_title=Customer Management"
+                window.location.href="./customer.php?header_title=Customer Management&uid='.htmlspecialchars($UID).'"
                 </script>
                 ';
             }
@@ -33,7 +49,7 @@
                 echo
                 '
                 <script>alert(User Deletion Failed);
-                window.location.href="./customer.php?header_title=Customer Management"
+                window.location.href="./customer.php?header_title=Customer Management&uid='.htmlspecialchars($UID).'"
                 </script>
                 ';
             }
@@ -56,7 +72,7 @@
                     <tbody>
 
                     <?php
-                        $fetch_users = "SELECT users.*, memberships.Plan_Type,memberships.Membership_ID FROM users LEFT JOIN memberships ON memberships.User_ID = users.User_ID WHERE users.Role = 'customer'";
+                        $fetch_users = "SELECT u.*, m.Plan_Type,m.Membership_ID FROM users u LEFT JOIN memberships m ON u.User_ID = m.User_ID LEFT JOIN memberships m2 ON u.User_ID = m2.User_ID AND m.Requested_Date < m2.Requested_Date WHERE u.Role = 'customer' AND m2.Membership_ID IS NULL";
                         $users = $conn->query($fetch_users);
 
                         if($users->num_rows > 0 ){
