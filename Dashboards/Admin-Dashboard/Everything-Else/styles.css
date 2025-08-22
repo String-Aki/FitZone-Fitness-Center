@@ -186,6 +186,39 @@ header {
   margin: 0;
 }
 
+.upload-pfp {
+  border: none;
+}
+
+.admin-profile {
+  position: relative;
+  background-color: #f0f2f5;
+}
+
+.upload-pfp-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.admin-profile:hover .avatar {
+  opacity: 0;
+}
+
+.admin-profile:hover .upload-pfp-overlay {
+  border: 1.5px solid black;
+   opacity: 1;
+}
+
 /* Dashboard Styles */
 .staff-dashboard-section {
   display: flex;

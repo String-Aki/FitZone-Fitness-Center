@@ -65,7 +65,7 @@
                 
 
                 <?php
-                $fetch_broadcast = "SELECT * FROM broadcasts";
+                $fetch_broadcast = "SELECT broadcasts.*, users.Profile_Img_Path FROM broadcasts JOIN users ON broadcasts.Admin_ID = users.User_ID";
                 $broadcast_result = $conn->query($fetch_broadcast);
 
                 if($broadcast_result->num_rows > 0){
@@ -78,7 +78,7 @@
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
-                                    <div class="profile-cont"><img src="../../../Assets/customer-dashboard-assets/profile.png" alt="profile-picture" class="profile-picture"></div>
+                                    <div class="profile-cont"><img src="'.htmlspecialchars($broadcast['Profile_Img_Path']).'" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
                                             <p class="log-header">'.htmlspecialchars($ShortMessage).'</p>
                                             <p class="log-subheader">'.htmlspecialchars($broadcast['Topic']).'</p>
@@ -128,7 +128,7 @@
                                 $inbox_header = true;
                             }
                             $dialogID = "message-popup".htmlspecialchars($row['Message_ID']);
-                            $pfp_path = (!empty($row['Profile_Img_Path'])) ? $row['Profile_Img_Path'] : "../../../Assets/customer-dashboard-assets/profile.png";
+                            $pfp_path = (!empty($row['Profile_Img_Path'])) ? "../".$row['Profile_Img_Path'] : "../../../Assets/customer-dashboard-assets/profile.png";
 
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
