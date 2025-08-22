@@ -656,13 +656,13 @@ tbody td {
 }
 
 .completed:hover {
-  border: none;
+  border: 1.5px solid #33a64f;
   background-color: #33a64f;
   color: rgb(255, 255, 255);
 }
 
 .cancelled:hover {
-  border: none;
+  border: 1.5px solid #fe0808;
   background-color: #fe0808;
   color: rgb(255, 255, 255);
 }
@@ -692,6 +692,14 @@ tbody td {
   font-weight: 600;
 }
 
+.closed {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #fe0808;
+  border: 1.8px solid #fe0808;
+  background-color: white;
+}
 
 /* Customer Management Section */
 

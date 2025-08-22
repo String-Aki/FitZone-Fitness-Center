@@ -1,3 +1,21 @@
+<?php 
+session_start();
+    include("../../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['admin'][$UID])){
+        $current_user = $_SESSION['auth']['admin'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../../Sign-In-Page/index.php');
+        exit();
+    }
+error_reporting(0);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +29,35 @@
     
     <main>
 
-    <?php include("../../components/admin/admin-dashboard-header.php");?>
+    <?php include("../../components/admin/admin-dashboard-header.php");
+    
+        if(isset($_POST['close'])){
+            $guest_id = $_POST['guest_id'];
+
+            $update_query = "UPDATE contact_queries SET Status = 'closed' WHERE Guest_ID = ?";
+            $stmt = $conn->prepare($update_query);
+            $stmt->bind_param("i", $guest_id);
+
+            if($stmt->execute()){
+                echo
+                '
+                <script>
+                alert("Query Closed");
+                window.location.href = "./messages.php?uid='.htmlspecialchars($UID).'";
+                </script>
+                ';
+            }
+            else{
+                echo
+                '
+                <script>
+                alert("Failed to close query");
+                window.location.href = "./messages.php?uid='.htmlspecialchars($UID).'";
+                </script>
+                ';
+            }
+        }
+    ?>
 
         <section class="staff-dashboard-section">
             <div class="table-container">
@@ -38,7 +84,7 @@
 
                             while($row = $messages->fetch_assoc()){
 
-                                $is_responded = !empty($row['Response']);
+                                $row['Status'] === 'closed'? ($is_closed=true) : ($is_closed=NULL);
                                 echo 
                                 '
                                 <tr>
@@ -50,8 +96,8 @@
                             <td>'.htmlspecialchars($row['Phone_Number']).'</td>
                             <td>
                                 <form action="" method="POST" class="actions">
-                                    <input type="hidden" value="'.htmlspecialchars($row['Guest_ID']).'" name="user_id" />
-                                    <button type="submit" name="close" class="action-button cancelled" onclick="return confirm(\'Confirm to close this inquiry\')">Close</button>
+                                    <input type="hidden" value="'.htmlspecialchars($row['Guest_ID']).'" name="guest_id" />
+                                    <button type="submit" name="close" class="action-button cancelled '.($is_closed ? 'closed' : '').'" '.($is_closed ? 'onclick="return false";' : '').' onclick="return confirm(\'Confirm to close this inquiry\')">'.($is_closed ? 'closed' : 'close').'</button>
                                 </form>
 
                             </td>
@@ -68,6 +114,6 @@
 <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
-    ></script>
+    ></scrip>
 </body>
 </html>

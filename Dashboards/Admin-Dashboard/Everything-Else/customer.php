@@ -1,3 +1,21 @@
+<?php 
+session_start();
+    include("../../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['admin'][$UID])){
+        $current_user = $_SESSION['auth']['admin'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../../Sign-In-Page/index.php');
+        exit();
+    }
+error_reporting(0);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +42,7 @@
                 echo
                 '
                 <script>alert(User Deleted Succefully);
-                window.location.href="./customer.php?header_title=Customer Management"
+                window.location.href="./customer.php?header_title=Customer Management&uid='.htmlspecialchars($UID).'"
                 </script>
                 ';
             }
@@ -33,7 +51,7 @@
                 echo
                 '
                 <script>alert(User Deletion Failed);
-                window.location.href="./customer.php?header_title=Customer Management"
+                window.location.href="./customer.php?header_title=Customer Management&uid='.htmlspecialchars($UID).'"
                 </script>
                 ';
             }
@@ -56,7 +74,7 @@
                     <tbody>
 
                     <?php
-                        $fetch_users = "SELECT users.*, memberships.Plan_Type,memberships.Membership_ID FROM users LEFT JOIN memberships ON memberships.User_ID = users.User_ID WHERE users.Role = 'customer'";
+                        $fetch_users = "SELECT u.*, m.Plan_Type,m.Membership_ID FROM users u LEFT JOIN memberships m ON u.User_ID = m.User_ID LEFT JOIN memberships m2 ON u.User_ID = m2.User_ID AND m.Requested_Date < m2.Requested_Date WHERE u.Role = 'customer' AND m2.Membership_ID IS NULL";
                         $users = $conn->query($fetch_users);
 
                         if($users->num_rows > 0 ){
@@ -64,7 +82,7 @@
                                 
                                 $correct_path = $row['Profile_Img_Path'];
 
-                                $path = (!empty($row['Profile_Img_Path'])) ? $correct_path : "../../Assets/customer-dashboard-assets/profile.png";
+                                $path = (!empty($row['Profile_Img_Path'])) ? $correct_path : "../../../Assets/customer-dashboard-assets/profile.png";
 
                                 $membership_type = empty($row['Membership_ID']) ? "Guest" : $row['Plan_Type'];
 

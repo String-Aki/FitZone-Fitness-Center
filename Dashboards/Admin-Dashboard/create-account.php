@@ -1,6 +1,18 @@
 <?php 
 session_start();
-include("../../includes/dbconnect.php");
+    include("../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['admin'][$UID])){
+        $current_user = $_SESSION['auth']['admin'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
+    }
 error_reporting(0);
 ?>
 <!DOCTYPE html>

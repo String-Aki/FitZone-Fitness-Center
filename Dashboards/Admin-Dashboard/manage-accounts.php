@@ -1,6 +1,18 @@
 <?php
   session_start();
-  include("../../includes/dbconnect.php");
+    include("../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['admin'][$UID])){
+        $current_user = $_SESSION['auth']['admin'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
+    }
   error_reporting(0);
 ?>
 <!DOCTYPE html>
@@ -17,6 +29,7 @@
       <form method="get" class="search-accounts">
         <div class="search-container">
           <input type="hidden" name="selected" value="Searching">
+          <input type="hidden" name="uid" value="<?php echo htmlspecialchars($UID)?>">
           <input
             type="text"
             name="searchFor"
@@ -55,7 +68,7 @@
                   </div>
                 </div>
                 <div class="actions-wrap">
-                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$searched_rows['User_ID'].'\'"></i>
+                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$searched_rows['User_ID'].'&uid='.htmlspecialchars($UID).'\'"></i>
                     <i class="fa-regular fa-circle-xmark delete-account" onclick="DeleteTrainer('.$searched_rows['User_ID'].')"></i>
                 </div>
               </div>
@@ -98,7 +111,7 @@
                   </div>
                 </div>
                 <div class="actions-wrap">
-                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$row['User_ID'].'\'"></i>
+                    <i class="fas fa-pen-to-square edit-account" onclick="window.location.href=\'./edit-account.php?selected=Edit Account&update_id='.$row['User_ID'].'&uid='.htmlspecialchars($UID).'\'"></i>
                     <i class="fa-regular fa-circle-xmark delete-account" onclick="DeleteTrainer('.$row['User_ID'].')"></i>
                 </div>
               </div>

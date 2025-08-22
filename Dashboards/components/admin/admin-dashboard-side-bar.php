@@ -13,25 +13,25 @@
         <h1 class="logo-name">Fitzone</h1>
       </div>
       <nav class="nav-menu">
-        <a href="../../Admin-Dashboard/Everything-Else/dashboard.php?header_title=Admin Dashboard" class="home-link">
+        <a href="../../Admin-Dashboard/Everything-Else/dashboard.php?header_title=Admin Dashboard&uid=<?php echo htmlspecialchars($UID)?>" class="home-link">
           <i class="fas fa-house nav-logo"></i>
           Home
         </a>
-        <a href="../../Admin-Dashboard/Everything-Else/messages.php?header_title=Messages" class="message-link">
+        <a href="../../Admin-Dashboard/Everything-Else/messages.php?header_title=Messages&uid=<?php echo htmlspecialchars($UID)?>" class="message-link">
           <i class="fa-regular fa-message nav-logo"></i>
           Messages
         </a>
-        <a href="../../Admin-Dashboard/Everything-Else/customer.php?header_title=Customer Management" class="customers-link">
+        <a href="../../Admin-Dashboard/Everything-Else/customer.php?header_title=Customer Management&uid=<?php echo htmlspecialchars($UID)?>" class="customers-link">
           <i class="fas fa-people-group nav-logo"></i>
           Customers
         </a>
-        <a href="../../Admin-Dashboard/first-view.php" class="back-link">
+        <a href="../../Admin-Dashboard/first-view.php?uid=<?php echo htmlspecialchars($UID)?>" class="back-link">
           <i class="fa-solid fa-circle-arrow-left nav-logo"></i>
           Back
         </a>
       </nav>
       <div class="aside-footer">
-        <a href="../../../includes/staff-logout.php" class="logout-link">
+        <a href="../../../includes/logout.php?role=admin&uid=<?php echo htmlspecialchars($UID)?>" class="logout-link">
           <i class="fa-solid fa-arrow-right-from-bracket logout-logo"></i>
           Logout
         </a>

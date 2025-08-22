@@ -24,10 +24,10 @@
         </div>
         <div class="extend">
            <ul class="menu-list">
-            <li class="list"><a href="../Admin-Dashboard/create-account.php?selected=Create Account" class="nav-link">Create Account</a></li>
-            <li class="list"><a href="../Admin-Dashboard/manage-accounts.php?selected=Manage Accounts" class="nav-link">Manage Accounts</a></li>
-            <li class="list"><a href="../Admin-Dashboard/broadcast.php?selected=Broadcast" class="nav-link">Broadcast</a></li>
-            <li class="list"><a href="../Admin-Dashboard/Everything-Else/dashboard.php" class="nav-link">Everything Else</a></li>
+            <li class="list"><a href="../Admin-Dashboard/create-account.php?selected=Create Account&uid=<?php echo htmlspecialchars($UID)?>" class="nav-link">Create Account</a></li>
+            <li class="list"><a href="../Admin-Dashboard/manage-accounts.php?selected=Manage Accounts&uid=<?php echo htmlspecialchars($UID)?>" class="nav-link">Manage Accounts</a></li>
+            <li class="list"><a href="../Admin-Dashboard/broadcast.php?selected=Broadcast&uid=<?php echo htmlspecialchars($UID)?>" class="nav-link">Broadcast</a></li>
+            <li class="list"><a href="../Admin-Dashboard/Everything-Else/dashboard.php?uid=<?php echo htmlspecialchars($UID)?>" class="nav-link">Everything Else</a></li>
            </ul>
         </div>
     </nav>
@@ -45,7 +45,7 @@
                     iconToPower.classList.add("fa-power-off");
 
                     document.querySelector(".fa-power-off").addEventListener("click",()=>{
-                    window.location.href = "../../includes/logout.php";
+                    window.location.href = "../../includes/logout.php?role=admin&uid=<?php echo htmlspecialchars($UID)?>";
                     })
                 })
             }
@@ -56,7 +56,7 @@
             iconToPower.classList.remove("fa-dumbbell");
             iconToPower.classList.add("fa-power-off");
             document.querySelector(".fa-power-off").addEventListener("click",()=>{
-            window.location.href = "../../includes/logout.php";
+            window.location.href = "../../includes/logout.php?role=admin&uid=<?php echo htmlspecialchars($UID)?>";
         })
         });
             }
