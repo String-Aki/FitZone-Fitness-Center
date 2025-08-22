@@ -150,7 +150,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-1 approval-card ">
             <div class="card-header">
               <h3 class="card-title">Approvals</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
             </div>
             <div class="approval-space">
               <?php 
@@ -239,7 +238,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-2 appointment-card">
             <div class="card-header">
               <h3 class="card-title">Appointments</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
+              <i class="fa-solid fa-ellipsis more-button appointments card-menu-icon"></i>
             </div>
             <div class="appointment-space">
             <?php
@@ -343,7 +342,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-2 message-card">
             <div class="card-header">
               <h3 class="card-title">Notifications</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
+              <i class="fa-solid fa-ellipsis more-button messages card-menu-icon"></i>
             </div>
 
             <div class="message-space">
@@ -485,7 +484,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
       </section>
     </main>
     
+    <script>
+      const moreButton = document.querySelectorAll(".more-button");
 
+      moreButton.forEach(button =>{
+        button.addEventListener("click", ()=>{
+          if(button.classList.contains("appointments")){
+            window.location.href = "./appointments.php?uid=<?php echo htmlspecialchars($UID)?>";
+          }
+          else
+            {
+            window.location.href = "./messages.php?uid=<?php echo htmlspecialchars($UID)?>";
+          }
+
+        });
+      })
+    </script>
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"

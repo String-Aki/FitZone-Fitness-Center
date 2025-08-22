@@ -125,7 +125,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-1 approval-card ">
             <div class="card-header">
               <h3 class="card-title">Approvals</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
             </div>
             <div class="approval-space">
               <?php 
@@ -209,7 +208,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-2 appointment-card">
             <div class="card-header">
               <h3 class="card-title">Appointments</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
             </div>
             <div class="appointment-space">
             <?php
@@ -309,7 +307,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <div class="card span-2 message-card">
             <div class="card-header">
               <h3 class="card-title">Notifications</h3>
-              <i class="fa-solid fa-ellipsis more-button card-menu-icon"></i>
             </div>
 
             <div class="message-space">
