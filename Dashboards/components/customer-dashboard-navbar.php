@@ -1,6 +1,3 @@
-<?php
-// error_reporting(0);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +64,7 @@
         });
 
         logout.addEventListener("click", ()=>{
-            window.location.href = "../../../includes/logout.php";
+            window.location.href = "../../../includes/logout.php?role=customer&uid=<?echo htmlspecialchars($UID)?>";
         });
 
         window.addEventListener("scroll", () => {
