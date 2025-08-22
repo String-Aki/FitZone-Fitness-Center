@@ -78,11 +78,27 @@
         <h3 class="your-membership-header overview-subheaders section-subheader">Your Membership</h3>
 
         <?php
-            $fetch_query = "SELECT memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN users ON users.User_ID = memberships.User_ID WHERE memberships.User_ID = '".$UID."'";
+            $fetch_query = "SELECT memberships.Membership_ID, memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN users ON users.User_ID = memberships.User_ID WHERE memberships.User_ID = '".$UID."' ORDER BY Requested_Date DESC, Membership_ID DESC LIMIT 1";
 
             $result = $conn->query($fetch_query);
             $row = $result->fetch_assoc();
             if($row){
+            
+                $today = date('Y-m-d');
+                $expiry_date = $row['Expiry_Date'];
+
+                if($row['Status'] === 'Approved' && strtotime($expiry_date) < strtotime($today)){
+                    $updated_status = 'Expired';
+
+                    $update_expiry = "UPDATE memberships SET Status = ? WHERE Membership_ID = ?";
+                    $expiry_stmt = $conn->prepare($update_expiry);
+                    $expiry_stmt->bind_param("si", $updated_status, $row['Membership_ID']);
+                    $expiry_stmt->execute();
+                    $expiry_stmt->close();
+
+                    $row['Status'] = $updated_status;
+                }
+
             $_SESSION['card'] = $row['Status'];
             if($row['Status'] == 'Approved'){
                 echo '
@@ -97,6 +113,16 @@
                         </h1> 
                     </div>
                 </div>';
+            }
+
+            elseif($row['Status'] == 'Expired'){
+                echo '
+                    <div class="your-membership-section">
+                        <div>
+                            <p class="your-membership-p">Your ' . htmlspecialchars($row['Plan_Type']) . ' membership has expired.</p>
+                            <p class="expiry-date">Expired on ' . htmlspecialchars(date('F j, Y', strtotime($row['Expiry_Date']))) . '</p>
+                        </div>
+                    </div>';
             }
 
             elseif($row['Status'] == 'Not Approved'){
@@ -116,7 +142,7 @@
                 '
                 <div class="your-membership-section">
                     <div>
-                        <p class="your-membership-p">Has Not Been Approved Yet.</p>
+                        <p class="your-membership-p">You do not have an active membership plan.</p>
                     </div>
                     <div class="img-container membership-card" style="box-shadow: none;"></div>
                 </div>

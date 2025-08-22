@@ -29,7 +29,7 @@
       ?>
 
     <?php
-      $fetch_query = "SELECT Plan_Type, Status, Expiry_Date FROM memberships WHERE User_ID = '$UID'";
+      $fetch_query = "SELECT Plan_Type, Status, Expiry_Date FROM memberships WHERE User_ID = '$UID' ORDER BY Requested_Date DESC, Membership_ID DESC LIMIT 1";
 
       $fetch = $conn->query($fetch_query);
       $result = $fetch->fetch_assoc();
@@ -47,7 +47,21 @@
       <div class="your-membership-section">
         <div>
           <p class="your-membership-p">
-            <?php echo $result && $result['Status'] == 'Approved' ? htmlspecialchars($result['Plan_Type'])." Plan" : "Membership Has Not Been Approved Yet.";?>
+            <?php 
+            
+            if (!$result){
+              echo 'Choose A Plan Below And Become A Fitzone Member Today';
+            }
+            elseif($result && $result['Status']== 'Expired'){
+              echo 'Your '.htmlspecialchars($result['Plan_Type']).' plan has expired';
+            }
+            elseif($result && $result['Status'] == 'Approved'){
+              echo htmlspecialchars($result['Plan_Type'])." Membership Plan";
+            }
+            else {
+              echo "Membership Has Not Been Approved Yet.";
+            }
+            ?>
           </p>
           <p class="expiry-date">
             <?php echo $result && $result['Status'] == 'Approved' ? "Expires on ".htmlspecialchars($result['Expiry_Date']) : "";?>
@@ -124,31 +138,56 @@
     <?php
       if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        $request_membership = "INSERT INTO memberships (User_ID, Plan_Type, Status, Requested_Date) VALUES (?,?,?,?)";
-        $stmt = $conn->prepare($request_membership);
-        $status = 'Not Approved';
-        $requested_date = date('Y-m-d');
+        $check_membership = "SELECT COUNT(*) as existing_request FROM memberships WHERE User_ID = ? AND (Status = 'Not Approved' OR Status = 'Approved')";
+        $check_stmt = $conn->prepare($check_membership);
+        $check_stmt->bind_param("i", $UID);
+        $check_stmt->execute();
 
-        if($_POST['plan'] == 'basic'){
-          $plan_type = 'Basic';
-        }
-        elseif($_POST['plan'] == 'pro'){
-          $plan_type = 'Pro';
-        }
-        elseif ($_POST['plan'] == 'elite') {
-          $plan_type = "Elite";
-        }
+        $check_results = $check_stmt->get_result()->fetch_assoc();
+        $check_stmt->close();
 
-        $stmt->bind_param("isss", $UID, $plan_type, $status, $requested_date);
-
-        if($stmt->execute()){
-          echo "<script>alert('$plan_type plan has been requested');</script>";
+        if($check_results['existing_request'] > 0){
+          echo
+          '
+            <script>
+              alert("You already have a pending or active membership request.")
+            </script>
+          ';
         }
         else
         {
-          echo "<script>alert('Request Failed');</script>";
+          $request_membership = "INSERT INTO memberships (User_ID, Plan_Type, Status, Requested_Date) VALUES (?,?,?,?)";
+          $stmt = $conn->prepare($request_membership);
+          $status = 'Not Approved';
+          $requested_date = date('Y-m-d');
+  
+          if($_POST['plan'] == 'basic'){
+            $plan_type = 'Basic';
+          }
+          elseif($_POST['plan'] == 'pro'){
+            $plan_type = 'Pro';
+          }
+          elseif ($_POST['plan'] == 'elite') {
+            $plan_type = "Elite";
+          }
+  
+          $stmt->bind_param("isss", $UID, $plan_type, $status, $requested_date);
+  
+          if($stmt->execute()){
+            echo "<script>
+            alert('$plan_type plan has been requested')
+            window.location.href = '../overview-section/dashboard-overview.php?uid=".htmlspecialchars($UID)."';
+            </script>";
+          }
+          else
+          {
+            echo "<script>
+            alert('Request Failed');
+            window.location.href = './manage-membership.php?uid=".htmlspecialchars($UID)."';
+            </script>";
+          }
+          $stmt->close();
         }
-        $stmt->close();
       }
       $conn->close();
     ?>
