@@ -8,10 +8,28 @@
   </head>
   <body>
 
-    <?php include("../../components/customer-dashboard-navbar.php");?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
     
     <section class="dashboard-sections">
-      <i onclick="window.location.href='./nutrition.php'" class="fas fa-arrow-left back"></i>
+      <i onclick="window.location.href='./nutrition.php?uid=<?php echo htmlspecialchars($UID); ?>'" class="fas fa-arrow-left back"></i>
       <article class="all-articles">
         <h1 class="article-h1">Healthy Fats: Myths and Benefits Unveiled</h1>
         <div class="section-img-container">

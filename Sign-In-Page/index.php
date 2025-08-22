@@ -68,36 +68,64 @@ error_reporting(0);
         $row = $result->fetch_assoc();
 
         if($row && password_verify($passw, $row['Password'])){
-          $_SESSION['user_id'] = $row['User_ID'];
-          $_SESSION['username'] = $row['First_Name'];
-          $_SESSION['role'] = $row['Role'];
+
+          $user_id = $row['User_ID'];
+          $user_role = $row['Role'];
+          $username = $row['First_Name'];
+
+          if(!isset($_SESSION['auth'])){
+            $_SESSION['auth'] = [];
+          }
+
+          $_SESSION['auth'][$user_role][$user_id] = [
+            'username' => $username,
+            'role' => $user_role
+          ];
+
+          $redirect_url = '';
+          if($user_role === 'customer'){
+            $redirect_url = "../Dashboards/Customer-Dashboard/overview-section/dashboard-overview.php?uid=".$user_id;
+          }
+          elseif($user_role === 'staff'){
+            $redirect_url = "../Dashboards/Staff-Dashboard/dashboard.php?uid=".$user_id;
+
+          }
+          elseif($user_role === 'admin'){
+            $redirect_url = "../Dashboards/Admin-Dashboard/first-view.php?uid=".$user_id;
+            
+          }
+ 
+          // Initial Code 
+          // $_SESSION['user_id'] = $row['User_ID'];
+          // $_SESSION['username'] = $row['First_Name'];
+          // $_SESSION['role'] = $row['Role'];
 
           if($_SESSION['role'] === 'staff'){
             echo '<script>
               alert("Redirecting to staff dashboard...");
-              window.location.href = "../Dashboards/Staff-Dashboard/dashboard.php";
+              window.location.href = "'.$redirect_url.'";
           </script>';
   
-          $_SESSION['loggedIn'] = true;
+          // $_SESSION['loggedIn'] = true;
           }
 
           elseif($_SESSION['role'] === 'admin'){
             echo '<script>
               alert("Redirecting to admin dashboard...");
-              window.location.href = "../Dashboards/Admin-Dashboard/first-view.php";
+              window.location.href = "'.$redirect_url.'";
           </script>';
   
-          $_SESSION['loggedIn'] = true;
+          // $_SESSION['loggedIn'] = true;
           }
 
           else{
 
           echo '<script>
             alert("You have successfully logged in!");
-            window.location.href = "../Dashboards/Customer-Dashboard/overview-section/dashboard-overview.php";
+            window.location.href = "'.$redirect_url.'";
         </script>';
 
-        $_SESSION['loggedIn'] = true;
+        // $_SESSION['loggedIn'] = true;
         }
 
         }

@@ -7,14 +7,32 @@
     <title>Book Appointment</title>
 </head>
 <body>
-    <?php include("../../components/customer-dashboard-navbar.php");?>
+    <?php 
+    session_start();
+    include("../../../includes/dbconnect.php");
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['customer'][$UID])){
+        $current_user = $_SESSION['auth']['customer'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../../Sign-In-Page/index.php');
+        exit();
+    }
+
+    include("../../components/customer-dashboard-navbar.php");
+    
+    ?>
 
     <section class="book-appointment dashboard-sections">
         <h1 class="headers">My Schedule</h1>
         <div class="Schedule-indicator indicator-div">
                 <div class="manage-schedule">
-                    <h2 onclick="window.location.href = './book-appointment.php'" class="book-appointment sub-header">Book Appointment</h2>
-                    <h2 onclick="window.location.href = './manage-appointment.php'" class="manage-appointment sub-header" style="color:#637587;">Manage Appointment</h2>
+                    <h2 onclick="window.location.href = './book-appointment.php?uid=<?php echo htmlspecialchars($UID); ?>'" class="book-appointment sub-header">Book Appointment</h2>
+                    <h2 onclick="window.location.href = './manage-appointment.php?uid=<?php echo htmlspecialchars($UID); ?>'" class="manage-appointment sub-header" style="color:#637587;">Manage Appointment</h2>
                 </div>
             </div>
             <hr class="line">
@@ -69,7 +87,7 @@
                                     
     <?php
     if(isset($_POST['book'])){
-        $user_id = $_SESSION['user_id'];
+        $user_id = $UID;
         $trainer_id = $_POST['trainer'];
         $session_type = $_POST['training-session-type'];
         $session_date = $_POST['session-date'];
@@ -80,7 +98,7 @@
 
         if($conn->query($sql) === TRUE){
             echo '<script type="text/javascript">alert("Session Booked Successfully");
-        window.location.href="./manage-appointment.php";
+        window.location.href="./manage-appointment.php?uid=' . htmlspecialchars($UID) . '";
         </script>';
         }
         else {

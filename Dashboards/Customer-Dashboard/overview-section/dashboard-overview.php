@@ -7,15 +7,31 @@
     <title>Dashboard Overview</title>
 </head>
 <body>
-   <?php include("../../components/customer-dashboard-navbar.php");
-    $isLoggedIn = isset($_SESSION['loggedIn']);
-    $isLoggedId = isset($_SESSION['user_id']);
+   <?php 
+    session_start();
+    include("../../../includes/dbconnect.php");
+    // $isLoggedIn = isset($_SESSION['loggedIn']);
+    // $isLoggedId = isset($_SESSION['user_id']);
+
+    $UID = $_GET['uid'] ?? null;
+    $current_user = NULL;
+
+    if($UID && isset($_SESSION['auth']['customer'][$UID])){
+        $current_user = $_SESSION['auth']['customer'][$UID];
+    }
+
+    if($current_user === NULL){
+        header('Location: ../../../Sign-In-Page/index.php');
+        exit();
+    }
+
     $_SESSION['card'] = NULL;
+    include("../../components/customer-dashboard-navbar.php");
     ?>
    
     <section class="overview dashboard-sections">
-        <?php if($isLoggedIn): ?>
-        <h1 class="welcome headers">Welcome Back, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
+        <?php if($current_user): ?>
+        <h1 class="welcome headers">Welcome Back, <?php echo htmlspecialchars($current_user['username']); ?></h1>
         <?php endif; ?>
         <div class="overview-indicator indicator-div">
             <h2 class="overview sub-header">Overview</h2>
@@ -24,7 +40,7 @@
         <h3 class="next-class-header overview-subheaders section-subheader">Your next class</h3>
 
         <?php
-            $fetch_activity = "SELECT Session_Type, Session_Date, Session_Time, Status, trainers.Name AS Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$_SESSION['user_id']."' ORDER BY Session_Date, Session_Time";
+            $fetch_activity = "SELECT Session_Type, Session_Date, Session_Time, Status, trainers.Name AS Trainer_Name FROM appointments JOIN trainers ON trainers.Trainer_ID = appointments.Trainer_ID WHERE appointments.User_ID = '".$UID."' ORDER BY Session_Date, Session_Time";
 
             $activity_result = $conn->query($fetch_activity);
             $nextClass = false;
@@ -64,7 +80,7 @@
         <h3 class="your-membership-header overview-subheaders section-subheader">Your Membership</h3>
 
         <?php
-            $fetch_query = "SELECT memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN users ON users.User_ID = memberships.User_ID WHERE memberships.User_ID = '".$_SESSION['user_id']."'";
+            $fetch_query = "SELECT memberships.Plan_Type, memberships.Status, memberships.Expiry_Date from memberships JOIN users ON users.User_ID = memberships.User_ID WHERE memberships.User_ID = '".$UID."'";
 
             $result = $conn->query($fetch_query);
             $row = $result->fetch_assoc();

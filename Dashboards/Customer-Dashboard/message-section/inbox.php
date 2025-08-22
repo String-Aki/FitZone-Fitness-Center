@@ -7,15 +7,33 @@
     <title>Inbox</title>
 </head>
 <body>
-    <?php include("../../components/customer-dashboard-navbar.php"); ?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
 
     <section class="inbox-section dashboard-sections">
         <h1 class="headers">Messages</h1>
 
         <div class="messages-indicator indicator-div">
                 <div class="manage-message">
-                    <h2 onclick="window.location.href ='./compose.php'" class="compose sub-header" style="color:#637587;">Compose</h2>
-                    <h2 onclick="window.location.href ='./inbox.php'" class="inbox sub-header">Inbox</h2>
+                    <h2 onclick="window.location.href ='./compose.php?uid=<?php echo htmlspecialchars($UID); ?>'" class="compose sub-header" style="color:#637587;">Compose</h2>
+                    <h2 onclick="window.location.href ='./inbox.php?uid=<?php echo htmlspecialchars($UID); ?>'" class="inbox sub-header">Inbox</h2>
                 </div>
             </div>
             <hr class="line">
@@ -98,7 +116,7 @@
             ?>
     
             <?php
-                $query = "SELECT m.Message_ID, m.Topic, m.Message, m.Response, m.Responded_At, m.Status, t.Name, u.Profile_Img_Path FROM messages AS m JOIN trainers AS t ON m.Recipient_ID = t.Trainer_ID JOIN users AS u ON t.User_ID = u.User_ID WHERE m.User_ID = '".$_SESSION['user_id']."'";
+                $query = "SELECT m.Message_ID, m.Topic, m.Message, m.Response, m.Responded_At, m.Status, t.Name, u.Profile_Img_Path FROM messages AS m JOIN trainers AS t ON m.Recipient_ID = t.Trainer_ID JOIN users AS u ON t.User_ID = u.User_ID WHERE m.User_ID = '".$UID."'";
     
                 $results = $conn->query($query);
                 if($results->num_rows > 0){

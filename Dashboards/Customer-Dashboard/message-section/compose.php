@@ -8,20 +8,38 @@
   </head>
   <body>
     
-    <?php include("../../components/customer-dashboard-navbar.php"); ?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
 
     <section class="compose-section dashboard-sections">
       <h1 class="headers messages-header">Messages</h1>
       <div class="messages-indicator indicator-div">
         <div class="manage-message">
           <h2
-            onclick="window.location.href ='./compose.php'"
+            onclick="window.location.href ='./compose.php?uid=<?php echo htmlspecialchars($UID); ?>'"
             class="compose sub-header"
           >
             Compose
           </h2>
           <h2
-            onclick="window.location.href ='./inbox.php'"
+            onclick="window.location.href ='./inbox.php?uid=<?php echo htmlspecialchars($UID); ?>'"
             class="inbox sub-header"
             style="color: #637587"
           >
@@ -79,7 +97,7 @@
     
       <?php
         if(isset($_POST['message'])){
-          $user_id = $_SESSION['user_id'];
+          $user_id = $UID;
           $recipient_id = $_POST['recipient'];
           $topic = $_POST['inquiry-topic'];
           $message = trim($_POST['message-area']);

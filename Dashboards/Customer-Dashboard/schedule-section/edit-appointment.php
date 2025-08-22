@@ -8,17 +8,33 @@
 </head>
 <body>
     <?php
+        session_start();
+        include("../../../includes/dbconnect.php");
+
+        $UID = $_GET['uid'] ?? null;
+        $current_user = NULL;
+
+        if($UID && isset($_SESSION['auth']['customer'][$UID])){
+            $current_user = $_SESSION['auth']['customer'][$UID];
+        }
+
+        if($current_user === NULL){
+            header('Location: ../../../Sign-In-Page/index.php');
+            exit();
+        }
+
+
         include("../../components/customer-dashboard-navbar.php");
     ?>
     <section class="dashboard-sections edit">
-        <i onclick = 'window.location.href="./manage-appointment.php"' class="fas fa-arrow-left back"></i>
+        <i onclick = 'window.location.href="./manage-appointment.php?uid=<?php echo htmlspecialchars($UID); ?>"' class="fas fa-arrow-left back"></i>
         <h1 class="headers">Edit Booking</h1>
 
         <?php
             if(isset($_GET['edit_id'])){
                 $edit_id = $_GET['edit_id'];
 
-                $fetch_query = "SELECT appointments.Appointment_ID, appointments.User_ID, appointments.Session_Type, appointments.Session_Date, appointments.Session_Time, trainers.Trainer_ID FROM appointments JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE appointments.Appointment_ID = '$edit_id' AND appointments.User_ID = '". $_SESSION['user_id'] ."'"; 
+                $fetch_query = "SELECT appointments.Appointment_ID, appointments.User_ID, appointments.Session_Type, appointments.Session_Date, appointments.Session_Time, trainers.Trainer_ID FROM appointments JOIN trainers ON appointments.Trainer_ID = trainers.Trainer_ID WHERE appointments.Appointment_ID = '$edit_id' AND appointments.User_ID = '$UID'"; 
 
             $results = $conn->query($fetch_query);
             $edit_row =  $results->fetch_assoc();
@@ -88,11 +104,11 @@
             $session_date = $_POST['session-date'];
             $session_time = $_POST['session-time'];
 
-            $sqlUpdate = "UPDATE appointments SET Trainer_ID = '$trainer_id', Session_Type = '$session_type', Session_Date = '$session_date', Session_Time = '$session_time' WHERE Appointment_ID = '$edit_id' AND appointments.User_ID = '".$_SESSION['user_id']."'";
+            $sqlUpdate = "UPDATE appointments SET Trainer_ID = '$trainer_id', Session_Type = '$session_type', Session_Date = '$session_date', Session_Time = '$session_time' WHERE Appointment_ID = '$edit_id' AND appointments.User_ID = '$UID'";
 
             if($conn->query($sqlUpdate) === TRUE){
                 echo '<script type="text/javascript">alert("Booking Changes Saved");
-            window.location.href="./manage-appointment.php";
+            window.location.href="./manage-appointment.php?uid='.htmlspecialchars($UID).'";
             </script>';
             }
             else {
@@ -102,11 +118,11 @@
         }
 
         elseif(isset($_POST['del'])){
-            $sqlDelete = "DELETE FROM appointments WHERE Appointment_ID = '$edit_id' AND User_ID = '".$_SESSION['user_id']."'";
+            $sqlDelete = "DELETE FROM appointments WHERE Appointment_ID = '$edit_id' AND User_ID = '$UID'";
 
             if($conn->query($sqlDelete) === TRUE){
                 echo '<script type="text/javascript">alert("Booking Cancelled Successfully");
-            window.location.href="./manage-appointment.php";
+            window.location.href="./manage-appointment.php?uid='.htmlspecialchars($UID).'";
             </script>';
             }
 

@@ -8,10 +8,28 @@
   </head>
   <body>
 
-    <?php include("../../components/customer-dashboard-navbar.php"); ?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
 
     <?php
-      $fetch_query = "SELECT Plan_Type, Status, Expiry_Date FROM memberships WHERE User_ID = '".$_SESSION['user_id']."'";
+      $fetch_query = "SELECT Plan_Type, Status, Expiry_Date FROM memberships WHERE User_ID = '$UID'";
 
       $fetch = $conn->query($fetch_query);
       $result = $fetch->fetch_assoc();
@@ -121,7 +139,7 @@
           $plan_type = "Elite";
         }
 
-        $stmt->bind_param("isss", $_SESSION['user_id'], $plan_type, $status, $requested_date);
+        $stmt->bind_param("isss", $UID, $plan_type, $status, $requested_date);
 
         if($stmt->execute()){
           echo "<script>alert('$plan_type plan has been requested');</script>";

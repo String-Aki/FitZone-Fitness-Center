@@ -1,7 +1,5 @@
 <?php
-session_start();
-include("../../../includes/dbconnect.php");
-error_reporting(0);
+// error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +17,13 @@ error_reporting(0);
 
         <div class="links-and-profile-container">
             <div class="links">
-                <a href="../overview-section/dashboard-overview.php" class="nav-link">Overview</a>
-                <a href="../schedule-section/book-appointment.php" class="nav-link">Schedule</a>
-                <a href="../message-section/compose.php" class="nav-link">Connect</a>
-                <a href="../nutrition-section/nutrition.php" class="nav-link">Nutrition</a>
+                <a href="../overview-section/dashboard-overview.php?uid=<?php echo htmlspecialchars($UID); ?>" class="nav-link">Overview</a>
+                <a href="../schedule-section/book-appointment.php?uid=<?php echo htmlspecialchars($UID); ?>" class="nav-link">Schedule</a>
+                <a href="../message-section/compose.php?uid=<?php echo htmlspecialchars($UID); ?>" class="nav-link">Connect</a>
+                <a href="../nutrition-section/nutrition.php?uid=<?php echo htmlspecialchars($UID); ?>" class="nav-link">Nutrition</a>
             </div>
             <?php
-              $pfp_query = $conn->query("SELECT Profile_Img_Path FROM users WHERE User_ID = '".$_SESSION['user_id']."'");
+              $pfp_query = $conn->query("SELECT Profile_Img_Path FROM users WHERE User_ID = '".$UID."'");
               $pfp_path = $pfp_query->fetch_assoc();
               $default_path = "../../../Assets/customer-dashboard-assets/profile.png";
               $pfp_relative = "../../../includes/Uploads/pfp/".$pfp_path['Profile_Img_Path'];
@@ -40,17 +38,17 @@ error_reporting(0);
             <div class="profile-img-sidebar-container">
               <img  src="<?php echo !empty($pfp_path['Profile_Img_Path']) ? $pfp_relative : $default_path; ?>" alt="profile-img" class="profile-img">
             </div>
-            <h1 class="username"><?php echo htmlspecialchars($_SESSION['username'])?></h1>
-            <p class="user-id"><?php echo "USER ID: ".htmlspecialchars($_SESSION['user_id'])?></p>
+            <h1 class="username"><?php echo htmlspecialchars($current_user['username'])?></h1>
+            <p class="user-id"><?php echo "USER ID: ".htmlspecialchars($UID)?></p>
           </div>
           <div class="wrapper-container">
             <div class="links-wrap settings">
               <i class="fas fa-gear link-icon"></i>
-              <h2 class="account-settings-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/account-settings.php'">Account Settings</h2>
+              <h2 class="account-settings-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/account-settings.php?uid=<?php echo htmlspecialchars($UID); ?>'">Account Settings</h2>
             </div>
             <div class="links-wrap membership">
               <i class="fa-regular fa-credit-card link-icon"></i>
-              <h2 class="manage-memebership-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/manage-membership.php'">Manage Memberships</h2>
+              <h2 class="manage-memebership-link" onclick="window.location.href='../../Customer-Dashboard/settings-section/manage-membership.php?uid=<?php echo htmlspecialchars($UID); ?>'">Manage Memberships</h2>
             </div>
           </div>
       </div>

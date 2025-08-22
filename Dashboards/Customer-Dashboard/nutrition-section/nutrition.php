@@ -8,7 +8,25 @@
   </head>
   <body>
 
-    <?php include("../../components/customer-dashboard-navbar.php");?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
 
     <section class="nutrition-section dashboard-sections">
       <h1 class="nutrition-header">Nutrition</h1>
@@ -23,7 +41,7 @@
         </div>
         <div class="contents">
           <p class="tag">Featured</p>
-          <a class="title" href="./article-1.php">
+          <a class="title" href="./article-1.php?uid=<?php echo htmlspecialchars($UID); ?>">
             Mastering Macronutrients for Optimal Health
           </a>
           <p class="content-preview">
@@ -36,7 +54,7 @@
 
       <div class="articles">
         <div class="text-content">
-          <a class="latest-title title" href="./article-2.php">
+          <a class="latest-title title" href="./article-2.php?uid=<?php echo htmlspecialchars($UID); ?>">
             Power-Packed Superfoods for Daily Energy
           </a>
           <p class="latest-contents content-preview">
@@ -50,7 +68,7 @@
 
       <div class="articles">
         <div class="text-content">
-          <a class="latest-title title" href="./article-3.php">
+          <a class="latest-title title" href="./article-3.php?uid=<?php echo htmlspecialchars($UID); ?>">
             The Role of Vitamins in Fitness Nutrition
           </a>
           <p class="latest-contents content-preview">
@@ -64,7 +82,7 @@
 
       <div class="articles">
         <div class="text-content">
-          <a class="latest-title title" href="./article-4.php">
+          <a class="latest-title title" href="./article-4.php?uid=<?php echo htmlspecialchars($UID); ?>">
            Healthy Fats: Myths and Benefits Unveiled
           </a>
           <p class="latest-contents content-preview">
@@ -78,7 +96,7 @@
       
       <div class="articles">
         <div class="text-content">
-          <a class="latest-title title" href="./article-5.php">
+          <a class="latest-title title" href="./article-5.php?uid=<?php echo htmlspecialchars($UID); ?>">
             Building a Plant-Based Nutrition Plan
           </a>
           <p class="latest-contents content-preview">

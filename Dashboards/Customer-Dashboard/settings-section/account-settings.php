@@ -8,7 +8,25 @@
 </head>
 <body>
 
-    <?php include("../../components/customer-dashboard-navbar.php"); ?>
+    <?php 
+    
+      session_start();
+      include("../../../includes/dbconnect.php");
+
+      $UID = $_GET['uid'] ?? null;
+      $current_user = NULL;
+
+      if($UID && isset($_SESSION['auth']['customer'][$UID])){
+          $current_user = $_SESSION['auth']['customer'][$UID];
+      }
+
+      if($current_user === NULL){
+          header('Location: ../../../Sign-In-Page/index.php');
+          exit();
+      }
+
+      include("../../components/customer-dashboard-navbar.php");
+      ?>
 
     <section class="dashboard-sections">
         <h1 class="headers">Account Settings</h1>
@@ -21,7 +39,7 @@
 
         <form action="" method="post" enctype="multipart/form-data" class="all-forms">
             <?php
-                $fetch_account_details = "SELECT First_Name, Last_Name, Phone, Email FROM users WHERE User_ID = '".$_SESSION['user_id']."'";
+                $fetch_account_details = "SELECT First_Name, Last_Name, Phone, Email FROM users WHERE User_ID = '$UID'";
 
                 $details = $conn->query($fetch_account_details);
                 $fetch = $details->fetch_assoc();
@@ -64,7 +82,7 @@
 
             if($upload_path !== NULL)
             {
-            $update_query = "UPDATE users SET First_Name = ?, Last_Name = ?, Phone = ?, Email = ?, Profile_Img_Path = ? WHERE User_ID = '".$_SESSION['user_id']."'";
+            $update_query = "UPDATE users SET First_Name = ?, Last_Name = ?, Phone = ?, Email = ?, Profile_Img_Path = ? WHERE User_ID = '$UID'";
 
             $update_request = $conn->prepare($update_query);
             $update_request->bind_param("ssiss",$Names[0],$Names[1],$Phone, $Email, $upload_path);
@@ -72,7 +90,7 @@
         
             else
             {
-                $update_query = "UPDATE users SET First_Name = ?, Last_Name = ?, Phone = ?, Email = ? WHERE User_ID = '".$_SESSION['user_id']."'";
+                $update_query = "UPDATE users SET First_Name = ?, Last_Name = ?, Phone = ?, Email = ? WHERE User_ID = '$UID'";
                 $update_request = $conn->prepare($update_query);
                 $update_request->bind_param("ssis",$Names[0],$Names[1],$Phone, $Email);
             }
@@ -81,7 +99,7 @@
                 echo 
                 '<script>
                 alert("Update Successful");
-                window.location.href = "../overview-section/dashboard-overview.php";
+                window.location.href = "../overview-section/dashboard-overview.php?uid=' . htmlspecialchars($UID) . '";
                 </script>';
             }
             else 
@@ -89,7 +107,7 @@
                 echo 
                 '<script>
                 alert("Update Failed");
-                window.location.href = "./account-settings.php";
+                window.location.href = "./account-settings.php?uid=' . htmlspecialchars($UID) . '";
                 </script>';
 
             }
