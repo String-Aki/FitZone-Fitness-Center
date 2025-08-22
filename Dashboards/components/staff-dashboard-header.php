@@ -20,12 +20,11 @@
                         }
                 ?>
         </h2>
-        <form class="search-container">
-          <input class="search-input" placeholder="Search" type="text" />
-          <button type="submit" name="search" class="search-button">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          </button>
-        </form>
+        <div class="search-container search-wrapper">
+            <input class="search-input" placeholder="Search" type="text" />
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <div class="search-suggestions"></div>
+        </div>
 
         <?php
           $fetch_user = "SELECT First_Name, Last_Name, Password, Profile_Img_Path FROM users WHERE Role = 'staff' AND User_ID = '$UID'";
@@ -194,7 +193,51 @@
       input_pfp.addEventListener("change", ()=>{
         pfp_form.submit();
       });
+
+      // Search Ajax
+    const searchInput = document.querySelector('.search-input');
+    const suggestionsContainer = document.querySelector('.search-suggestions');
+    const currentUID = '<?php echo htmlspecialchars($UID); ?>';
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        if (query.length < 2) {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+
+        fetch(`../../includes/search-api.php?uid=${currentUID}&query=${query}&role=staff`)
+            .then(response => response.json())
+            .then(data => {
+
+                suggestionsContainer.innerHTML = '';
+                if (data.length > 0) {
+
+                    data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'suggestion-item';
+                        div.innerHTML = `<span>${item.name}</span> <span class="type">${item.type}</span>`;
+
+                        div.onclick = function() {
+                            window.location.href = item.url;
+                        };
+                        suggestionsContainer.appendChild(div);
+                    });
+                    suggestionsContainer.style.display = 'block';
+                } else {
+                    suggestionsContainer.style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Search error:', error));
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!searchInput.contains(event.target)) {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
     </script>
+
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
