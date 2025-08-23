@@ -164,7 +164,7 @@ if (!empty($search_term)) {
 
     elseif($role == 'customer'){
 
-        $fetch_appointments = "SELECT t.Name, a.Session_Type, a.Status FROM appointments AS a JOIN trainers AS t ON a.Trainer_ID = t.Trainer_ID JOIN users AS a ON u.User_ID = a.User_ID WHERE u.User_ID = ? AND (t.Name LIKE ? OR a.Session_Type LIKE ? OR a.Status LIKE ?)";
+        $fetch_appointments = "SELECT t.Name, a.Session_Type, a.Status FROM appointments AS a JOIN trainers AS t ON a.Trainer_ID = t.Trainer_ID JOIN users AS u ON u.User_ID = a.User_ID WHERE u.User_ID = ? AND (t.Name LIKE ? OR a.Session_Type LIKE ? OR a.Status LIKE ?)";
 
         $stmt = $conn->prepare($fetch_appointments);
 
@@ -178,21 +178,21 @@ if (!empty($search_term)) {
 
             $results[] = [
 
-                'type' => 'App: '.$row['Status'],
+                'type' => $row['Status'],
 
                 'name' => $row['Session_Type']. " with ". $row['Name'],
 
-                'url'  => '../schedule-section/manage-appointments.php?uid=' . htmlspecialchars($UID)
+                'url'  => '../schedule-section/manage-appointment.php?uid=' . htmlspecialchars($UID)
 
             ];
         }
         $stmt->close();
 
-        $fetch_inbox = "SELECT m.Topic, t.Name, FROM messages AS m JOIN users AS u ON m.User_ID = u.User_ID JOIN trainers AS t ON t.User_ID = m.Recipient_ID WHERE u.User_ID = ? AND (m.Topic LIKE ? OR t.Name LIKE ? OR m.Status LIKE ?)";
+        $fetch_inbox = "SELECT m.Topic, t.Name FROM messages AS m JOIN users AS u ON m.User_ID = u.User_ID JOIN trainers AS t ON t.Trainer_ID = m.Recipient_ID WHERE u.User_ID = ? AND m.Status = 'responded' AND (m.Topic LIKE ? OR t.Name LIKE ?)";
 
         $stmt = $conn->prepare($fetch_inbox);
 
-        $stmt->bind_param("isss", $UID, $search_keyword, $search_keyword, $search_keyword);
+        $stmt->bind_param("iss", $UID, $search_keyword, $search_keyword);
 
         $stmt->execute();
 
@@ -205,6 +205,30 @@ if (!empty($search_term)) {
                 'type' => $row['Name'],
 
                 'name' => 'Inquiry For: '. $row['Topic'],
+
+                'url'  => '../message-section/inbox.php?uid=' . htmlspecialchars($UID)
+
+            ];
+        }
+        $stmt->close();
+
+        $fetch_broadcasts = "SELECT Topic, Announcement FROM broadcasts WHERE Topic LIKE ? OR Announcement LIKE ?";
+
+        $stmt = $conn->prepare($fetch_broadcasts);
+
+        $stmt->bind_param("ss", $search_keyword, $search_keyword);
+
+        $stmt->execute();
+
+        $broadcasts = $stmt->get_result();
+
+        while($row = $broadcasts->fetch_assoc()){
+
+            $results[] = [
+
+                'type' => 'Announcement',
+
+                'name' => htmlspecialchars($row['Topic']),
 
                 'url'  => '../message-section/inbox.php?uid=' . htmlspecialchars($UID)
 
