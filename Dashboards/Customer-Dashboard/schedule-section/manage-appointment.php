@@ -19,8 +19,8 @@
         }
 
         if($current_user === NULL){
-            // header('Location: ../../../Sign-In-Page/index.php');
-            // exit();
+            header('Location: ../../../Sign-In-Page/index.php');
+            exit();
         }
 
         include("../../components/customer-dashboard-navbar.php");?>
