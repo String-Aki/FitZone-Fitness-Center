@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Dashboards\Customer-Dashboard\style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <nav class="customer-dashboard-navbar">
         <div class="branding">
             <i class="fas fa-dumbbell logo"></i>
             <span class="logo-header">FitZone</span>
+        </div>
+
+        <div class="search-container search-wrapper" data-uid="<?php echo htmlspecialchars($UID)?>" data-role="<?php echo "customer"?>">
+            <input class="search-input" placeholder="Search" type="text" />
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <div class="search-suggestions"></div>
         </div>
 
         <div class="links-and-profile-container">
@@ -92,8 +98,11 @@
 
           membership_link.addEventListener('mouseleave',() => {
               membership_icon.classList.remove("highlight");
-          });          
+          });
     </script>
+
+    <script src="../../../includes/search-ajax.js"></script>
+
     <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
