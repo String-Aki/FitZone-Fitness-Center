@@ -66,13 +66,14 @@
                             <th>Email Address</th>
                             <th>Phone Number</th>
                             <th>Membership Type</th>
+                            <th>Membership Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
                     <?php
-                        $fetch_users = "SELECT u.*, m.Plan_Type,m.Membership_ID FROM users u LEFT JOIN memberships m ON u.User_ID = m.User_ID LEFT JOIN memberships m2 ON u.User_ID = m2.User_ID AND m.Requested_Date < m2.Requested_Date WHERE u.Role = 'customer' AND m2.Membership_ID IS NULL";
+                        $fetch_users = "SELECT u.*, m.Plan_Type,m.Membership_ID, m.Status FROM users u LEFT JOIN memberships m ON u.User_ID = m.User_ID LEFT JOIN memberships m2 ON u.User_ID = m2.User_ID AND m.Membership_ID < m2.Membership_ID WHERE u.Role = 'customer' AND m2.Membership_ID IS NULL";
                         $users = $conn->query($fetch_users);
 
                         if($users->num_rows > 0 ){
@@ -99,6 +100,7 @@
                             <td>'.htmlspecialchars($row['Email']).'</td>
                             <td style="text-align:center;">'.htmlspecialchars($row['Phone']).'</td>
                             <td style="text-align:center;">'.htmlspecialchars($membership_type).'</td>
+                            <td style="text-align:center;">'.htmlspecialchars($row['Status']).'</td>
                             <td class="actions">
                                 <form action="" method="POST" class="actions">
                                     <input type="hidden" value="'.htmlspecialchars($row['User_ID']).'" name="user_id" />
