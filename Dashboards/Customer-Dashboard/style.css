@@ -837,3 +837,70 @@ p.benefit-info {
 .perks {
   font-size: 1vw;
 }
+
+/* Search Styles */
+
+.search-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 30%;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.search-input:focus {
+  border: 2px solid #c53030;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 50px;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.search-icon {
+  padding-right: 1vw;
+}
+
+.search-suggestions {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  max-height: 18.75vw;
+  overflow-y: auto;
+  margin-block: 0.5vw;
+}
+.suggestion-item {
+  padding: 0.75vw 1vw;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.suggestion-item:hover {
+  background-color: #f7fafc;
+}
+
+.suggestion-item:hover .type{
+  color: black;
+  font-weight: 500;
+}
+.suggestion-item .type {
+  font-size: 0.75vw;
+  color: #a0aec0;
+  background-color: #edf2f7;
+  padding: 0.125vw 0.5vw;
+  border-radius: 1rem;
+}
