@@ -14,6 +14,7 @@ error_reporting(0);
   </head>
   <body>
     <form method="post" class="login-form">
+      <a href="../index.php" class="back-home fas fa-arrow-left"></a>
       <h1 class="login-head">WELCOME BACK</h1>
       <p class="login-head-followUp">
         Welcome back! Please enter your details.
@@ -52,8 +53,7 @@ error_reporting(0);
       </p>
     </form>
 
-    <div class="img-box">
-    </div>
+    <div class="img-box"></div>
 
     <?php
       if(isset($_POST['signin'])){
