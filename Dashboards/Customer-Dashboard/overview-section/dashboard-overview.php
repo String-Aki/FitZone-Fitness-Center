@@ -10,7 +10,7 @@
    <?php 
     session_start();
     include("../../../includes/dbconnect.php");
-
+    error_reporting(0);
     $UID = $_GET['uid'] ?? null;
     $current_user = NULL;
 

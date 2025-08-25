@@ -10,7 +10,8 @@
     <?php 
     session_start();
     include("../../includes/dbconnect.php");
-
+    error_reporting(0);
+    
     $UID = $_GET['uid'] ?? null;
     $current_user = NULL;
 
@@ -19,8 +20,8 @@
     }
 
     if($current_user === NULL){
-        // header('Location: ../../Sign-In-Page/index.php');
-        // exit();
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
     }
 
     include("../components/staff-dashboard-side-bar.php");?>

@@ -94,40 +94,27 @@ error_reporting(0);
             $redirect_url = "../Dashboards/Admin-Dashboard/first-view.php?uid=".$user_id;
             
           }
- 
-          // Initial Code 
-          // $_SESSION['user_id'] = $row['User_ID'];
-          // $_SESSION['username'] = $row['First_Name'];
-          // $_SESSION['role'] = $row['Role'];
 
-          if($_SESSION['role'] === 'staff'){
+          if($user_role === 'staff'){
             echo '<script>
               alert("Redirecting to staff dashboard...");
               window.location.href = "'.$redirect_url.'";
           </script>';
-  
-          // $_SESSION['loggedIn'] = true;
           }
 
-          elseif($_SESSION['role'] === 'admin'){
+          elseif($user_role === 'admin'){
             echo '<script>
               alert("Redirecting to admin dashboard...");
               window.location.href = "'.$redirect_url.'";
           </script>';
-  
-          // $_SESSION['loggedIn'] = true;
           }
 
           else{
-
           echo '<script>
             alert("You have successfully logged in!");
             window.location.href = "'.$redirect_url.'";
         </script>';
-
-        // $_SESSION['loggedIn'] = true;
         }
-
         }
 
         else {

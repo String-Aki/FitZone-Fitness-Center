@@ -13,7 +13,7 @@
         header('Location: ../../Sign-In-Page/index.php');
         exit();
     }
-    // error_reporting(0);
+    error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
