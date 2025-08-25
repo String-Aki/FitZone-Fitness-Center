@@ -18,8 +18,79 @@
                         {
                             echo "Staff Dashboard";
                         }
+
+                        if(isset($_GET['header_title']) && $_GET['header_title'] == 'Messages'){
+                          echo '<i class="fas fa-plus create-message-icon"></i>';
+                        }
                 ?>
         </h2>
+
+        <dialog id="create-message" class="modal-view">
+      <div class="inner-wrapper">
+        <div class="header-wrapper">
+          <i
+            class="fas fa-circle-xmark close-button close-message"
+          ></i>
+        </div>
+
+        <div class="content">
+          <h1 class="topic plan-type">Create Message</h1>
+
+          <form
+            method="post"
+            class="create-message-form"
+            action="./messages.php"
+            id="message-form"
+          >
+          <div class="input-wrap">
+              <div class="input-inner-wrap">
+                  <input type="hidden" name="UID" value="<?php echo htmlspecialchars($UID); ?>"/>
+                  <label for="users">Recipient</label>
+                  <select name="users" id="users" class="msg-input">
+                    <option value=""> Select Recipient </option>
+                    <?php
+                      $users_query = "SELECT First_Name, Last_Name, User_ID FROM users WHERE Role='customer'";
+                      $usernames = $conn->query($users_query);
+
+                      if($usernames->num_rows > 0){
+                        while($row = $usernames->fetch_assoc()){
+                          echo 
+                          '
+                            <option value="'.htmlspecialchars($row['User_ID']).'">
+                            '."(#".htmlspecialchars($row['User_ID'].") ".$row['First_Name']." ".$row['Last_Name']).'
+                            </option>
+                          ';
+                        }
+                      }
+                      $usernames->free();
+                    ?>
+                    
+                  </select>
+              </div>
+
+              <div class="input-inner-wrap">
+                  <label for="subject">Subject</label>
+                  <select name="subject" id="subject" class="msg-input">
+                    <option value=""> Select Topic </option>
+                    <option value="Membership Inquiry">Membership Inquiry</option>
+                  <option value="Class Schedule">Class Schedule</option>
+                  <option value="Personal Training">Personal Training</option>
+                  <option value="Facility Access">Facility Access</option>
+                  <option value="Billing and Payments">Billing and Payments</option>
+                  <option value="Other">Other</option>
+                  </select>
+              </div>
+          </div>
+
+          <label for="message" class="textarea-label">Message</label>
+          <textarea name="message" id="" rows="5" class="msg-input"></textarea>
+
+          <button type="submit" name="send-message" class="send-message">Send</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
         <div class="search-container search-wrapper" data-uid="<?php echo htmlspecialchars($UID)?>" data-role="<?php echo "staff"?>">
             <input class="search-input" placeholder="Search" type="text" />
               <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -193,6 +264,19 @@
       input_pfp.addEventListener("change", ()=>{
         pfp_form.submit();
       });
+
+      const create_message_button = document.querySelector(".create-message-icon");
+      const close_message_button = document.querySelector(".close-message");
+      const message_modal = document.getElementById("create-message");
+
+      create_message_button.addEventListener("click", ()=>{
+        message_modal.showModal();
+      });
+
+      close_message_button.addEventListener("click", ()=>{
+        message_modal.close();
+      })
+
     </script>
 
     <script src="../../includes/search-ajax.js"></script>

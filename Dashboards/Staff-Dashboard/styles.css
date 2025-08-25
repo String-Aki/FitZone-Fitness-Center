@@ -647,6 +647,7 @@ thead th {
 }
 
 tbody tr {
+  overflow-wrap: break-word;
   border-bottom: 1px solid #f1f1f1;
 }
 
@@ -712,8 +713,65 @@ tbody td {
 }
 
 .not-replied {
+  color: rgb(0, 255, 162);
+  font-weight: 600;
+}
+
+.not-responded {
   color: red;
   font-weight: 600;
+
+}
+
+.create-message-icon {
+  padding-left: 1vw;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.create-message-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2vw 1vw;
+}
+
+.create-message-form > label,
+.input-inner-wrap > label {
+  font-size: 1vw;
+  font-weight: 700;
+  padding-bottom: 1vw;
+}
+
+.msg-input {
+  padding: 0.5vw 1vw;
+  border-radius: 0.6vw;
+  border: 1px solid #e3dede;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1vw;
+}
+
+.input-inner-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea-label {
+  align-self: center ;
+}
+
+.send-message {
+  width: 15%;
+  border-radius: 1rem;
+  padding: 0.5vw 1vw;
+  background: transparent;
+  font-size: 1vw;
+  font-weight: 600;
+  margin: 1.5vw 0  0 auto;
 }
 
 /* Customer Management Section */
@@ -754,7 +812,7 @@ tbody td {
   background-color: #f7fafc;
 }
 
-.suggestion-item:hover .type{
+.suggestion-item:hover .type {
   color: black;
   font-weight: 500;
 }

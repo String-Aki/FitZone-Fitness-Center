@@ -589,6 +589,38 @@ p.inquiry {
   text-align: end;
 }
 
+/* Message Reply Styles  */
+
+.reply-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 1vw;
+}
+
+.reply-form > label {
+  font-size: 1vw;
+  font-weight: 700;
+  padding-bottom: 1vw;
+}
+
+.reply-field {
+  width: 60%;
+  border-radius: 0.6vw;
+  border: 1px solid #e3dede;
+  padding: 1vw;
+}
+
+.reply-button {
+  width: 15%;
+  border-radius: 1rem;
+  padding: 0.5vw 1vw;
+  background: transparent;
+  font-size: 1vw;
+  font-weight: 600;
+  margin-block: 1.5vw;
+}
+
 /* Nutrition Section Styles */
 
 .nutrition-header {

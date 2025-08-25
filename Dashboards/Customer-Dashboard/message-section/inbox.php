@@ -25,6 +25,40 @@
       }
 
       include("../../components/customer-dashboard-navbar.php");
+
+
+    //   Message Reply Handling
+
+    if(isset($_POST['reply-trainer'])){
+        $message_id = $_POST['message_id'];
+        $reply = trim($_POST['reply-message']);
+        $status = 'replied';
+        $uid = $UID;
+
+        $reply_to_trainer = $conn->prepare("UPDATE messages SET Message = ?, Created_At = NOW(), Status = ? WHERE Message_ID = ?");
+        $reply_to_trainer->bind_param("ssi", $reply, $status, $message_id);
+
+        if($reply_to_trainer->execute()){
+            echo 
+            '
+            <script>
+                alert("Reply Sent Successfully");
+                window.location.href = "./inbox.php?uid='.$uid.'";
+            </script>
+            ';
+        }
+        else{
+            echo 
+            '
+            <script>
+                alert("Reply Failed");
+                window.location.href = "./inbox.php?uid='.$uid.'";
+            </script>
+            ';
+        }
+
+    }
+
       ?>
 
     <section class="inbox-section dashboard-sections">
@@ -122,13 +156,47 @@
                 if($results->num_rows > 0){
                     $inbox_header = false;
                     while($row = $results->fetch_assoc()){
-                        if($row['Status'] === 'responded'){
+                        if($row['Status'] === 'responded' || $row['Status'] === 'sent' ){
                             if(!$inbox_header){
                                 echo '<h3 class="section-subheader">Inbox Updates</h3>';
                                 $inbox_header = true;
                             }
                             $dialogID = "message-popup".htmlspecialchars($row['Message_ID']);
+
                             $pfp_path = (!empty($row['Profile_Img_Path'])) ? "../".$row['Profile_Img_Path'] : "../../../Assets/customer-dashboard-assets/profile.png";
+
+                            $dialogContent = $row['Status']== 'sent' ? 
+                                    '<div class="content">
+                                    <h1 class="topic">'.htmlspecialchars($row['Topic']).'</h1>
+                                    <p class="message-content">
+                                        <strong class="message-header">Message:</strong>
+                                        <br />'.htmlspecialchars($row['Response']).'
+                                    </p>
+                                    <p class="responded-time">'.timesinceResponded($row['Responded_At']).'</p>
+                                    <form method="post" class="reply-form">
+                                        <input
+                                        type="hidden"
+                                        name="message_id"
+                                        value="' . htmlspecialchars($row['Message_ID']) . '"
+                                        />
+                                        <label for="response">Reply Message</label>
+                                        <textarea
+                                        name="reply-message"
+                                        id="response"
+                                        rows="5"
+                                        class="reply-field"
+                                        ></textarea>
+                                        <button type="submit" name="reply-trainer" class="reply-button">
+                                        Reply
+                                        </button>
+                                    </form>
+                                </div>' : 
+                                '<div class="content">
+                                        <h1 class="topic">'.htmlspecialchars($row['Topic']).'</h1>
+                                        <p class="message-content"><strong class="message-header">Response:</strong> <br>'.htmlspecialchars($row['Response']).'</p>
+                                        <p class="responded-time">'.timesinceResponded($row['Responded_At']).'</p>
+                                            <p class="inquiry"><strong class="inquiry-header">Inquiry:</strong> <br> '.htmlspecialchars($row['Message']).'</p>
+                                        </div>';
 
                             echo '
                             <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
@@ -151,12 +219,7 @@
                                         </div>
                                         <i class="fas fa-circle-xmark close-button" onclick="document.getElementById(\''.$dialogID.'\').close();"></i>
                                     </div>
-                                    <div class="content">
-                                        <h1 class="topic">'.htmlspecialchars($row['Topic']).'</h1>
-                                        <p class="message-content"><strong class="message-header">Response:</strong> <br>'.htmlspecialchars($row['Response']).'</p>
-                                        <p class="responded-time">'.timesinceResponded($row['Responded_At']).'</p>
-                                            <p class="inquiry"><strong class="inquiry-header">Inquiry:</strong> <br> '.htmlspecialchars($row['Message']).'</p>
-                                        </div>
+                                    '.$dialogContent.'
                                     </div>
                                 </div>
                             </dialog>
