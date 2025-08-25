@@ -31,7 +31,7 @@
         </a>
       </nav>
       <div class="aside-footer">
-        <a href="../../../includes/logout.php?role=admin&uid=<?php echo htmlspecialchars($UID)?>" class="logout-link">
+        <a href="../../../includes/logout.php?role=admin&uid=<?= htmlspecialchars($UID)?>" class="logout-link">
           <i class="fa-solid fa-arrow-right-from-bracket logout-logo"></i>
           Logout
         </a>

@@ -45,7 +45,7 @@
                     iconToPower.classList.add("fa-power-off");
 
                     document.querySelector(".fa-power-off").addEventListener("click",()=>{
-                    window.location.href = "../../includes/logout.php?role=admin&uid=<?php echo htmlspecialchars($UID)?>";
+                    window.location.href = "../../includes/logout.php?role=admin&uid=<?= htmlspecialchars($UID)?>";
                     })
                 })
             }

@@ -12,7 +12,7 @@
             <span class="logo-header">FitZone</span>
         </div>
 
-        <div class="search-container search-wrapper" data-uid="<?php echo htmlspecialchars($UID)?>" data-role="<?php echo "customer"?>">
+        <div class="search-container search-wrapper" data-uid="<?php echo htmlspecialchars($UID);?>" data-role="<?php echo "customer"?>">
             <input class="search-input" placeholder="Search" type="text" />
               <i class="fa-solid fa-magnifying-glass search-icon"></i>
           <div class="search-suggestions"></div>
@@ -70,7 +70,7 @@
         });
 
         logout.addEventListener("click", ()=>{
-            window.location.href = "../../../includes/logout.php?role=customer&uid=<?echo htmlspecialchars($UID)?>";
+            window.location.href = "../../../includes/logout.php?role=customer&uid=<?= htmlspecialchars($UID);?>"
         });
 
         window.addEventListener("scroll", () => {
