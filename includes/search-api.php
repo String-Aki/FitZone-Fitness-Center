@@ -112,7 +112,7 @@ if (!empty($search_term)) {
     }
     $stmt->close();
 
-    $membership_sql = "SELECT memberships.Membership_ID, memberships.Plan_Type, memberships.Status, users.First_Name FROM memberships JOIN users ON memberships.User_ID = users.User_ID WHERE Plan_Type LIKE ? OR Status LIKE ?";
+    $membership_sql = "SELECT memberships.Membership_ID, memberships.Plan_Type, memberships.Status, users.First_Name, users.User_ID FROM memberships JOIN users ON memberships.User_ID = users.User_ID WHERE Plan_Type LIKE ? OR Status LIKE ?";
 
     $stmt = $conn->prepare($membership_sql);
 
@@ -132,7 +132,7 @@ if (!empty($search_term)) {
 
             'url' => $row['Status'] == 'Not Approved' ? './dashboard.php?uid='.htmlspecialchars($UID) : './customer.php?uid='. htmlspecialchars($UID),
 
-            'id'   => $row['Membership_ID']
+            'id'   => $row['Status'] == 'Not Approved' ? $row['Membership_ID'] : $row['User_ID']
 
         ];
 
