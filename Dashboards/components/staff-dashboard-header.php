@@ -117,7 +117,7 @@
               <div class="inner-wrapper">
                 <div class="header-wrapper">
                   <div class="profile-wrapper">
-                    <div class="profile-cont">
+                    <div class="profile-container">
                       <img
                         class="avatar"
                         src="'.htmlspecialchars($pfp_path).'"
