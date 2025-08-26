@@ -264,7 +264,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $appointment_date = date('l, F j, Y', strtotime($available_appointments['Session_Date']));
                     $appointment_day_Month = date('l, F j', strtotime($available_appointments['Session_Date']));
                     $appointment_time = date('g.i a', strtotime($available_appointments['Session_Time']));
-                    $appointment_Datetime = date('l, F j, Y \a\t g:i a', strtotime($available_appointments['Session_Time']));
+                    $appointment_Datetime = date('l, F j, Y \a\t g:i a', strtotime($available_appointments['Session_Date']." ".$available_appointments['Session_Time']));
                     $booked_time = date('F d, g.i a', strtotime($available_appointments['created_at']));
 
                     $appointment_dialogID = "appointment-popup" . htmlspecialchars($available_appointments['Appointment_ID']);
