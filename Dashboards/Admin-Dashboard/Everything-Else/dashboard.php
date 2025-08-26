@@ -146,7 +146,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                   echo
                   '
-              <div class="approval-item item">
+              <div id="mem-log-id-'.htmlspecialchars($request['Membership_ID']).'" class="approval-item item">
                 <div class="approval-item-profile">
                   <img
                     alt="Profile Image "
@@ -235,7 +235,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                     echo 
                     '
-                    <div class="appointment-item item" onclick="document.getElementById(\''.$appointment_dialogID.'\').showModal();">
+                    <div id="log-id-'.htmlspecialchars($available_appointments['Appointment_ID']).'" class="appointment-item item" onclick="document.getElementById(\''.$appointment_dialogID.'\').showModal();">
                 <div class="profile-container">
                     <img
                       alt="Profile Image"
@@ -326,7 +326,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                     echo
                     '
-                    <div class="message-item" onclick="document.getElementById(\''.$message_dialogID.'\').showModal();">
+                    <div id="log-id-'.htmlspecialchars($received_messages['Guest_ID']).'" class="message-item" onclick="document.getElementById(\''.$message_dialogID.'\').showModal();">
                 <div class="profile-container">
                     <img
                       alt="Profile Image"
@@ -425,7 +425,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
       </section>
     </main>
-    
+    <script src="../../../includes/search-highlight.js"></script>    
 
     <script
       src="https://kit.fontawesome.com/15767cca17.js"

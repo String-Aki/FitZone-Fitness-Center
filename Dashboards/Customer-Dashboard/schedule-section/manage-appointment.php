@@ -47,7 +47,7 @@
                     while($row = $results->fetch_assoc()){
                         if($row['Status'] === "pending"){
                             echo '
-                        <div class="session-log-container">
+                        <div id="srch-log-'.htmlspecialchars($row['Appointment_ID']).'" class="session-log-container">
                         <div class="info-wrap">
                         <i class="fas fa-calendar log-marker"></i>
                         <div class="text-wrap">
@@ -61,7 +61,7 @@
 
                        elseif($row['Status'] === "confirmed"){
                             echo '
-                        <div class="session-log-container">
+                        <div id="srch-log-'.htmlspecialchars($row['Appointment_ID']).'" class="session-log-container">
                         <div class="info-wrap">
                         <i class="fas fa-calendar log-marker"></i>
                         <div class="text-wrap">
@@ -83,7 +83,7 @@
                             $pastDisplayed = true;
                         }
                         echo '
-                       <div class="session-log-container">
+                       <div id="srch-log-'.htmlspecialchars($row['Appointment_ID']).'" class="session-log-container">
                        <div class="info-wrap">
                        <i class="fas fa-calendar log-marker"></i>
                        <div class="text-wrap">
@@ -106,6 +106,7 @@
                     $conn->close();
             ?>
     </section>
+        <script src="../../../includes/search-highlight.js"></script>
         <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
 </body>
 </html>

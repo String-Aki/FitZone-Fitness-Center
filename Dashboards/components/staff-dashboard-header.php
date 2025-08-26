@@ -269,7 +269,9 @@
       const close_message_button = document.querySelector(".close-message");
       const message_modal = document.getElementById("create-message");
 
-      create_message_button.addEventListener("click", ()=>{
+      if(create_message_button)
+      {
+        create_message_button.addEventListener("click", ()=>{
         message_modal.showModal();
       });
 
@@ -277,6 +279,7 @@
         message_modal.close();
       })
 
+      }
     </script>
 
     <script src="../../includes/search-ajax.js"></script>

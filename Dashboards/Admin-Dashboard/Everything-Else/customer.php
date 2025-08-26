@@ -89,7 +89,7 @@ error_reporting(0);
 
                                 echo
                                 '
-                                <tr>
+                                <tr id="row-id-'.htmlspecialchars($row['User_ID']).'">
                             <td>
                                 <div class="profile-container pfp">
                                     <img src="'.htmlspecialchars($path).'" alt="Profile picture" class="avatar">
@@ -118,6 +118,7 @@ error_reporting(0);
                     </div>
             </section>
         </main>
+        <script src="../../../includes/search-highlight.js"></script>
 </body>
 </body>
 </html>

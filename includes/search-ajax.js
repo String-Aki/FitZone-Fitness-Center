@@ -31,12 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
         suggestionsContainer.innerHTML = "";
         if (data.length > 0) {
           data.forEach((item) => {
-            console.log(item.name)
             const div = document.createElement("div");
             div.className = "suggestion-item";
             div.innerHTML = `<span>${item.name}</span> <span class="type">${item.type}</span>`;
             div.onclick = function () {
-              window.location.href = item.url;
+              window.location.href = `${item.url}&highlight=${item.id}`;
             };
             suggestionsContainer.appendChild(div);
           });

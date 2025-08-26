@@ -87,7 +87,7 @@ error_reporting(0);
                                 $row['Status'] === 'closed'? ($is_closed=true) : ($is_closed=NULL);
                                 echo 
                                 '
-                                <tr>
+                                <tr id="row-id-'.htmlspecialchars($row['Guest_ID']).'">
                             <td>#'.htmlspecialchars($row['Guest_ID']).'</td>
                             <td class="full-name">'.htmlspecialchars($row['Name']).'</td>
                             <td>'.htmlspecialchars($row['Subject']).'</td>
@@ -111,9 +111,10 @@ error_reporting(0);
             </div>
         </section>
     </main>
-<script
+    <script src="../../../includes/search-highlight.js"></script>
+    <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
-    ></scrip>
+    ></script>
 </body>
 </html>

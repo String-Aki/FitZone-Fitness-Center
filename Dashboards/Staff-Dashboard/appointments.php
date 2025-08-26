@@ -21,8 +21,8 @@
     }
 
     if($current_user === NULL){
-        // header('Location: ../../Sign-In-Page/index.php');
-        // exit();
+        header('Location: ../../Sign-In-Page/index.php');
+        exit();
     }
 
     include("../components/staff-dashboard-side-bar.php");?>
@@ -114,7 +114,7 @@
 
                   echo 
                   '
-                  <tr>
+                  <tr id="row-id-'.htmlspecialchars($row['Appointment_ID']).'">
                 <td>#'.htmlspecialchars($row['Appointment_ID']).'</td>
                 <td class="full-name">'.htmlspecialchars($row['First_Name']." ".$row['Last_Name']).'</td>
                 <td>
@@ -126,7 +126,7 @@
                 <td>'.htmlspecialchars($row['Status']).'</td>
                 <td>'.htmlspecialchars($Booked_Date_Formatted).'</td>
                 <td class="actions">
-                  <form action="" method="POST" id="ap_form" class="actions">
+                  <form action="" method="POST" class="actions">
 
                   <input name="appointment_id" value="'.htmlspecialchars($row['Appointment_ID']).'" type="hidden" />
 
@@ -150,5 +150,6 @@
         </div>
       </section>
     </main>
+    <script src="../../includes/search-highlight.js"></script>
   </body>
 </html>

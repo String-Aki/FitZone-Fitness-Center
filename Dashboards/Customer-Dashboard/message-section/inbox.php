@@ -110,7 +110,7 @@
                     $dialogID = "message-popup".htmlspecialchars($broadcast['Broadcast_ID']);
                     
                             echo '
-                            <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
+                            <div id="srch-log-'.htmlspecialchars($broadcast['Broadcast_ID']).'" class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
                                     <div class="profile-cont"><img src="'.htmlspecialchars($broadcast['Profile_Img_Path']).'" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
@@ -199,7 +199,7 @@
                                         </div>';
 
                             echo '
-                            <div class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
+                            <div id="srch-log-'.htmlspecialchars($row['Message_ID']).'" class="session-log-container inbox-log" onclick="document.getElementById(\''.$dialogID.'\').showModal();">
                                 <div class="info-wrap">
                                     <div class="profile-cont"><img src="'.htmlspecialchars($pfp_path).'" alt="profile-picture" class="profile-picture"></div>
                                         <div class="text-wrap">
@@ -235,5 +235,6 @@
                 $conn->close();
             ?>
     </section>
+    <script src="../../../includes/search-highlight.js"></script>
 </body>
 </html>

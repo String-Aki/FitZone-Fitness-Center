@@ -19,7 +19,7 @@
         </a>
         <a href="../../Admin-Dashboard/Everything-Else/messages.php?header_title=Messages&uid=<?php echo htmlspecialchars($UID)?>" class="message-link">
           <i class="fa-regular fa-message nav-logo"></i>
-          Messages
+          Queries
         </a>
         <a href="../../Admin-Dashboard/Everything-Else/customer.php?header_title=Customer Management&uid=<?php echo htmlspecialchars($UID)?>" class="customers-link">
           <i class="fas fa-people-group nav-logo"></i>

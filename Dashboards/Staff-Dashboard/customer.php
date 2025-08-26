@@ -91,7 +91,7 @@
 
                                 echo
                                 '
-                                <tr>
+                                <tr id="row-id-'.htmlspecialchars($row['User_ID']).'">
                             <td>
                                 <div class="profile-container pfp">
                                     <img src="'.htmlspecialchars($path).'" alt="Profile picture" class="avatar">
@@ -119,6 +119,7 @@
             </section>
         </main>
 
+    <script src="../../includes/search-highlight.js"></script>
 </body>
 </body>
 </html>

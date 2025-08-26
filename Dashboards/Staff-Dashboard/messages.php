@@ -116,7 +116,7 @@
                                 $toUpperStatus = ucfirst($row['Status']);
                                 echo 
                                 '
-                                <tr>
+                                <tr id="row-id-'.htmlspecialchars($row['Message_ID']).'">
                             <td>#'.htmlspecialchars($row['User_ID']).'</td>
                             <td class="full-name">'.htmlspecialchars($row['First_Name']." ".$row['Last_Name']).'</td>
                             <td>'.htmlspecialchars($row['Topic']).'</td>
@@ -149,7 +149,9 @@
             </div>
         </section>
     </main>
-<script
+    <script src="../../includes/search-highlight.js"></script>
+
+    <script
       src="https://kit.fontawesome.com/15767cca17.js"
       crossorigin="anonymous"
     ></script>
