@@ -53,6 +53,8 @@
           name="phoneNumber"
           id="phone-number-field"
           placeholder="e.g +(55) 123 4567 890"
+          pattern="[0-9]*"
+          title="Please enter only numbers"
           required
         />
 

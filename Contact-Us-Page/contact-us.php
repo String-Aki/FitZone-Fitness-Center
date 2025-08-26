@@ -49,7 +49,7 @@ error_reporting(0);
           <input type="text" name="email" id="email-field" placeholder="Your Email" required/>
 
           <label for="phone-number-field">Phone Number</label>
-          <input type="tel" name="phone" id="phone-number-field" placeholder="Your Phone Number" required/>
+          <input type="tel" name="phone" id="phone-number-field" placeholder="Your Phone Number" pattern="[0-9]*" title="Please enter only numbers" required/>
 
           <label for="subject-field">Subject</label>
           <input type="text" name="subject" id="subject-field" placeholder="Subject" required>
