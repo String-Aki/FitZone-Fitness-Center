@@ -39,7 +39,7 @@
           <form
             method="post"
             class="create-message-form"
-            action="./messages.php"
+            action="./messages.php?uid=<?php echo htmlspecialchars($UID); ?>&header_title=Messages"
             id="message-form"
           >
           <div class="input-wrap">

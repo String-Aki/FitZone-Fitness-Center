@@ -12,7 +12,7 @@
     include("../../includes/dbconnect.php");
     error_reporting(0);
     
-    $UID = $_GET['uid'] ?? null;
+    $UID = $_GET['uid'] ?? NULL;
     $current_user = NULL;
 
     if($UID && isset($_SESSION['auth']['staff'][$UID])){
