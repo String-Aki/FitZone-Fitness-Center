@@ -321,7 +321,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 while($received_messages = $messages->fetch_assoc()){
 
-                    $pfp_path_for_messages = "../../../Assets/customer-dashboard-assets/profile.png";
+                    $pfp_path_for_messages = "../../../Assets/contact-us-page-assets/Guest_pfp.jpeg";
                     $message_dialogID = "message-popup" . htmlspecialchars($received_messages['Guest_ID']);
 
                     echo
