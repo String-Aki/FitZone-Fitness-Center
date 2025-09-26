@@ -66,7 +66,6 @@
 
         profileToggle.addEventListener("click", ()=>{
             profileMenu.classList.toggle("show");
-            console.log("clicked");
         });
 
         logout.addEventListener("click", ()=>{
