@@ -1,0 +1,50 @@
+/* Styles for the mobile blocker overlay */
+#mobile-blocker {
+    display: none; /* Hidden by default on desktop */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+    color: white;
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.blocker-content {
+    max-width: 400px;
+}
+
+.blocker-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.blocker-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.white{
+    color: white;
+    font-size: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Media query to show the blocker and disable the form on mobile */
+@media (max-width: 768px) {
+    #mobile-blocker {
+        display: flex; /* Show the blocker on screens 768px or less */
+    }
+
+    /* Optional: Hide the original form to prevent any visual glitches */
+    body.mobile-lock {
+      overflow: hidden; /* Prevent scrolling of the page behind the overlay */
+    }
+}

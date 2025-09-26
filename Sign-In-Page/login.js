@@ -17,3 +17,22 @@ if (screenWidth < 1024) {
     formView.scrollIntoView({ behavior: "smooth" });
   }, 2000);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const isMobile = window.matchMedia(
+    "only screen and (max-width: 768px)"
+  ).matches;
+
+  if (isMobile) {
+    // Add a class to the body to help with styling
+    document.body.classList.add("mobile-lock");
+
+    // Disable all form elements on the page
+    const formElements = document.querySelectorAll(
+      "form input, form button, form select, form textarea"
+    );
+    formElements.forEach((element) => {
+      element.disabled = true;
+    });
+  }
+});

@@ -10,9 +10,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../Mobile-Blocker/mobile-blocker.css">
     <title>Create Account</title>
   </head>
   <body>
+    <div id="mobile-blocker">
+        <div class="blocker-content">
+          <a href="../index.php" class="back-home fas fa-arrow-left white"></a>
+            <h1>Desktop Experience Recommended</h1>
+            <p>
+                Thank you for your interest! For the best experience, please
+                log in or register on a desktop. The dashboards
+                are not yet optimized for mobile use.
+            </p>
+        </div>
+    </div>
     <img
       src="../Assets/registration-page-assets/register-page-image.png"
       alt="main-image"

@@ -9,10 +9,22 @@ error_reporting(0);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./login.css" />
+    <link rel="stylesheet" href="../Mobile-Blocker/mobile-blocker.css">
     <script src="https://kit.fontawesome.com/15767cca17.js" crossorigin="anonymous"></script>
     <title>Login Page</title>
   </head>
   <body>
+    <div id="mobile-blocker">
+        <div class="blocker-content">
+            <a href="../index.php" class="back-home fas fa-arrow-left white"></a>
+            <h1>Desktop Experience Recommended</h1>
+            <p>
+                Thank you for your interest! For the best experience, please
+                log in or register on a desktop. The dashboards
+                are not yet optimized for mobile use.
+            </p>
+        </div>
+    </div>
     <form method="post" class="login-form">
       <a href="../index.php" class="back-home fas fa-arrow-left"></a>
       <h1 class="login-head">WELCOME BACK</h1>
